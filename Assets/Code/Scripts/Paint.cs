@@ -36,7 +36,7 @@ public class Paint : MonoBehaviour
     }
     private void Draw()
     {
-        if (Physics.Raycast(_tip.position, transform.up, out _touch, _tipHeight))
+        if (Physics.Raycast(_tip.position, transform.position, out _touch, _tipHeight))
         {
             if (_touch.transform.CompareTag("Wall"))
             {
