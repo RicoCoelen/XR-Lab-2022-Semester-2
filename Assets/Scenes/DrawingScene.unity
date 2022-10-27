@@ -155,7 +155,7 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 30
+  m_CookingOptions: -1
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &425444316
 MeshRenderer:
@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   texture: {fileID: 0}
-  textureSize: {x: 10240, y: 16384}
+  textureSize: {x: 3840, y: 2400}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

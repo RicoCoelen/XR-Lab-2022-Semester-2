@@ -5,7 +5,7 @@ using UnityEngine;
 public class Wall : MonoBehaviour
 {
     public Texture2D texture;
-    public Vector2 textureSize = new Vector2(x: 2048, y: 2048);
+    public Vector2 textureSize = new Vector2(x: 1080, y: 1080);
 
     // Start is called before the first frame update
     void Start()

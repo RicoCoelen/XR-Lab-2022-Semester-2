@@ -34,6 +34,7 @@ public class Paint : MonoBehaviour
         Draw();
 
     }
+    
     private void Draw()
     {
         if (Physics.Raycast(_tip.position, transform.position, out _touch, _tipHeight))
