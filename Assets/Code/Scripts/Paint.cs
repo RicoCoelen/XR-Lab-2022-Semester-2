@@ -7,7 +7,7 @@ using System.Linq;
 public class Paint : MonoBehaviour
 {
     [SerializeField] private Transform _tip;
-    [SerializeField] private int _brushSize = 8;
+    [SerializeField] private int _brushSize = 10;
 
     private Renderer _renderer;
     private Color[] _colors;
@@ -49,7 +49,7 @@ public class Paint : MonoBehaviour
 
                 _touchPos = new Vector2(_touch.textureCoord.x, _touch.textureCoord.y);
 
-                var x = (int)(_touchPos.x * _Wall.textureSize.x - (_brushSize / 2));
+                var x = (int)(_touchPos.x * _Wall.textureSize.x - (_brushSize / 0.8));
                 var y = (int)(_touchPos.y * _Wall.textureSize.y - (_brushSize / 2));
 
                 if (y < 0 || y > _Wall.textureSize.y || x < 0 || x > _Wall.textureSize.x) return;
