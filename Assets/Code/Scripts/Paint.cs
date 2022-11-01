@@ -7,10 +7,10 @@ using System.Linq;
 public class Paint : MonoBehaviour
 {
     [SerializeField] private Transform _tip;
-    [SerializeField] private int _brushSize = 10;
+    [SerializeField] public int _brushSize = 10;
 
     private Renderer _renderer;
-    private Color[] _colors;
+    public Color[] _colors;
     private float _tipHeight;
 
     private RaycastHit _touch;

@@ -457,6 +457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8076859de912cdf47a775b9a8defec65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paint: {fileID: 2030261113}
   paintred: {fileID: 2100000, guid: 6d7f8afc8e1df4741871a1eb0e01592c, type: 2}
   paintgreen: {fileID: 2100000, guid: 24aa5adbfc91f954f9e63e6480b51700, type: 2}
 --- !u!1 &876259586
@@ -1154,6 +1155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tip: {fileID: 712175270}
   _brushSize: 40
+  _colors: []
 --- !u!4 &2030261115
 Transform:
   m_ObjectHideFlags: 0
