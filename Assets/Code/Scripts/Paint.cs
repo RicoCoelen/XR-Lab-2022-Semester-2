@@ -7,7 +7,7 @@ using System.Linq;
 public class Paint : MonoBehaviour
 {
     [SerializeField] private Transform _tip;
-    [SerializeField] public int _brushSize = 10;
+    [SerializeField] public int _brushSize = 8;
 
     private Renderer _renderer;
     public Color[] _colors;

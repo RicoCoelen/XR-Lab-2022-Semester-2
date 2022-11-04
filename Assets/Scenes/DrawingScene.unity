@@ -1319,7 +1319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tip: {fileID: 712175270}
-  _brushSize: 10
+  _brushSize: 8
   _colors: []
 --- !u!4 &2030261115
 Transform:
