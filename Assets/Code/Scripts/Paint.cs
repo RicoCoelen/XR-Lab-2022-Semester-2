@@ -65,14 +65,11 @@ public class Paint : MonoBehaviour
                         _Wall.texture.SetPixels(lerpX, lerpY, _brushSize, _brushSize, _colors);
                     }
 
-                    //transform.rotation = _lastTouchRot;
-
                     _Wall.texture.Apply();
 
                 }
 
                 _lastTouchPos = new Vector2(x, y);
-                //_lastTouchRot = transform.rotation;
                 _touchedLastFrame = true;
                 return;
             }
