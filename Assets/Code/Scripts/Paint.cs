@@ -7,7 +7,7 @@ using System.Linq;
 public class Paint : MonoBehaviour
 {
     [SerializeField] private Transform _tip;
-    [SerializeField] public int _brushSize = 10;
+    [SerializeField] public int _brushSize = 8;
 
     private Renderer _renderer;
     public Color[] _colors;
@@ -65,14 +65,11 @@ public class Paint : MonoBehaviour
                         _Wall.texture.SetPixels(lerpX, lerpY, _brushSize, _brushSize, _colors);
                     }
 
-                    transform.rotation = _lastTouchRot;
-
                     _Wall.texture.Apply();
 
                 }
 
                 _lastTouchPos = new Vector2(x, y);
-                _lastTouchRot = transform.rotation;
                 _touchedLastFrame = true;
                 return;
             }
