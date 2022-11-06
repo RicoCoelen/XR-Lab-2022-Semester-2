@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
-
-public class Paint : MonoBehaviour
+public class SprayScript : MonoBehaviour
 {
     [SerializeField] private Transform _tip;
     [SerializeField] public int _brushSize = 8;
@@ -21,7 +19,7 @@ public class Paint : MonoBehaviour
 
     void Start()
     {
-        _renderer = _tip.GetChild(0).GetComponent<Renderer>();
+        _renderer = _tip.GetComponent<Renderer>();
         _colors = _renderer.material.color;
         _tipHeight = _tip.localScale.y;
     }
@@ -30,10 +28,10 @@ public class Paint : MonoBehaviour
     {
         Draw();
     }
-    
+
     private void Draw()
     {
-        if (Physics.Raycast(_tip.position, transform.up, out _touch, _tipHeight))
+        if (Physics.Raycast(_tip.position, -_tip.transform.up, out _touch, _tipHeight))
         {
             if (_touch.transform.CompareTag("Wall"))
             {
@@ -60,7 +58,6 @@ public class Paint : MonoBehaviour
                         var lerpY = (int)Mathf.Lerp(_lastTouchPos.y, y, F);
                         _Wall.texture.SetPixel(lerpX, lerpY, _colors);
                     }
-                    // working on larger brush and spray
 
                     _Wall.texture.Apply();
 
