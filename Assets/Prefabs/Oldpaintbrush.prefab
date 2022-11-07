@@ -150,6 +150,7 @@ MonoBehaviour:
   _tip: {fileID: 7714145596163920248}
   _brushSize: 8
   _colors: []
+  _tipHeight: 0.1
 --- !u!114 &7714145595401645216
 MonoBehaviour:
   m_ObjectHideFlags: 0
