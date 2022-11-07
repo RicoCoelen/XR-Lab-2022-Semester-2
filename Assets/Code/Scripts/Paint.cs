@@ -1,39 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
-
+using UnityEngine;
 
 public class Paint : MonoBehaviour
 {
     [SerializeField] private Transform _tip;
-    [SerializeField] public int _brushSize = 8;
+    [SerializeField] public int _brushSize = 10;
 
     private Renderer _renderer;
-    public Color _colors;
+    public Color[] _colors;
     public float _tipHeight;
 
     private RaycastHit _touch;
     private Wall _Wall;
     private Vector2 _touchPos, _lastTouchPos;
     private bool _touchedLastFrame;
+    private Quaternion _lastTouchRot;
 
 
     void Start()
+
     {
-        _renderer = _tip.GetChild(0).GetComponent<Renderer>();
-        _colors = _renderer.material.color;
-        _tipHeight = _tip.localScale.y;
+        _renderer = _tip.GetComponent<Renderer>();
+        _colors = Enumerable.Repeat(_renderer.material.color, _brushSize * _brushSize).ToArray();
     }
 
     void Update()
     {
         Draw();
     }
-    
+
     private void Draw()
     {
-        if (Physics.Raycast(_tip.position, transform.up, out _touch, _tipHeight))
+        if (Physics.Raycast(_tip.position, transform.position, out _touch, _tipHeight))
         {
             if (_touch.transform.CompareTag("Wall"))
             {
@@ -52,21 +50,23 @@ public class Paint : MonoBehaviour
 
                 if (_touchedLastFrame)
                 {
-                    _Wall.texture.SetPixel(x, y, _colors);
+                    _Wall.texture.SetPixels(x, y, _brushSize, _brushSize, _colors);
 
                     for (float F = 0.01f; F < 1.00f; F += 0.01f)
                     {
                         var lerpX = (int)Mathf.Lerp(_lastTouchPos.x, x, F);
                         var lerpY = (int)Mathf.Lerp(_lastTouchPos.y, y, F);
-                        _Wall.texture.SetPixel(lerpX, lerpY, _colors);
+                        _Wall.texture.SetPixels(lerpX, lerpY, _brushSize, _brushSize, _colors);
                     }
-                    // working on larger brush and spray
+
+                    //transform.rotation = _lastTouchRot;
 
                     _Wall.texture.Apply();
 
                 }
 
                 _lastTouchPos = new Vector2(x, y);
+                //_lastTouchRot = transform.rotation;
                 _touchedLastFrame = true;
                 return;
             }
@@ -74,10 +74,5 @@ public class Paint : MonoBehaviour
 
         _Wall = null;
         _touchedLastFrame = false;
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawLine(_tip.position, _touch.point);
     }
 }
