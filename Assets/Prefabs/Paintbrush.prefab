@@ -209,8 +209,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tip: {fileID: 4166727884774414846}
   _brushSize: 8
-  _colors: {r: 0, g: 0, b: 0, a: 0}
-  _tipHeight: 0.05
+  _colors:
+  - {r: 0.00021477565, g: 0.00000017063657, b: 8.1999785e-10, a: 0.00000017266292}
+  - {r: 8.3025803e-10, g: 0.00017012432, b: 8.310654e+20, a: 1.676527e+22}
+  - {r: 0, g: 1.617e-42, b: 1e-45, a: 0}
+  - {r: 1.624e-42, g: 1.8e-44, b: -3.6893493e+19, a: 1.58e-43}
+  _tipHeight: 0.1
 --- !u!114 &3034369330767840610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -590,4 +594,3 @@ MonoBehaviour:
   paint: {fileID: 3034369330767840613}
   paintred: {fileID: 2100000, guid: 6d7f8afc8e1df4741871a1eb0e01592c, type: 2}
   paintgreen: {fileID: 2100000, guid: 24aa5adbfc91f954f9e63e6480b51700, type: 2}
-  paintblue: {fileID: 2100000, guid: 5b6bb2a6b53f8254e833d40938217191, type: 2}
