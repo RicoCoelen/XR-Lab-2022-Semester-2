@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
-    public GameObject paint;
+    public GameObject brush;
     public Material _portalpaint;
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.instance.material.name == "Portal paint")
+        if (collider.GetComponent<Renderer>().material == _portalpaint)
         {
             Debug.Log("Yes portal");
         }
