@@ -6,12 +6,20 @@ public class Portal : MonoBehaviour
 {
     public Material _portalpaint;
 
+
+    private bool enter = false;
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.GetComponent<Renderer>().sharedMaterial.name == _portalpaint.name + " (Instance)")
-        {
-            Debug.Log("Yes portal");
-        }
+        if (enter == false) StartCoroutine(your_timer());
     }
-
+    IEnumerator your_timer()
+    {
+        enter = true;
+        if (GetComponent<Collider>().GetComponent<Renderer>().sharedMaterial.name == _portalpaint.name + " (Instance)")
+        {
+            GetComponent<Wall>().enabled = false;
+            yield return new WaitForSeconds(0.01f);
+        }
+        enter = false;
+    }
 }
