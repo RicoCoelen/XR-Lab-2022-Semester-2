@@ -249,8 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 361aab070d6f00b478b0f7e0c7bfb52d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paint: {fileID: 0}
-  _portalpaint: {fileID: 0}
+  _portalpaint: {fileID: 2100000, guid: 0a6f2c233ed26d743948e10c71fd2888, type: 2}
 --- !u!1 &777779913
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,7 +266,7 @@ GameObject:
   - component: {fileID: 777779915}
   m_Layer: 0
   m_Name: Brush
-  m_TagString: Brush
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -546,7 +545,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 780489358}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -4.15, y: 1.11, z: 0}
+  m_LocalPosition: {x: -3.75, y: 1.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
