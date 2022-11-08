@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 505937286}
   - component: {fileID: 505937285}
   - component: {fileID: 505937289}
+  - component: {fileID: 505937290}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Wall
@@ -236,6 +237,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   texture: {fileID: 0}
   textureSize: {x: 1080, y: 1080}
+--- !u!114 &505937290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505937284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 361aab070d6f00b478b0f7e0c7bfb52d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &777779913
 GameObject:
   m_ObjectHideFlags: 0
