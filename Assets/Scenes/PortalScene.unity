@@ -178,7 +178,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1387b1b24508b4e4cb738422465572ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -250,6 +250,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _portalpaint: {fileID: 2100000, guid: 0a6f2c233ed26d743948e10c71fd2888, type: 2}
+  _wallpaint1: {fileID: 2100000, guid: 1387b1b24508b4e4cb738422465572ee, type: 2}
+  _wallie: {fileID: 505937286}
 --- !u!1 &777779913
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,7 +268,7 @@ GameObject:
   - component: {fileID: 777779915}
   m_Layer: 0
   m_Name: Brush
-  m_TagString: Untagged
+  m_TagString: Brush
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

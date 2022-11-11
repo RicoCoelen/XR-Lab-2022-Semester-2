@@ -2,11 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Portal : MonoBehaviour
+public class Tester : MonoBehaviour
 {
     public Material _portalpaint;
-    public Material _wallpaint1;
-    public Renderer _wallie;
 
     void OnTriggerEnter(Collider collider)
     {
@@ -18,7 +16,7 @@ public class Portal : MonoBehaviour
     IEnumerator Timertje()
     {
         Debug.Log("Begin");
-        yield return new WaitForSeconds(10);
-        _wallie.material = _wallpaint1;
+        yield return new WaitForSeconds(5);
+        Debug.Log("End");
     }
 }
