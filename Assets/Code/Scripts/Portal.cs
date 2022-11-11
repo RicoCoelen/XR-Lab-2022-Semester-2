@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
-    public Material _portalpaint;
     public Material _wallpaint1;
     public Renderer _wallie;
 
