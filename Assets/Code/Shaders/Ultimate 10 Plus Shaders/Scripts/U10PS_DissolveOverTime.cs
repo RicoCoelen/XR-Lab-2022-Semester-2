@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(MeshRenderer))]
 public class U10PS_DissolveOverTime : MonoBehaviour
 {
-    public Renderer meshRenderer;
+    private MeshRenderer meshRenderer;
 
     public float speed = .5f;
 
