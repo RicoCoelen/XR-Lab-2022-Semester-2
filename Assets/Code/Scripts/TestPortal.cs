@@ -36,11 +36,16 @@ public class TestPortal : MonoBehaviour
 
     void Update()
     {
+        int goal = 0;
         for (int i = 0; i < points.Length; i++)
         {
             if (points[i].gameObject.tag == "Portal Point")
             {
-                Debug.Log("Yaas bitch");
+                goal++;
+                if (goal == 8)
+                {
+                    Debug.Log("Yaas bitch");
+                }
             }
         }
     }
