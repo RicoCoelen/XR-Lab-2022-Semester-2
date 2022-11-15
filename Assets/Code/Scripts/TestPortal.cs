@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class TestPortal : MonoBehaviour
@@ -14,6 +15,8 @@ public class TestPortal : MonoBehaviour
     public GameObject _point7;
     public GameObject _point8;
     public GameObject[] points;
+
+    public GameObject _portal;
 
     class Point
     {
@@ -44,8 +47,23 @@ public class TestPortal : MonoBehaviour
                 goal++;
                 if (goal == 8)
                 {
-                    Debug.Log("Yaas bitch");
+                    StartCoroutine(Timertje());
                 }
+            }
+        }
+    }
+    IEnumerator Timertje()
+    {
+        yield return new WaitForSeconds(3);
+        _portal.SetActive(true);
+    }
+    private void FixedUpdate()
+    {
+        for (int i = 0; i < points.Length; i++)
+        {
+            if (_portal.activeSelf)
+            {
+                points[i].SetActive(false);
             }
         }
     }

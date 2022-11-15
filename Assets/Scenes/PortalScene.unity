@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 140280150}
   m_Layer: 0
   m_Name: PortalPoint5
-  m_TagString: Untagged
+  m_TagString: Portal Point
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -461,7 +461,7 @@ GameObject:
   - component: {fileID: 612266158}
   m_Layer: 0
   m_Name: PortalPoint3
-  m_TagString: Untagged
+  m_TagString: Portal Point
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -559,7 +559,7 @@ GameObject:
   - component: {fileID: 772663327}
   m_Layer: 0
   m_Name: PortalPoint7
-  m_TagString: Untagged
+  m_TagString: Portal Point
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -962,7 +962,7 @@ GameObject:
   - component: {fileID: 817982902}
   m_Layer: 0
   m_Name: PortalPoint6
-  m_TagString: Untagged
+  m_TagString: Portal Point
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1209,15 +1209,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fda7d5533924c1e469dc912a70fde2ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _yesportal: {fileID: 2100000, guid: ade3723962ba54e4684572cfd1f649bd, type: 2}
   _point1: {fileID: 1943232981}
   _point2: {fileID: 535379298}
   _point3: {fileID: 612266155}
   _point4: {fileID: 1710373121}
   _point5: {fileID: 140280147}
   _point6: {fileID: 817982899}
-  _point7: {fileID: 817982899}
+  _point7: {fileID: 772663324}
   _point8: {fileID: 1591112371}
+  points: []
+  _portal: {fileID: 1175755344}
 --- !u!1 &1544652644
 GameObject:
   m_ObjectHideFlags: 0
@@ -1316,7 +1317,7 @@ GameObject:
   - component: {fileID: 1591112374}
   m_Layer: 0
   m_Name: PortalPoint8
-  m_TagString: Untagged
+  m_TagString: Portal Point
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1414,7 +1415,7 @@ GameObject:
   - component: {fileID: 1710373124}
   m_Layer: 0
   m_Name: PortalPoint4
-  m_TagString: Untagged
+  m_TagString: Portal Point
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1957,7 +1958,7 @@ GameObject:
   - component: {fileID: 1943232984}
   m_Layer: 0
   m_Name: PortalPoint1
-  m_TagString: Untagged
+  m_TagString: Portal Point
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
