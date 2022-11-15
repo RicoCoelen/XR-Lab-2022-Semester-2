@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2302415497548776398}
+  - component: {fileID: 5246045684358529484}
   - component: {fileID: 5738726193325770983}
   - component: {fileID: 7207398952604286782}
   - component: {fileID: 6654069769510097999}
   - component: {fileID: 73024038156215306}
-  - component: {fileID: 5246045684358529484}
   m_Layer: 0
   m_Name: Artist Palette 3D
   m_TagString: Untagged
@@ -40,6 +40,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5246045684358529484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2788440590049617524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aecc91fc64da164aa447234cf55a224, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brushPrefab: {fileID: 3034369330767840613, guid: 83a9831f26ff1d6478c944177204b50e, type: 3}
+  brushSpot: {fileID: 3380516848788917710}
+  brushGO: {fileID: 0}
+  DrawingAction:
+    actionPath: /actions/default/in/DrawingInput
+    needsReinit: 0
+  hand: {fileID: 0}
+  prefabToPlant: {fileID: 0}
 --- !u!114 &5738726193325770983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53,7 +73,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activateActionSetOnAttach:
-    actionSetPath: 
+    actionSetPath: /actions/default
   hideHandOnAttach: 1
   hideSkeletonOnAttach: 0
   hideControllerOnAttach: 0
@@ -176,21 +196,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleportAllowed: 1
   overrideHoverLock: 1
---- !u!114 &5246045684358529484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2788440590049617524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7aecc91fc64da164aa447234cf55a224, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  brushPrefab: {fileID: 3034369330767840613, guid: 83a9831f26ff1d6478c944177204b50e, type: 3}
-  brushSpot: {fileID: 3380516848788917710}
-  brushGO: {fileID: 0}
 --- !u!1 &2995554670918393124
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,7 +274,7 @@ GameObject:
   - component: {fileID: 206496139746077958}
   - component: {fileID: 6743399564550768834}
   - component: {fileID: 7936304254019096340}
-  - component: {fileID: 3417654278499764530}
+  - component: {fileID: 5469069968958809290}
   m_Layer: 0
   m_Name: ResetCube
   m_TagString: Untagged
@@ -355,7 +360,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3417654278499764530
+--- !u!114 &5469069968958809290
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -364,7 +369,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6953274807565183353}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e568e39902eb4934a9fb9535d5065067, type: 3}
+  m_Script: {fileID: 11500000, guid: 99d115436167810429097b049bd413a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8005357252123139328

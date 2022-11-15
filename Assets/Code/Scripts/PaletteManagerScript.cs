@@ -42,17 +42,22 @@ public class PaletteManagerScript : MonoBehaviour
     #endregion
 
     #region Constructor
+
     /// <summary>
     /// awake function to ready up for game start
     /// </summary>
     void Awake()
     {
+        // spawn brush on palette
         brushGO = Instantiate(brushPrefab, brushSpot.transform);
+
+        // get right component hand at start
+        hand = GameObject.Find("RightHand").GetComponent<Hand>();
     }
 
     #endregion
 
-    #region Methods
+    #region EventListener
 
     /// <summary>
     /// enable event handler, also on hand
@@ -60,11 +65,11 @@ public class PaletteManagerScript : MonoBehaviour
     private void OnEnable()
     {
         if (hand == null)
-            hand = this.GetComponent<Hand>();
+            Debug.Log("Hands not found");
 
         if (DrawingAction == null)
         {
-            Debug.LogError("<b>[SteamVR Interaction]</b> No plant action assigned", this);
+            Debug.LogError("<b>[SteamVR Interaction]</b> No drawing action assigned", this);
             return;
         }
 
@@ -80,6 +85,10 @@ public class PaletteManagerScript : MonoBehaviour
             DrawingAction.RemoveOnChangeListener(OnDrawingActionChange, hand.handType);
     }
 
+    #endregion
+
+    #region Methods
+
     /// <summary>
     /// change value if event listener changes
     /// </summary>
@@ -90,8 +99,23 @@ public class PaletteManagerScript : MonoBehaviour
     {
         if (newValue)
         {
-           // Plant();
+            Debug.Log(newValue);
+            StartCoroutine(Paint());
         }
+    }
+
+    /// <summary>
+    /// change value if event listener changes
+    /// </summary>
+    IEnumerator Paint()
+    {
+        //Print the time of when the function is first called.
+        Debug.Log("Started Coroutine at timestamp : " + Time.time);
+
+        yield return new WaitForSeconds(1f);
+
+        //After we have waited 5 seconds print the time again.
+        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
     }
 
     /// <summary>
@@ -99,9 +123,9 @@ public class PaletteManagerScript : MonoBehaviour
     /// </summary>
     public void FixedUpdate()
     {
-        if (DrawingAction.active)
+        if (true)
         {
-            brushGO.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            //StartCoroutine(Paint());
         }
     }
 
@@ -115,5 +139,6 @@ public class PaletteManagerScript : MonoBehaviour
         brushGO.transform.position = brushSpot.transform.position;
         brushGO.transform.rotation = brushSpot.transform.rotation;
     }
+
     #endregion
 }
