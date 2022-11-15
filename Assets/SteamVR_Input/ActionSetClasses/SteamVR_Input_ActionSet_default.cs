@@ -105,6 +105,14 @@ namespace Valve.VR
             }
         }
         
+        public virtual SteamVR_Action_Boolean DrawingInput
+        {
+            get
+            {
+                return SteamVR_Actions.default_DrawingInput;
+            }
+        }
+        
         public virtual SteamVR_Action_Vibration Haptic
         {
             get
