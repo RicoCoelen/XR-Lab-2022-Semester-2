@@ -9,7 +9,7 @@ public class Portal : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.GetComponent<Renderer>().gameObject.tag == "Brush")
+        if (collider.gameObject.tag == "Brush")
         {
             StartCoroutine(Timertje());
         }
