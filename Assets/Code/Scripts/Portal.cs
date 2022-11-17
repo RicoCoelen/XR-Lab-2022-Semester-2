@@ -5,19 +5,13 @@ using UnityEngine;
 public class Portal : MonoBehaviour
 {
     public Material _wallpaint1;
-    public Renderer _wallie;
+    public GameObject _portal;
 
-    void OnTriggerEnter(Collider collider)
+    void Start()
     {
-        if (collider.gameObject.tag == "Brush")
+        if (_portal.activeSelf)
         {
-            StartCoroutine(Timertje());
+            GetComponent<Renderer>().material = _wallpaint1;
         }
-    }
-    IEnumerator Timertje()
-    {
-        Debug.Log("Begin");
-        yield return new WaitForSeconds(10);
-        _wallie.material = _wallpaint1;
     }
 }

@@ -18,12 +18,6 @@ public class AppearingPortal : MonoBehaviour
 
     public GameObject _portal;
 
-    class Point
-    {
-        public int order;
-        public Vector2 position;
-        public Material material;
-    }
     private void Start()
     {
         points = new GameObject[8]; 
