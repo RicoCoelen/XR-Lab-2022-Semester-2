@@ -18,8 +18,14 @@ public class PaletteManagerScript : MonoBehaviour
     public GameObject brushGO;
 
     [Header("Input Action Variables")]
-    public SteamVR_Action_Boolean DrawingAction; // reference to actionfile 
-    public Hand hand; // the reference to the VR hand
+    // public SteamVR_Action_Single TriggerAction; // reference to actionfile 
+    public SteamVR_Action_Boolean GripAction; // reference to actionfile 
+    public SteamVR_Action_Boolean DrawTriggerAction; // reference to actionfile 
+    public SteamVR_Input_Sources AllDevices = SteamVR_Input_Sources.Any;
+
+    public Hand RightHand; // the reference to the right VR hand
+    public Hand LeftHand; // the reference to the left VR hand
+
     public GameObject prefabToPlant; // plant to spawn
 
     [Header("Painting Variables")]
@@ -52,7 +58,8 @@ public class PaletteManagerScript : MonoBehaviour
         brushGO = Instantiate(brushPrefab, brushSpot.transform);
 
         // get right component hand at start
-        hand = GameObject.Find("RightHand").GetComponent<Hand>();
+        LeftHand = GameObject.Find("LeftHand").GetComponent<Hand>();
+        RightHand = GameObject.Find("RightHand").GetComponent<Hand>();
     }
 
     #endregion
@@ -64,16 +71,23 @@ public class PaletteManagerScript : MonoBehaviour
     /// </summary>
     private void OnEnable()
     {
-        if (hand == null)
-            Debug.Log("Hands not found");
-
-        if (DrawingAction == null)
+        if (LeftHand == null || RightHand == null) // check if hands exists
         {
-            Debug.LogError("<b>[SteamVR Interaction]</b> No drawing action assigned", this);
+            Debug.Log("One or more Hands not found!");
             return;
         }
 
-        DrawingAction.AddOnChangeListener(OnDrawingActionChange, hand.handType);
+        if (GripAction == null || DrawTriggerAction == null) // check if action map exists
+        {
+            Debug.LogError("<b>[SteamVR Interaction]</b> No action assigned", this); 
+            return;
+        }
+        
+        // add event listeners
+
+        GripAction.AddOnChangeListener(OnGripActionChange, AllDevices);
+        DrawTriggerAction.AddOnChangeListener(OnDrawTriggerActionChange, AllDevices);
+
     }
 
     /// <summary>
@@ -81,28 +95,50 @@ public class PaletteManagerScript : MonoBehaviour
     /// </summary>
     private void OnDisable()
     {
-        if (DrawingAction != null)
-            DrawingAction.RemoveOnChangeListener(OnDrawingActionChange, hand.handType);
+        if (GripAction != null)
+        {
+            GripAction.RemoveOnChangeListener(OnGripActionChange, AllDevices);
+        }
+
+        if (DrawTriggerAction != null)
+        { 
+            DrawTriggerAction.RemoveOnChangeListener(OnDrawTriggerActionChange, AllDevices);
+        }
+
+    }
+
+    /// <summary>
+    /// change value if Grip listener changes
+    /// </summary>
+    /// <param name="action"> </param>
+    /// <param name="inputSource">  </param>
+    /// <param name="newValue"> the new returned variable </param>
+    private void OnGripActionChange(SteamVR_Action_Boolean action, SteamVR_Input_Sources inputSource, bool value)
+    {
+        if (value)
+        {
+            Debug.Log(value);
+        }
+    }
+
+    /// <summary>
+    /// change value if trigger listener changes
+    /// </summary>
+    /// <param name="action"> </param>
+    /// <param name="inputSource">  </param>
+    /// <param name="newValue"> the new returned variable </param>
+    private void OnDrawTriggerActionChange(SteamVR_Action_Boolean action, SteamVR_Input_Sources inputSource, bool value)
+    {
+        if (value)
+        {
+            Debug.Log(value);
+            StartCoroutine(Paint());
+        }
     }
 
     #endregion
 
     #region Methods
-
-    /// <summary>
-    /// change value if event listener changes
-    /// </summary>
-    /// <param name="actionIn"> </param>
-    /// <param name="inputSource">  </param>
-    /// <param name="newValue"> the new returned variable </param>
-    private void OnDrawingActionChange(SteamVR_Action_Boolean actionIn, SteamVR_Input_Sources inputSource, bool newValue)
-    {
-        if (newValue)
-        {
-            Debug.Log(newValue);
-            StartCoroutine(Paint());
-        }
-    }
 
     /// <summary>
     /// change value if event listener changes

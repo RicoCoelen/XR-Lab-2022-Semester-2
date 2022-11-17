@@ -105,11 +105,11 @@ namespace Valve.VR
             }
         }
         
-        public virtual SteamVR_Action_Boolean DrawingInput
+        public virtual SteamVR_Action_Boolean DrawTrigger
         {
             get
             {
-                return SteamVR_Actions.default_DrawingInput;
+                return SteamVR_Actions.default_DrawTrigger;
             }
         }
         

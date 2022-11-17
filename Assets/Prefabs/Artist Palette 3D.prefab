@@ -55,10 +55,15 @@ MonoBehaviour:
   brushPrefab: {fileID: 3034369330767840613, guid: 83a9831f26ff1d6478c944177204b50e, type: 3}
   brushSpot: {fileID: 3380516848788917710}
   brushGO: {fileID: 0}
-  DrawingAction:
-    actionPath: /actions/default/in/DrawingInput
+  GripAction:
+    actionPath: /actions/default/in/GrabGrip
     needsReinit: 0
-  hand: {fileID: 0}
+  DrawTriggerAction:
+    actionPath: /actions/default/in/DrawTrigger
+    needsReinit: 0
+  AllDevices: 0
+  RightHand: {fileID: 0}
+  LeftHand: {fileID: 0}
   prefabToPlant: {fileID: 0}
 --- !u!114 &5738726193325770983
 MonoBehaviour:
