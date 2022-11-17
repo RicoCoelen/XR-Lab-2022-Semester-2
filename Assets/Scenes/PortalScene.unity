@@ -234,7 +234,6 @@ GameObject:
   - component: {fileID: 505937286}
   - component: {fileID: 505937285}
   - component: {fileID: 505937289}
-  - component: {fileID: 505937290}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Wall
@@ -335,20 +334,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   texture: {fileID: 0}
   textureSize: {x: 1080, y: 1080}
---- !u!114 &505937290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 505937284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361aab070d6f00b478b0f7e0c7bfb52d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _wallpaint1: {fileID: 2100000, guid: 1387b1b24508b4e4cb738422465572ee, type: 2}
-  _wallie: {fileID: 505937286}
 --- !u!1 &535379298
 GameObject:
   m_ObjectHideFlags: 0
@@ -1956,6 +1941,7 @@ GameObject:
   - component: {fileID: 1943232986}
   - component: {fileID: 1943232985}
   - component: {fileID: 1943232984}
+  - component: {fileID: 1943232987}
   m_Layer: 0
   m_Name: PortalPoint1
   m_TagString: Portal Point
@@ -2042,3 +2028,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1943232981}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1943232987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943232981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 109954bc79f0a58469a9000704785597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _green: {fileID: 2100000, guid: 2d830aafe51743b428d293b59420e2a6, type: 2}
+  _portal: {fileID: 2100000, guid: 0a6f2c233ed26d743948e10c71fd2888, type: 2}

@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
-public class TestPortal : MonoBehaviour
+public class AppearingPortal : MonoBehaviour
 {
     public GameObject _point1;
     public GameObject _point2;
