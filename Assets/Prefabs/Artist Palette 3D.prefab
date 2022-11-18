@@ -62,9 +62,12 @@ MonoBehaviour:
     actionPath: /actions/default/in/DrawTrigger
     needsReinit: 0
   AllDevices: 0
-  RightHand: {fileID: 0}
+  grip: 0
+  trigger: 0
   LeftHand: {fileID: 0}
-  prefabToPlant: {fileID: 0}
+  RightHand: {fileID: 0}
+  currentMaterial: {fileID: 2100000, guid: 6d7f8afc8e1df4741871a1eb0e01592c, type: 2}
+  runOnce: 0
 --- !u!114 &5738726193325770983
 MonoBehaviour:
   m_ObjectHideFlags: 0

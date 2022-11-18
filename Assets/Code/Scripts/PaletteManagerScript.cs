@@ -23,13 +23,14 @@ public class PaletteManagerScript : MonoBehaviour
     public SteamVR_Action_Boolean DrawTriggerAction; // reference to actionfile 
     public SteamVR_Input_Sources AllDevices = SteamVR_Input_Sources.Any;
 
-    public Hand RightHand; // the reference to the right VR hand
-    public Hand LeftHand; // the reference to the left VR hand
-
-    public GameObject prefabToPlant; // plant to spawn
-
     [Header("Painting Variables")]
-    public Line[] lines;
+    public List<Line> lines = new List<Line>();
+    public bool grip = false;
+    public bool trigger = false;
+    public Hand LeftHand;
+    public Hand RightHand;
+    public Material currentMaterial;
+    public bool runOnce = false;
 
     #endregion
 
@@ -41,8 +42,37 @@ public class PaletteManagerScript : MonoBehaviour
     public class Line
     {
         public int order;
-        public Vector3[] position;
-        public Color color;
+        public List<Vector3> points = new List<Vector3>();
+        public GameObject gameObject;
+
+        LineRenderer lr;
+        Rigidbody rb;
+        BoxCollider bc;
+
+        public Line(int order, Vector3 pos, Material mat)
+        {
+            gameObject = new GameObject();
+
+            gameObject.transform.position = pos;
+            points.Add(pos);
+
+            lr = gameObject.AddComponent<LineRenderer>();
+            lr.material = mat;
+            lr.widthMultiplier = 0.1f;
+
+            rb = gameObject.AddComponent<Rigidbody>();
+            rb.isKinematic = true;
+
+            bc = gameObject.AddComponent<BoxCollider>();
+            bc.isTrigger = true;
+        }
+
+        public void AddPoint(Vector3 pos)
+        {
+            points.Add(pos);
+            lr.SetPositions(points.ToArray());
+            Debug.Log(points.ToArray().ToString());
+        }
     }
 
     #endregion
@@ -67,27 +97,13 @@ public class PaletteManagerScript : MonoBehaviour
     #region EventListener
 
     /// <summary>
-    /// enable event handler, also on hand
+    /// enable input event handler on hand
     /// </summary>
     private void OnEnable()
     {
-        if (LeftHand == null || RightHand == null) // check if hands exists
-        {
-            Debug.Log("One or more Hands not found!");
-            return;
-        }
-
-        if (GripAction == null || DrawTriggerAction == null) // check if action map exists
-        {
-            Debug.LogError("<b>[SteamVR Interaction]</b> No action assigned", this); 
-            return;
-        }
-        
         // add event listeners
-
         GripAction.AddOnChangeListener(OnGripActionChange, AllDevices);
         DrawTriggerAction.AddOnChangeListener(OnDrawTriggerActionChange, AllDevices);
-
     }
 
     /// <summary>
@@ -115,10 +131,7 @@ public class PaletteManagerScript : MonoBehaviour
     /// <param name="newValue"> the new returned variable </param>
     private void OnGripActionChange(SteamVR_Action_Boolean action, SteamVR_Input_Sources inputSource, bool value)
     {
-        if (value)
-        {
-            Debug.Log(value);
-        }
+        this.grip = value;
     }
 
     /// <summary>
@@ -129,11 +142,7 @@ public class PaletteManagerScript : MonoBehaviour
     /// <param name="newValue"> the new returned variable </param>
     private void OnDrawTriggerActionChange(SteamVR_Action_Boolean action, SteamVR_Input_Sources inputSource, bool value)
     {
-        if (value)
-        {
-            Debug.Log(value);
-            StartCoroutine(Paint());
-        }
+        this.trigger = value;
     }
 
     #endregion
@@ -148,10 +157,11 @@ public class PaletteManagerScript : MonoBehaviour
         //Print the time of when the function is first called.
         Debug.Log("Started Coroutine at timestamp : " + Time.time);
 
+
         yield return new WaitForSeconds(1f);
 
-        //After we have waited 5 seconds print the time again.
-        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+        ////After we have waited 5 seconds print the time again.
+        //Debug.Log("Finished Coroutine at timestamp : " + Time.time);
     }
 
     /// <summary>
@@ -159,9 +169,54 @@ public class PaletteManagerScript : MonoBehaviour
     /// </summary>
     public void FixedUpdate()
     {
-        if (true)
+        if (trigger)
         {
-            //StartCoroutine(Paint());
+            if (LeftHand.currentAttachedObject == brushGO.gameObject)
+            {
+                if (!runOnce)
+                {
+                    lines.Add(new Line(lines.Count + 1, brushGO.transform.position, currentMaterial));
+                    runOnce = true;
+                }
+                else
+                {
+                    lines[lines.Count - 1].AddPoint(brushGO.transform.position);
+                }
+            }
+
+            if (RightHand.currentAttachedObject == brushGO.gameObject)
+            {
+                if (!runOnce)
+                {
+                    lines.Add(
+                        new Line(
+                            lines.Count + 1, brushGO.transform.position, currentMaterial
+                            )
+                        );
+                    runOnce = true;
+                }
+                else
+                {
+                    lines[lines.Count - 1].AddPoint(brushGO.transform.position);
+                }
+            }
+        }
+        else
+        {
+            runOnce = false;
+        }
+
+        if(grip)
+        {
+            if (LeftHand.currentAttachedObject == gameObject)
+            {
+                LeftHand.AttachObject(gameObject, GrabTypes.Grip);
+            }
+
+            if (RightHand.currentAttachedObject == gameObject)
+            {
+                RightHand.AttachObject(gameObject, GrabTypes.Grip);
+            }
         }
     }
 
