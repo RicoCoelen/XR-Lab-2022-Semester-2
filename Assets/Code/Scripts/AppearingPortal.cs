@@ -48,7 +48,7 @@ public class AppearingPortal : MonoBehaviour
     }
     IEnumerator Timertje()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         _portal.SetActive(true);
     }
     private void FixedUpdate()

@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Portal : MonoBehaviour
+public class Wallclean : MonoBehaviour
 {
     public Material _wallpaint1;
     public GameObject _portal;
 
-    void Start()
+    void Update()
     {
         if (_portal.activeSelf)
         {
