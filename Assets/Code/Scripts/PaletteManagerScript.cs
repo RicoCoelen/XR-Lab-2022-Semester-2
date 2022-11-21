@@ -49,6 +49,7 @@ public class PaletteManagerScript : MonoBehaviour
         LineRenderer lr;
         Rigidbody rb;
         BoxCollider bc;
+        Throwable t;
 
         public Line(int order, Vector3 pos, Material mat, float width)
         {
@@ -60,6 +61,8 @@ public class PaletteManagerScript : MonoBehaviour
             lr = gameObject.AddComponent<LineRenderer>();
             lr.material = mat;
             lr.widthMultiplier = width;
+            lr.generateLightingData = true;
+            lr.useWorldSpace = false;
 
             points.Add(pos);
             lr.SetPosition(0, pos);
@@ -68,7 +71,7 @@ public class PaletteManagerScript : MonoBehaviour
             rb.isKinematic = true;
 
             bc = gameObject.AddComponent<BoxCollider>();
-            bc.isTrigger = true;
+            t = gameObject.AddComponent<Throwable>();
         }
 
         public void AddPoint(Vector3 pos)
