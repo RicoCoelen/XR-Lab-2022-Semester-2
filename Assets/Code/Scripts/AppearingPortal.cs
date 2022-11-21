@@ -34,14 +34,17 @@ public class AppearingPortal : MonoBehaviour
     void Update()
     {
         int goal = 0;
-        for (int i = 0; i < points.Length; i++)
+        if (!_portal.activeSelf)
         {
-            if (points[i].gameObject.tag == "Portal Point")
+            for (int i = 0; i < points.Length; i++)
             {
-                goal++;
-                if (goal == 8)
+                if (points[i].gameObject.tag == "Portal Point")
                 {
-                    StartCoroutine(Timertje());
+                    goal++;
+                    if (goal == 8)
+                    {
+                        StartCoroutine(Timertje());
+                    }
                 }
             }
         }
@@ -50,6 +53,7 @@ public class AppearingPortal : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         _portal.SetActive(true);
+
     }
     private void FixedUpdate()
     {
