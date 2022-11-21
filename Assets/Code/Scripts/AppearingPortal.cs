@@ -60,15 +60,4 @@ public class AppearingPortal : MonoBehaviour
         _portal.SetActive(true);
 
     }
-    private void FixedUpdate()
-    {
-        for (int i = 0; i < points.Length; i++)
-        {
-            //if the portal is enabled, all points will be disabled and the wall will look clean. 
-            if (_portal.activeSelf)
-            {
-                points[i].SetActive(false);
-            }
-        }
-    }
 }

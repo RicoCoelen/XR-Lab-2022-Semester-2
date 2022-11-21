@@ -420,6 +420,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wallpaint1: {fileID: 2100000, guid: 1387b1b24508b4e4cb738422465572ee, type: 2}
   _portal: {fileID: 1175755344}
+  _point1: {fileID: 1943232981}
+  _point2: {fileID: 535379298}
+  _point3: {fileID: 612266155}
+  _point4: {fileID: 1710373121}
+  _point5: {fileID: 140280147}
+  _point6: {fileID: 817982899}
+  _point7: {fileID: 772663324}
+  _point8: {fileID: 1591112371}
+  points: []
 --- !u!1 &535379298
 GameObject:
   m_ObjectHideFlags: 0
@@ -1185,7 +1194,6 @@ GameObject:
   - component: {fileID: 1175755348}
   - component: {fileID: 1175755347}
   - component: {fileID: 1175755346}
-  - component: {fileID: 1175755351}
   - component: {fileID: 1175755352}
   m_Layer: 0
   m_Name: Portal
@@ -1272,20 +1280,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!64 &1175755351
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1175755344}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &1175755352
 MonoBehaviour:
   m_ObjectHideFlags: 0
