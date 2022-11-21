@@ -7,9 +7,10 @@ public class TestTeleportal : MonoBehaviour
     public GameObject _player;
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.tag == "Portal")
+        if (collider.transform.name == "Portal")
         {
-            _player.transform.position = new Vector3(0, 20, 0);
+            //_player.transform.position = new Vector3(0, 20, 0);
+            Debug.Log("hi");
         }
     }
 }
