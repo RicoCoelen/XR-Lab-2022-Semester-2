@@ -31,6 +31,7 @@ public class PaletteManagerScript : MonoBehaviour
     public Hand RightHand;
     public Material currentMaterial;
     public bool runOnce = false;
+    public float widthMultiplier = 0.05f;
 
     #endregion
 
@@ -49,7 +50,7 @@ public class PaletteManagerScript : MonoBehaviour
         Rigidbody rb;
         BoxCollider bc;
 
-        public Line(int order, Vector3 pos, Material mat)
+        public Line(int order, Vector3 pos, Material mat, float width)
         {
 
             Debug.Log(pos);
@@ -58,7 +59,7 @@ public class PaletteManagerScript : MonoBehaviour
 
             lr = gameObject.AddComponent<LineRenderer>();
             lr.material = mat;
-            lr.widthMultiplier = 0.1f;
+            lr.widthMultiplier = width;
 
             points.Add(pos);
             lr.SetPosition(0, pos);
@@ -72,7 +73,6 @@ public class PaletteManagerScript : MonoBehaviour
 
         public void AddPoint(Vector3 pos)
         {
-            Debug.Log(pos);
             points.Add(pos);
             lr.positionCount = points.Count;
             lr.SetPositions(points.ToArray());
@@ -132,13 +132,18 @@ public class PaletteManagerScript : MonoBehaviour
     /// </summary>
     public void FixedUpdate()
     {
+        // check left hand
         if (trigger > 0)
         {
             if (LeftHand.currentAttachedObject == brushGO.gameObject)
             {
                 if (!runOnce)
                 {
-                    lines.Add(new Line(lines.Count + 1, brushGO.transform.position, currentMaterial));
+                    lines.Add(
+                        new Line(
+                            lines.Count + 1, brushGO.transform.position, currentMaterial, widthMultiplier
+                            )
+                        );
                     runOnce = true;
                 }
                 else
@@ -147,13 +152,14 @@ public class PaletteManagerScript : MonoBehaviour
                 }
             }
 
-            if (RightHand.currentAttachedObject == brushGO.gameObject)
+            // check right hand
+            if (RightHand.currentAttachedObject == brushGO.gameObject && trigger > 0)
             {
                 if (!runOnce)
                 {
                     lines.Add(
                         new Line(
-                            lines.Count + 1, brushGO.transform.position, currentMaterial
+                            lines.Count + 1, brushGO.transform.position, currentMaterial, widthMultiplier
                             )
                         );
                     runOnce = true;
@@ -169,7 +175,8 @@ public class PaletteManagerScript : MonoBehaviour
             runOnce = false;
         }
 
-        if(grip)
+        // check if grip is pressed 
+        if (RightHand.currentAttachedObject == gameObject && grip)
         {
             if (LeftHand.currentAttachedObject == gameObject)
             {
@@ -179,6 +186,7 @@ public class PaletteManagerScript : MonoBehaviour
             if (RightHand.currentAttachedObject == gameObject)
             {
                 RightHand.AttachObject(gameObject, GrabTypes.Grip);
+                Debug.Log("connected");
             }
         }
     }

@@ -59,7 +59,7 @@ MonoBehaviour:
     actionPath: /actions/default/in/GrabGrip
     needsReinit: 0
   DrawTriggerAction:
-    actionPath: /actions/default/in/DrawTrigger
+    actionPath: /actions/default/in/Squeeze
     needsReinit: 0
   AllDevices: 0
   grip: 0
