@@ -20,6 +20,7 @@ public class AppearingPortal : MonoBehaviour
 
     private void Start()
     {
+        //the constructor so that I can select all points as "points[i]".
         points = new GameObject[8]; 
         points[0] = _point1;
         points[1] = _point2;
@@ -33,13 +34,16 @@ public class AppearingPortal : MonoBehaviour
 
     void Update()
     {
+        //the "goal" number at the beginning is 0. The script runs if the gameObject "portal" is disabled. 
         int goal = 0;
         if (!_portal.activeSelf)
         {
             for (int i = 0; i < points.Length; i++)
             {
+                //the script runs if the "points" receive the tag when touched by the brush.  
                 if (points[i].gameObject.tag == "Portal Point")
                 {
+                    //the timer starts if the goal of touching all 8 points has been reached. 
                     goal++;
                     if (goal == 8)
                     {
@@ -51,6 +55,7 @@ public class AppearingPortal : MonoBehaviour
     }
     IEnumerator Timertje()
     {
+        //after 2 seconds the portal will be enabled. 
         yield return new WaitForSeconds(2);
         _portal.SetActive(true);
 
@@ -59,6 +64,7 @@ public class AppearingPortal : MonoBehaviour
     {
         for (int i = 0; i < points.Length; i++)
         {
+            //if the portal is enabled, all points will be disabled and the wall will look clean. 
             if (_portal.activeSelf)
             {
                 points[i].SetActive(false);
