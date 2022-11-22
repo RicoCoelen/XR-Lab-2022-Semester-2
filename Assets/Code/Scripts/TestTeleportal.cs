@@ -5,7 +5,8 @@ using UnityEngine;
 public class TestTeleportal : MonoBehaviour
 {
     public GameObject _player;
-    public GameObject _teleportview;
+    public GameObject _teleportview1;
+    public GameObject _teleportview2;
 
     //if the player collides with the portal, the player is teleported to a certain location in the scene. 
     void OnTriggerEnter(Collider collider)
@@ -17,10 +18,13 @@ public class TestTeleportal : MonoBehaviour
     }
     IEnumerator Timertje()
     {
-        _teleportview.SetActive(true);
-        yield return new WaitForSeconds(3);
+        _teleportview1.SetActive(true);
+        yield return new WaitForSeconds(2);
         _player.transform.position = new Vector3(30, 15, 0);
         yield return new WaitForSeconds(2);
-        _teleportview.SetActive(false);
+        _teleportview2.SetActive(true);
+        _teleportview1.SetActive(false);
+        yield return new WaitForSeconds(4);
+        _teleportview2.SetActive(false);
     }
 }
