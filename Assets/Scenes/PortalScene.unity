@@ -1572,9 +1572,9 @@ VideoPlayer:
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 1
-  m_AspectRatio: 0
+  m_AspectRatio: 1
   m_DataSource: 0
-  m_PlaybackSpeed: 1
+  m_PlaybackSpeed: 0.8
   m_AudioOutputMode: 2
   m_TargetAudioSources:
   - {fileID: 0}
