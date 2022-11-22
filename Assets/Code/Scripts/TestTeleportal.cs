@@ -12,9 +12,15 @@ public class TestTeleportal : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player")
         {
-            _teleportview.SetActive(true);
-            _player.transform.position = new Vector3(30, 15, 0);
-            Debug.Log("hi");
+            StartCoroutine(Timertje());
         }
+    }
+    IEnumerator Timertje()
+    {
+        _teleportview.SetActive(true);
+        yield return new WaitForSeconds(3);
+        _player.transform.position = new Vector3(30, 15, 0);
+        yield return new WaitForSeconds(2);
+        _teleportview.SetActive(false);
     }
 }
