@@ -17,21 +17,22 @@ public class PaletteManagerScript : MonoBehaviour
     [Header("GameObjects")]
     public GameObject brushGO;
 
-    [Header("Input Action Variables")]
+    [Header("Input Variables")]
     // public SteamVR_Action_Single TriggerAction; // reference to actionfile 
     public SteamVR_Action_Boolean GripAction; // reference to actionfile 
     public SteamVR_Action_Single DrawTriggerAction; // reference to actionfile 
-    public SteamVR_Input_Sources AllDevices = SteamVR_Input_Sources.Any;
+    public SteamVR_Input_Sources AllDevices = SteamVR_Input_Sources.Any; 
+    public Hand LeftHand;
+    public Hand RightHand;
+    public bool grip = false;
+    public float trigger = 0f;
 
     [Header("Painting Variables")]
     public List<Line> lines = new List<Line>();
-    public bool grip = false;
-    public float trigger = 0f;
-    public Hand LeftHand;
-    public Hand RightHand;
     public Material currentMaterial;
-    public bool runOnce = false;
-    public float widthMultiplier = 0.05f;
+    public bool runOnce = false; // use runonce to check if trigger is held
+    public float widthMultiplier = 0.05f; // average line width setting
+    public int interval = 5;
 
     #endregion
 
@@ -53,8 +54,6 @@ public class PaletteManagerScript : MonoBehaviour
 
         public Line(int order, Vector3 pos, Material mat, float width)
         {
-
-            Debug.Log(pos);
             gameObject = new GameObject();
             gameObject.transform.position = Vector3.zero;
 
@@ -74,11 +73,13 @@ public class PaletteManagerScript : MonoBehaviour
             t = gameObject.AddComponent<Throwable>();
         }
 
-        public void AddPoint(Vector3 pos)
+        public void AddPoint(Vector3 pos, float trigger)
         {
             points.Add(pos);
             lr.positionCount = points.Count;
             lr.SetPositions(points.ToArray());
+            lr.startWidth = trigger;
+            lr.endWidth = trigger;
         }
     }
 
@@ -112,16 +113,42 @@ public class PaletteManagerScript : MonoBehaviour
     /// <summary>
     /// change value if event listener changes
     /// </summary>
-    IEnumerator Paint()
+    private void Paint(float trigger)
     {
-        //Print the time of when the function is first called.
-        Debug.Log("Started Coroutine at timestamp : " + Time.time);
+        if (LeftHand.currentAttachedObject == brushGO.gameObject)
+        {
+            if (!runOnce)
+            {
+                lines.Add(
+                    new Line(
+                        lines.Count + 1, brushGO.transform.position, currentMaterial, widthMultiplier
+                        )
+                    );
+                runOnce = true;
+            }
+            else
+            {
+                lines[lines.Count - 1].AddPoint(brushGO.transform.position, trigger);
+            }
+        }
 
-
-        yield return new WaitForSeconds(1f);
-
-        ////After we have waited 5 seconds print the time again.
-        //Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+        // check right hand
+        if (RightHand.currentAttachedObject == brushGO.gameObject && trigger > 0)
+        {
+            if (!runOnce)
+            {
+                lines.Add(
+                    new Line(
+                        lines.Count + 1, brushGO.transform.position, currentMaterial, widthMultiplier
+                        )
+                    );
+                runOnce = true;
+            }
+            else
+            {
+                lines[lines.Count - 1].AddPoint(brushGO.transform.position, trigger);
+            }
+        }
     }
 
     private void Update()
@@ -138,39 +165,10 @@ public class PaletteManagerScript : MonoBehaviour
         // check left hand
         if (trigger > 0)
         {
-            if (LeftHand.currentAttachedObject == brushGO.gameObject)
+            // reduce point count and update by delay
+            if (Time.frameCount % interval == 0)
             {
-                if (!runOnce)
-                {
-                    lines.Add(
-                        new Line(
-                            lines.Count + 1, brushGO.transform.position, currentMaterial, widthMultiplier
-                            )
-                        );
-                    runOnce = true;
-                }
-                else
-                {
-                    lines[lines.Count - 1].AddPoint(brushGO.transform.position);
-                }
-            }
-
-            // check right hand
-            if (RightHand.currentAttachedObject == brushGO.gameObject && trigger > 0)
-            {
-                if (!runOnce)
-                {
-                    lines.Add(
-                        new Line(
-                            lines.Count + 1, brushGO.transform.position, currentMaterial, widthMultiplier
-                            )
-                        );
-                    runOnce = true;
-                }
-                else
-                {
-                    lines[lines.Count - 1].AddPoint(brushGO.transform.position);
-                }
+                Paint(trigger);
             }
         }
         else
@@ -189,7 +187,6 @@ public class PaletteManagerScript : MonoBehaviour
             if (RightHand.currentAttachedObject == gameObject)
             {
                 RightHand.AttachObject(gameObject, GrabTypes.Grip);
-                Debug.Log("connected");
             }
         }
     }
