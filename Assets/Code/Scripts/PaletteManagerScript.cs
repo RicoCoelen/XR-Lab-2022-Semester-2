@@ -9,13 +9,25 @@ public class PaletteManagerScript : MonoBehaviour
     #region Properties
 
     [Header("Prefabs")]
+    public GameObject deletePrefab;
+    public GameObject editPrefab;
     public GameObject brushPrefab;
+    public GameObject colorPrefab;
+    public GameObject sprayPrefab;
 
     [Header("Spots")]
+    public Transform deleteSpot;
+    public Transform editSpot;
     public Transform brushSpot;
+    public Transform spraySpot;
+    public Transform colorSpot;
 
     [Header("GameObjects")]
+    public GameObject deleteGO;
+    public GameObject editGO;
     public GameObject brushGO;
+    public GameObject sprayGO;
+    public GameObject colorGO;
 
     [Header("Input Variables")]
     // public SteamVR_Action_Single TriggerAction; // reference to actionfile 
@@ -78,8 +90,8 @@ public class PaletteManagerScript : MonoBehaviour
             points.Add(pos);
             lr.positionCount = points.Count;
             lr.SetPositions(points.ToArray());
-            lr.startWidth = trigger;
-            lr.endWidth = trigger;
+            // lr.startWidth = trigger;
+            // lr.endWidth = trigger;
         }
     }
 
@@ -200,6 +212,11 @@ public class PaletteManagerScript : MonoBehaviour
         brushGO.transform.parent = transform;
         brushGO.transform.position = brushSpot.transform.position;
         brushGO.transform.rotation = brushSpot.transform.rotation;
+    }
+
+    public void projectDrawArea()
+    {
+        
     }
 
     #endregion

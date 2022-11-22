@@ -9,10 +9,22 @@ public class ColorPicker : MonoBehaviour
     public Transform raycastPosition;
     public GameObject changeObject;
     public Color stolenColor;
+    public GameObject clampObject;
+    public bool clamp = false;
 
     // Update is called once per frame
     private void FixedUpdate()
     {
+        // make clamped new position
+        var newPos = new Vector3(
+            Mathf.Clamp(transform.position.x, clampObject.transform.position.x, clampObject.transform.localScale.x), 
+            transform.position.y + 0.1f,
+            Mathf.Clamp(transform.position.z, clampObject.transform.position.z, clampObject.transform.localScale.z)
+            );
+
+        // assign new positon
+        transform.position = newPos;
+
         RaycastHit hit;
         
         if (Physics.Raycast(raycastPosition.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity))
