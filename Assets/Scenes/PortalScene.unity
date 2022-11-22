@@ -1356,6 +1356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 1796071920}
+  _teleportview: {fileID: 1304481240}
 --- !u!1001 &1281711087
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1460,12 +1461,12 @@ GameObject:
   - component: {fileID: 1304481242}
   - component: {fileID: 1304481247}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Portal view
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &1304481242
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2548,6 +2549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
+  _teleportview: {fileID: 0}
 --- !u!1 &2046412839 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 144230, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
@@ -2566,6 +2568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
+  _teleportview: {fileID: 0}
 --- !u!54 &2046412849
 Rigidbody:
   m_ObjectHideFlags: 0
