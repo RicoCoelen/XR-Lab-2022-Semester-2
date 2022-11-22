@@ -1465,7 +1465,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1304481241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1704,6 +1704,7 @@ MonoBehaviour:
   _point8: {fileID: 1591112371}
   points: []
   _portal: {fileID: 1175755344}
+  _player: {fileID: 1796071920}
 --- !u!20 &1556195426 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 2014920, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}

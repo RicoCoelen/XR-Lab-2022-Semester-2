@@ -17,6 +17,7 @@ public class AppearingPortal : MonoBehaviour
     public GameObject[] points;
 
     public GameObject _portal;
+    public GameObject _player;
 
     private void Start()
     {
@@ -57,6 +58,7 @@ public class AppearingPortal : MonoBehaviour
     {
         //after 2 seconds the portal will be enabled. 
         yield return new WaitForSeconds(2);
+        _player.transform.position = new Vector3((float)-3.5,1,0);
         _portal.SetActive(true);
 
     }

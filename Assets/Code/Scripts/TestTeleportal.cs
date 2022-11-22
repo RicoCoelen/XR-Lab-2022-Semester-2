@@ -11,7 +11,7 @@ public class TestTeleportal : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player")
         {
-            _player.transform.position = new Vector3(35, 15, 0);
+            _player.transform.position = new Vector3(30, 15, 0);
             Debug.Log("hi");
         }
     }
