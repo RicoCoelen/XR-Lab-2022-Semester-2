@@ -949,6 +949,7 @@ GameObject:
   - component: {fileID: 780489361}
   - component: {fileID: 780489360}
   - component: {fileID: 780489359}
+  - component: {fileID: 780489364}
   m_Layer: 0
   m_Name: Paintbrush
   m_TagString: Untagged
@@ -1111,6 +1112,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!65 &780489364
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780489358}
+  m_Material: {fileID: 13400000, guid: f47bbda4aabe0b84495381b82f446a22, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02, y: 0.3, z: 0.1}
+  m_Center: {x: 0, y: 0.15, z: 0}
 --- !u!1 &817982899
 GameObject:
   m_ObjectHideFlags: 0
@@ -2675,46 +2689,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _green: {fileID: 2100000, guid: 2d830aafe51743b428d293b59420e2a6, type: 2}
---- !u!1 &2008173284 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 160596, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
-  m_PrefabInstance: {fileID: 1281711087}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2008173289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2008173284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d145fcba24c7a5468af32b8a712a480, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _player: {fileID: 0}
-  _teleportview1: {fileID: 0}
-  _teleportview2: {fileID: 0}
 --- !u!1 &2046412839 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 144230, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
   m_PrefabInstance: {fileID: 1281711087}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2046412844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2046412839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d145fcba24c7a5468af32b8a712a480, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _player: {fileID: 0}
-  _teleportview1: {fileID: 0}
-  _teleportview2: {fileID: 0}
 --- !u!54 &2046412849
 Rigidbody:
   m_ObjectHideFlags: 0

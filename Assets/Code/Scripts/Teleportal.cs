@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestTeleportal : MonoBehaviour
+public class Teleportal : MonoBehaviour
 {
     public GameObject _player;
     public GameObject _teleportview1;
