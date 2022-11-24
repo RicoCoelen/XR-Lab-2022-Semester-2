@@ -11,7 +11,6 @@ public class PaletteManagerScript : MonoBehaviour
     [Header("Painting Variables")]
     public List<Line> lines = new List<Line>();
     public Material currentMaterial;
-    public bool runOnce = false; // use runonce to check if trigger is held
     public float widthMultiplier = 0.05f; // average line width setting
     public int interval = 5;
 
@@ -27,7 +26,6 @@ public class PaletteManagerScript : MonoBehaviour
     public Transform editSpot;
     public Transform brushSpot;
     public Transform spraySpot;
-    public Transform colorSpot;
 
     [Header("GameObjects")]
     public GameObject deleteGO;
@@ -35,6 +33,7 @@ public class PaletteManagerScript : MonoBehaviour
     public GameObject brushGO;
     public GameObject sprayGO;
     public GameObject colorGO;
+    public GameObject colorGradient;
 
     [Header("Buttons")]
     public GameObject brushUpButton;
@@ -50,6 +49,7 @@ public class PaletteManagerScript : MonoBehaviour
     public Hand RightHand;
     public bool grip = false;
     public float trigger = 0f;
+    public bool runOnce = false; // use runonce to check if trigger is held down
 
     #endregion
 
@@ -114,7 +114,9 @@ public class PaletteManagerScript : MonoBehaviour
         editGO = Instantiate(editPrefab, editSpot.transform); 
         brushGO = Instantiate(brushPrefab, brushSpot.transform); 
         sprayGO = Instantiate(sprayPrefab, spraySpot.transform); 
-        colorGO = Instantiate(colorPrefab, colorSpot.transform); 
+        
+        colorGO = Instantiate(colorPrefab, spraySpot.transform);
+        colorGO.GetComponent<ColorPicker>().clampObject = colorGradient;
 
         // get right component hand at start
         LeftHand = GameObject.Find("LeftHand").GetComponent<Hand>();

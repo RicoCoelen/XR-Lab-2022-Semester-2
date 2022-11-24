@@ -9,14 +9,37 @@ public class ColorPicker : MonoBehaviour
     public Transform raycastPosition;
     public GameObject changeObject;
     public Color stolenColor;
+    
     public GameObject clampObject;
+    public MeshFilter clampMesh;
+    Bounds bounds;
+
     public bool clamp = false;
+
+    public void Awake()
+    {
+        if (clamp)
+        {
+            clampObject = GameObject.Find("ColorGradient");
+            clampMesh = clampObject.GetComponent<MeshFilter>();
+            bounds = clampMesh.mesh.bounds;
+
+            transform.position = clampObject.transform.position;
+        }  
+    }
 
     // Update is called once per frame
     private void FixedUpdate()
     {
         // assign new positon
-        transform.position = clampObject.transform.position; 
+        var objectSize = Vector3.Scale(clampObject.transform.localScale, bounds.size);
+        
+        transform.position = new Vector3(
+            Mathf.Clamp(transform.position.x, clampObject.transform.position.x, clampObject.transform.position.x + objectSize.x),
+            clampObject.transform.position.y + 0.1f,
+            Mathf.Clamp(transform.position.z, clampObject.transform.position.z, clampObject.transform.position.z + objectSize.z)
+            );
+        
         transform.rotation = clampObject.transform.rotation; 
         transform.parent = clampObject.transform; 
 
@@ -46,5 +69,11 @@ public class ColorPicker : MonoBehaviour
                 changeObject.GetComponent<Renderer>().material.color = stolenColor;
             }
         }
+    }
+
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(raycastPosition.position, transform.TransformDirection(Vector3.down) * 1000);
     }
 }
