@@ -8,6 +8,13 @@ public class PaletteManagerScript : MonoBehaviour
 {
     #region Properties
 
+    [Header("Painting Variables")]
+    public List<Line> lines = new List<Line>();
+    public Material currentMaterial;
+    public bool runOnce = false; // use runonce to check if trigger is held
+    public float widthMultiplier = 0.05f; // average line width setting
+    public int interval = 5;
+
     [Header("Prefabs")]
     public GameObject deletePrefab;
     public GameObject editPrefab;
@@ -29,6 +36,11 @@ public class PaletteManagerScript : MonoBehaviour
     public GameObject sprayGO;
     public GameObject colorGO;
 
+    [Header("Buttons")]
+    public GameObject brushUpButton;
+    public GameObject brushDownButton;
+    public GameObject resetToolsButton;
+
     [Header("Input Variables")]
     // public SteamVR_Action_Single TriggerAction; // reference to actionfile 
     public SteamVR_Action_Boolean GripAction; // reference to actionfile 
@@ -38,13 +50,6 @@ public class PaletteManagerScript : MonoBehaviour
     public Hand RightHand;
     public bool grip = false;
     public float trigger = 0f;
-
-    [Header("Painting Variables")]
-    public List<Line> lines = new List<Line>();
-    public Material currentMaterial;
-    public bool runOnce = false; // use runonce to check if trigger is held
-    public float widthMultiplier = 0.05f; // average line width setting
-    public int interval = 5;
 
     #endregion
 
@@ -105,7 +110,11 @@ public class PaletteManagerScript : MonoBehaviour
     void Awake()
     {
         // spawn brush on palette
-        brushGO = Instantiate(brushPrefab, brushSpot.transform);
+        deleteGO = Instantiate(deletePrefab, deleteSpot.transform); 
+        editGO = Instantiate(editPrefab, editSpot.transform); 
+        brushGO = Instantiate(brushPrefab, brushSpot.transform); 
+        sprayGO = Instantiate(sprayPrefab, spraySpot.transform); 
+        colorGO = Instantiate(colorPrefab, colorSpot.transform); 
 
         // get right component hand at start
         LeftHand = GameObject.Find("LeftHand").GetComponent<Hand>();
