@@ -3,19 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 using Valve.VR;
+using TMPro;
 
 public class PaletteManagerScript : MonoBehaviour
 {
     #region Properties
 
+    [Header("Painting Variables")]
+    public List<Line> lines = new List<Line>();
+    public Material currentMaterial;
+    public float widthMultiplier = 0.05f; // average line width setting
+    public int interval = 5;
+
     [Header("Prefabs")]
+    public GameObject deletePrefab;
+    public GameObject editPrefab;
     public GameObject brushPrefab;
+    public GameObject colorPrefab;
+    public GameObject sprayPrefab;
 
     [Header("Spots")]
+    public Transform deleteSpot;
+    public Transform editSpot;
     public Transform brushSpot;
+    public Transform spraySpot;
 
     [Header("GameObjects")]
+    public GameObject deleteGO;
+    public GameObject editGO;
     public GameObject brushGO;
+    public GameObject sprayGO;
+    public GameObject colorGO;
+    public GameObject colorGradient;
+    public TMP_Text lineSize;
+
+    [Header("Buttons")]
+    public GameObject brushUpButton;
+    public GameObject brushDownButton;
+    public GameObject resetToolsButton;
 
     [Header("Input Variables")]
     // public SteamVR_Action_Single TriggerAction; // reference to actionfile 
@@ -26,13 +51,7 @@ public class PaletteManagerScript : MonoBehaviour
     public Hand RightHand;
     public bool grip = false;
     public float trigger = 0f;
-
-    [Header("Painting Variables")]
-    public List<Line> lines = new List<Line>();
-    public Material currentMaterial;
-    public bool runOnce = false; // use runonce to check if trigger is held
-    public float widthMultiplier = 0.05f; // average line width setting
-    public int interval = 5;
+    public bool runOnce = false; // use runonce to check if trigger is held down
 
     #endregion
 
@@ -78,8 +97,8 @@ public class PaletteManagerScript : MonoBehaviour
             points.Add(pos);
             lr.positionCount = points.Count;
             lr.SetPositions(points.ToArray());
-            lr.startWidth = trigger;
-            lr.endWidth = trigger;
+            // lr.startWidth = trigger;
+            // lr.endWidth = trigger;
         }
     }
 
@@ -93,7 +112,13 @@ public class PaletteManagerScript : MonoBehaviour
     void Awake()
     {
         // spawn brush on palette
-        brushGO = Instantiate(brushPrefab, brushSpot.transform);
+        deleteGO = Instantiate(deletePrefab, deleteSpot.transform); 
+        editGO = Instantiate(editPrefab, editSpot.transform); 
+        brushGO = Instantiate(brushPrefab, brushSpot.transform); 
+        sprayGO = Instantiate(sprayPrefab, spraySpot.transform); 
+        
+        colorGO = Instantiate(colorPrefab, spraySpot.transform);
+        colorGO.GetComponent<ColorPicker>().clampObject = colorGradient;
 
         // get right component hand at start
         LeftHand = GameObject.Find("LeftHand").GetComponent<Hand>();
@@ -200,6 +225,31 @@ public class PaletteManagerScript : MonoBehaviour
         brushGO.transform.parent = transform;
         brushGO.transform.position = brushSpot.transform.position;
         brushGO.transform.rotation = brushSpot.transform.rotation;
+    }
+
+    /// <summary>
+    /// return or rest tools to their original location
+    /// </summary>
+    /// <param name="objectTouch"> gives the reference to the game object that is touched </param>
+    public void SizeUp()
+    {
+        widthMultiplier++;
+        lineSize.text = widthMultiplier.ToString();
+    }
+
+    /// <summary>
+    /// return or rest tools to their original location
+    /// </summary>
+    /// <param name="objectTouch"> gives the reference to the game object that is touched </param>
+    public void SizeDown()
+    {
+        widthMultiplier--;
+        lineSize.text = widthMultiplier.ToString();
+    }
+
+    public void projectDrawArea()
+    {
+        
     }
 
     #endregion
