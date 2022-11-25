@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 using Valve.VR;
+using TMPro;
 
 public class PaletteManagerScript : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class PaletteManagerScript : MonoBehaviour
     public GameObject sprayGO;
     public GameObject colorGO;
     public GameObject colorGradient;
+    public TMP_Text lineSize;
 
     [Header("Buttons")]
     public GameObject brushUpButton;
@@ -223,6 +225,26 @@ public class PaletteManagerScript : MonoBehaviour
         brushGO.transform.parent = transform;
         brushGO.transform.position = brushSpot.transform.position;
         brushGO.transform.rotation = brushSpot.transform.rotation;
+    }
+
+    /// <summary>
+    /// return or rest tools to their original location
+    /// </summary>
+    /// <param name="objectTouch"> gives the reference to the game object that is touched </param>
+    public void SizeUp()
+    {
+        widthMultiplier++;
+        lineSize.text = widthMultiplier.ToString();
+    }
+
+    /// <summary>
+    /// return or rest tools to their original location
+    /// </summary>
+    /// <param name="objectTouch"> gives the reference to the game object that is touched </param>
+    public void SizeDown()
+    {
+        widthMultiplier--;
+        lineSize.text = widthMultiplier.ToString();
     }
 
     public void projectDrawArea()
