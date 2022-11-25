@@ -893,7 +893,7 @@ PrefabInstance:
       objectReference: {fileID: 2552291732192138272, guid: a933e3a3aaf53c0408f881c9139c27c7, type: 3}
     - target: {fileID: 6606143619179268956, guid: a933e3a3aaf53c0408f881c9139c27c7, type: 3}
       propertyPath: m_SelectedEditorRenderState
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a933e3a3aaf53c0408f881c9139c27c7, type: 3}
