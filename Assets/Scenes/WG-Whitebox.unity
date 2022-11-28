@@ -2426,6 +2426,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2295031644372132910, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
   m_PrefabInstance: {fileID: 2295031644179511389}
   m_PrefabAsset: {fileID: 0}
+--- !u!223 &2295031644179511391 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 2295031644372132906, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
+  m_PrefabInstance: {fileID: 2295031644179511389}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2295031644179511392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2439,10 +2444,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trigger:
-    actionPath: 
+    actionPath: /actions/default/in/InteractUI
     needsReinit: 0
-  AllDevices: 0
-  minimap: {fileID: 0}
+  AllDevices: 1
+  minimap: {fileID: 2295031644179511391}
 --- !u!1001 &8171889221395563732
 PrefabInstance:
   m_ObjectHideFlags: 0
