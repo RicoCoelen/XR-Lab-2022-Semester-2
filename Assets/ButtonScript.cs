@@ -13,6 +13,7 @@ public class ButtonScript : MonoBehaviour
     private bool _isPressed;
     private Vector3 _startPos;
     private ConfigurableJoint _joint;
+    private Rigidbody rb;
 
     private float GetValue()
     {
@@ -29,6 +30,7 @@ public class ButtonScript : MonoBehaviour
     {
         _startPos = transform.localPosition;
         _joint = GetComponent<ConfigurableJoint>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -39,6 +41,11 @@ public class ButtonScript : MonoBehaviour
 
         if (_isPressed && GetValue() - threshold <= 0)
             Released();
+    }
+
+    private void FixedUpdate()
+    {
+        rb.velocity = Vector3.zero;
     }
 
     private void Pressed()
