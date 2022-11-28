@@ -1263,7 +1263,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!135 &1175755346
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1275,7 +1275,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.15
+  m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1175755347
 MeshRenderer:
@@ -1373,7 +1373,7 @@ MonoBehaviour:
   _player: {fileID: 1796071920}
   _teleportview1: {fileID: 1304481240}
   _teleportview2: {fileID: 1477357907}
-  _dreamscene: DreamWorld
+  newScene: DreamWorld
 --- !u!1001 &1281711087
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1491,7 +1491,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1304481240}
-  m_CullTransparentMesh: 0
+  m_CullTransparentMesh: 1
 --- !u!114 &1304481243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1505,10 +1505,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 3
+  m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 2147483647
+    m_Bits: 0
 --- !u!114 &1304481244
 MonoBehaviour:
   m_ObjectHideFlags: 0
