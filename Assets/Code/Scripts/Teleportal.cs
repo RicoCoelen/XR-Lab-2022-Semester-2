@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Scene = UnityEngine.SceneManagement.Scene;
 
 public class Teleportal : MonoBehaviour
 {
     public GameObject _player;
     public GameObject _teleportview1;
     public GameObject _teleportview2;
+    public string _dreamscene;
 
     //if the player collides with the portal, the player is teleported to a certain location in the scene. 
     void OnTriggerEnter(Collider collider)
@@ -20,7 +24,14 @@ public class Teleportal : MonoBehaviour
     {
         _teleportview1.SetActive(true);
         yield return new WaitForSeconds(2);
-        _player.transform.position = new Vector3(30, 1, 0);
+        Scene currentScene = SceneManager.GetActiveScene();
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(_dreamscene, LoadSceneMode.Additive);
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+        SceneManager.MoveGameObjectToScene(_player, SceneManager.GetSceneByName(_dreamscene));
+        SceneManager.UnloadSceneAsync(currentScene);
         yield return new WaitForSeconds(2);
         _teleportview2.SetActive(true);
         _teleportview1.SetActive(false);

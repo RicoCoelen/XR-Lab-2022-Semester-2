@@ -1094,6 +1094,7 @@ MonoBehaviour:
   _tip: {fileID: 777779914}
   _brushSize: 8
   _colors: []
+  _tipHeight: 0
 --- !u!4 &780489363
 Transform:
   m_ObjectHideFlags: 0
@@ -1372,6 +1373,7 @@ MonoBehaviour:
   _player: {fileID: 1796071920}
   _teleportview1: {fileID: 1304481240}
   _teleportview2: {fileID: 1477357907}
+  _dreamscene: DreamWorld
 --- !u!1001 &1281711087
 PrefabInstance:
   m_ObjectHideFlags: 0
