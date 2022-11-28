@@ -6771,7 +6771,7 @@ VideoPlayer:
   m_VideoClip: {fileID: 32900000, guid: aea5f3a01b1850f4199dcf2f8db1b8e5, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
-  m_TargetCamera: {fileID: 0}
+  m_TargetCamera: {fileID: 1547655284}
   m_TargetTexture: {fileID: 8400000, guid: 005ed5a6df2f5ff468efd6497d37fefa, type: 2}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
@@ -7925,9 +7925,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tip: {fileID: 2065576607}
-  _brushSize: 8
+  _brushSize: 20
   _colors: []
-  _tipHeight: 0.1
+  _tipHeight: 1
 --- !u!1001 &621456737
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12856,7 +12856,7 @@ VideoPlayer:
   m_VideoClip: {fileID: 32900000, guid: 54455e2b3b63e044bbe14e9cec94f45e, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
-  m_TargetCamera: {fileID: 0}
+  m_TargetCamera: {fileID: 1547655284}
   m_TargetTexture: {fileID: 8400000, guid: 005ed5a6df2f5ff468efd6497d37fefa, type: 2}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
@@ -16026,6 +16026,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 107946, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -16587,6 +16591,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a2fa0a32b4025240b7596fb086ea1a3, type: 3}
+--- !u!20 &1547655284 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2014920, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+  m_PrefabInstance: {fileID: 1470851751}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1552476777 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e2f984a5076dd0240ae94ba4f53d2613, type: 3}
@@ -23111,7 +23120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   texture: {fileID: 0}
-  textureSize: {x: 1080, y: 1080}
+  textureSize: {x: 540, y: 540}
 --- !u!64 &2125452780
 MeshCollider:
   m_ObjectHideFlags: 0

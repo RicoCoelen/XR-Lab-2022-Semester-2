@@ -20,7 +20,7 @@ public class Teleportal : MonoBehaviour
     {
         _teleportview1.SetActive(true);
         yield return new WaitForSeconds(2);
-        _player.transform.position = new Vector3(30, 15, 0);
+        _player.transform.position = new Vector3(30, 1, 0);
         yield return new WaitForSeconds(2);
         _teleportview2.SetActive(true);
         _teleportview1.SetActive(false);
