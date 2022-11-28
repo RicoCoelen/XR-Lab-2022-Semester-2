@@ -4,6 +4,7 @@ using UnityEngine;
 using Valve.VR.InteractionSystem;
 using Valve.VR;
 using TMPro;
+using UnityEngine.UI;
 
 public class PaletteManagerScript : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class PaletteManagerScript : MonoBehaviour
     public Material currentMaterial;
     public float widthMultiplier = 0.05f; // average line width setting
     public int interval = 5;
+    public Material outlineMaterial;
 
     [Header("Prefabs")]
     public GameObject deletePrefab;
@@ -68,10 +70,12 @@ public class PaletteManagerScript : MonoBehaviour
 
         LineRenderer lr;
         Rigidbody rb;
-        BoxCollider bc;
+        SphereCollider sc;
         Throwable t;
+        ControllerHoverHighlight chh;
+        GameObject gp;
 
-        public Line(int order, Vector3 pos, Material mat, float width)
+        public Line(int order, Vector3 pos, Material mat, float width, Material outline)
         {
             gameObject = new GameObject();
             gameObject.transform.position = Vector3.zero;
@@ -88,8 +92,15 @@ public class PaletteManagerScript : MonoBehaviour
             rb = gameObject.AddComponent<Rigidbody>();
             rb.isKinematic = true;
 
-            bc = gameObject.AddComponent<BoxCollider>();
+            sc = gameObject.AddComponent<SphereCollider>();
+            sc.radius = 0.5f;
+
+            gp = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+
             t = gameObject.AddComponent<Throwable>();
+
+            chh = gameObject.AddComponent<ControllerHoverHighlight>();
+            chh.highLightMaterial = outline;
         }
 
         public void AddPoint(Vector3 pos, float trigger)
@@ -146,7 +157,7 @@ public class PaletteManagerScript : MonoBehaviour
             {
                 lines.Add(
                     new Line(
-                        lines.Count + 1, brushGO.transform.position, currentMaterial, widthMultiplier
+                        lines.Count + 1, brushGO.transform.position, currentMaterial, widthMultiplier, outlineMaterial
                         )
                     );
                 runOnce = true;
@@ -164,7 +175,7 @@ public class PaletteManagerScript : MonoBehaviour
             {
                 lines.Add(
                     new Line(
-                        lines.Count + 1, brushGO.transform.position, currentMaterial, widthMultiplier
+                        lines.Count + 1, brushGO.transform.position, currentMaterial, widthMultiplier, outlineMaterial
                         )
                     );
                 runOnce = true;
