@@ -7925,9 +7925,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tip: {fileID: 2065576607}
-  _brushSize: 20
+  _brushSize: 8
   _colors: []
-  _tipHeight: 1
+  _tipHeight: 0.1
 --- !u!1001 &621456737
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23064,7 +23064,7 @@ GameObject:
   - component: {fileID: 2125452778}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
