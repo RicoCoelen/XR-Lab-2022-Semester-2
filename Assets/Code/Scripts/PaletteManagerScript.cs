@@ -82,7 +82,7 @@ public class PaletteManagerScript : MonoBehaviour
 
             lr = gameObject.AddComponent<LineRenderer>();
             lr.material = mat;
-            lr.widthMultiplier = width;
+            lr.widthMultiplier = 0.05f * width;
             lr.generateLightingData = true;
             lr.useWorldSpace = false;
 
@@ -96,6 +96,8 @@ public class PaletteManagerScript : MonoBehaviour
             sc.radius = 0.5f;
 
             gp = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            gp.GetComponent<SphereCollider>().enabled = false;
+            gp.transform.position = pos;
 
             t = gameObject.AddComponent<Throwable>();
 
@@ -108,8 +110,8 @@ public class PaletteManagerScript : MonoBehaviour
             points.Add(pos);
             lr.positionCount = points.Count;
             lr.SetPositions(points.ToArray());
-            lr.startWidth = width;
-            lr.endWidth = width;
+            lr.startWidth = 0.05f * width;
+            lr.endWidth = 0.05f * width;
         }
     }
 
@@ -254,7 +256,11 @@ public class PaletteManagerScript : MonoBehaviour
     /// <param name="objectTouch"> gives the reference to the game object that is touched </param>
     public void SizeDown()
     {
-        widthMultiplier--;
+        if(widthMultiplier > 1)
+        {
+            widthMultiplier--;
+        }
+        
         lineSize.text = widthMultiplier.ToString();
     }
 
