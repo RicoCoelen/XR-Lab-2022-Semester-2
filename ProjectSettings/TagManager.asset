@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Wall
   - Brush
+  - Portal Point
+  - Portal
   layers:
   - Default
   - TransparentFX
