@@ -13,7 +13,7 @@ public class PaletteManagerScript : MonoBehaviour
     [Header("Painting Variables")]
     public List<Line> lines = new List<Line>();
     public Material currentMaterial;
-    public float widthMultiplier = 0.05f; // average line width setting
+    public int widthMultiplier = 1; // average line width setting
     public int interval = 5;
     public Material outlineMaterial;
 
@@ -103,13 +103,13 @@ public class PaletteManagerScript : MonoBehaviour
             chh.highLightMaterial = outline;
         }
 
-        public void AddPoint(Vector3 pos, float trigger)
+        public void AddPoint(Vector3 pos, float width)
         {
             points.Add(pos);
             lr.positionCount = points.Count;
             lr.SetPositions(points.ToArray());
-            // lr.startWidth = trigger;
-            // lr.endWidth = trigger;
+            lr.startWidth = width;
+            lr.endWidth = width;
         }
     }
 
@@ -164,7 +164,7 @@ public class PaletteManagerScript : MonoBehaviour
             }
             else
             {
-                lines[lines.Count - 1].AddPoint(brushGO.transform.position, trigger);
+                lines[lines.Count - 1].AddPoint(brushGO.transform.position, widthMultiplier);
             }
         }
 
@@ -182,7 +182,7 @@ public class PaletteManagerScript : MonoBehaviour
             }
             else
             {
-                lines[lines.Count - 1].AddPoint(brushGO.transform.position, trigger);
+                lines[lines.Count - 1].AddPoint(brushGO.transform.position, widthMultiplier);
             }
         }
     }
