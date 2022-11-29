@@ -11,9 +11,13 @@ public class PaletteManagerScript : MonoBehaviour
     #region Properties
 
     [Header("Painting Variables")]
-    public List<Line> lines = new List<Line>();
+    public Color currenColor;
+    public Texture2D currentTexture;
     public Material currentMaterial;
     public int widthMultiplier = 1; // average line width setting
+    
+    [Header("Technical Variables")]
+    public List<Line> lines = new List<Line>();
     public int interval = 5;
     public Material outlineMaterial;
 
