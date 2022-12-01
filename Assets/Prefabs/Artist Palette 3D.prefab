@@ -350,7 +350,7 @@ MonoBehaviour:
   sprayGO: {fileID: 0}
   colorGO: {fileID: 0}
   colorGradient: {fileID: 5679331983899440733}
-  lineSize: {fileID: 0}
+  lineSize: {fileID: 4384932609687912739}
   brushUpButton: {fileID: 7889554683786414743}
   brushDownButton: {fileID: 6953274807565183353}
   resetToolsButton: {fileID: 9018428862130097600}
