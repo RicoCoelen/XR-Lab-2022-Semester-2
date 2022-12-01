@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: fda7d5533924c1e469dc912a70fde2ae
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _yesportal: {fileID: 2100000, guid: ade3723962ba54e4684572cfd1f649bd, type: 2}
+  - _point1: {instanceID: 0}
+  - _point2: {instanceID: 0}
+  - _point3: {instanceID: 0}
+  - _point4: {instanceID: 0}
+  - _point5: {instanceID: 0}
+  - _point6: {instanceID: 0}
+  - _point7: {instanceID: 0}
+  - _point8: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
