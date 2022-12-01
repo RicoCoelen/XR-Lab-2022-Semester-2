@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4382640041145947603}
   - component: {fileID: 1683098533293071208}
   - component: {fileID: 2774962899992081722}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,7 +241,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3126397223839582846}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Physics Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 3615827397059494633}
   - component: {fileID: 4608210635851411758}
   - component: {fileID: 4952393392852128037}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
