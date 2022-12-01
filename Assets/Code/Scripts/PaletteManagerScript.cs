@@ -82,7 +82,7 @@ public class PaletteManagerScript : MonoBehaviour
         public Line(int order, Vector3 pos, Material mat, float width, Material outline)
         {
             gameObject = new GameObject();
-            gameObject.transform.position = Vector3.zero;
+            gameObject.transform.position = pos;
 
             lr = gameObject.AddComponent<LineRenderer>();
             lr.material = mat;
@@ -90,18 +90,15 @@ public class PaletteManagerScript : MonoBehaviour
             lr.generateLightingData = true;
             lr.useWorldSpace = false;
 
-            points.Add(pos);
-            lr.SetPosition(0, pos);
+            points.Add(gameObject.transform.position - pos);
+            lr.SetPosition(0, gameObject.transform.position - pos);
 
             rb = gameObject.AddComponent<Rigidbody>();
             rb.isKinematic = true;
 
             sc = gameObject.AddComponent<SphereCollider>();
-            sc.radius = 0.5f;
-
-            gp = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            gp.GetComponent<SphereCollider>().enabled = false;
-            gp.transform.position = pos;
+            sc.radius = 0.1f;
+            sc.center = Vector3.zero;
 
             t = gameObject.AddComponent<Throwable>();
 
@@ -111,7 +108,7 @@ public class PaletteManagerScript : MonoBehaviour
 
         public void AddPoint(Vector3 pos, float width)
         {
-            points.Add(pos);
+            points.Add(pos-gameObject.transform.position);
             lr.positionCount = points.Count;
             lr.SetPositions(points.ToArray());
             lr.startWidth = 0.05f * width;

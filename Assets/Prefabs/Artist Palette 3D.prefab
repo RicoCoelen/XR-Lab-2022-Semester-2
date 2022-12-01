@@ -329,8 +329,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aecc91fc64da164aa447234cf55a224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currenColor: {r: 0, g: 0, b: 0, a: 0}
+  currentTexture: {fileID: 0}
   currentMaterial: {fileID: 2100000, guid: 6d7f8afc8e1df4741871a1eb0e01592c, type: 2}
-  widthMultiplier: 0
+  widthMultiplier: 1
   interval: 5
   outlineMaterial: {fileID: 2100000, guid: 7b939e5e799d98a469f594828ebab52e, type: 2}
   deletePrefab: {fileID: 3034369330767840613, guid: 83a9831f26ff1d6478c944177204b50e, type: 3}
