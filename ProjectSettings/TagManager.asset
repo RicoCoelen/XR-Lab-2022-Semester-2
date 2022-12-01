@@ -8,6 +8,7 @@ TagManager:
   - Brush
   - Portal Point
   - Portal
+  - Button
   layers:
   - Default
   - TransparentFX
@@ -15,8 +16,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Button
+  - Player
   - 
   - 
   - 
