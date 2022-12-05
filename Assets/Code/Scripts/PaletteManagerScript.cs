@@ -74,7 +74,8 @@ public class PaletteManagerScript : MonoBehaviour
 
         LineRenderer lr;
         Rigidbody rb;
-        SphereCollider sc;
+        MeshCollider mc;
+        LineRendererSmoother lrs;
         Throwable t;
         ControllerHoverHighlight chh;
         GameObject gp;
@@ -96,9 +97,10 @@ public class PaletteManagerScript : MonoBehaviour
             rb = gameObject.AddComponent<Rigidbody>();
             rb.isKinematic = true;
 
-            sc = gameObject.AddComponent<SphereCollider>();
-            sc.radius = 0.1f;
-            sc.center = Vector3.zero;
+            mc = gameObject.AddComponent<MeshCollider>();
+
+            lrs = gameObject.AddComponent<LineRendererSmoother>();
+            lrs.GenerateMeshCollider();
 
             t = gameObject.AddComponent<Throwable>();
 
@@ -108,11 +110,12 @@ public class PaletteManagerScript : MonoBehaviour
 
         public void AddPoint(Vector3 pos, float width)
         {
-            points.Add(pos-gameObject.transform.position);
-            lr.positionCount = points.Count;
-            lr.SetPositions(points.ToArray());
+            points.Add(pos - gameObject.transform.position);
             lr.startWidth = 0.05f * width;
             lr.endWidth = 0.05f * width;
+            lr.positionCount = points.Count;
+            lr.SetPositions(points.ToArray());
+            lrs.GenerateMeshCollider();
         }
     }
 
@@ -261,14 +264,18 @@ public class PaletteManagerScript : MonoBehaviour
         {
             widthMultiplier--;
         }
-        
         lineSize.text = widthMultiplier.ToString();
     }
 
-    public void projectDrawArea()
+    // test brush area
+    private void OnDrawGizmos()
     {
-        
+        Gizmos.DrawSphere(deleteGO.transform.position, widthMultiplier);
+        Gizmos.DrawSphere(brushGO.transform.position, widthMultiplier);
+        Gizmos.DrawSphere(editGO.transform.position, widthMultiplier);
+        Gizmos.DrawSphere(sprayGO.transform.position, widthMultiplier);
+        Gizmos.DrawLine(colorGO.transform.position, colorGO.transform.position + -colorGO.transform.up * 1f);
     }
-
+    
     #endregion
 }
