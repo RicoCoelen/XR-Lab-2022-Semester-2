@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Teleportal : MonoBehaviour
 {
     public GameObject _portal;
-    public GameObject _wall;
+    public GameObject _weg;
     public GameObject _teleportview1;
     public GameObject _teleportview2;
     [SerializeField] private string newScene;
@@ -16,18 +16,18 @@ public class Teleportal : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player")
         {
-            Debug.Log("hi");
             StartCoroutine(Timertje());
         }
     }
     IEnumerator Timertje()
     {
             _teleportview1.SetActive(true);
-            _wall.SetActive(false);
-            yield return new WaitForSeconds(4);
+            _portal.GetComponent<Renderer>().material.color = Color.clear;
+            _weg.SetActive(false);
+            yield return new WaitForSeconds(5);
             _teleportview2.SetActive(true);
             _teleportview1.SetActive(false);
             yield return new WaitForSeconds(4);
-            SceneManager.LoadScene("DreamWorld");
+            SceneManager.LoadScene("WG-Droom");
     }
 }
