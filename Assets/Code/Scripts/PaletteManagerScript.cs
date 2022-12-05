@@ -20,6 +20,7 @@ public class PaletteManagerScript : MonoBehaviour
     public List<Line> lines = new List<Line>();
     public int interval = 5;
     public Material outlineMaterial;
+    public Transform lineHolder;
 
     [Header("Prefabs")]
     public GameObject deletePrefab;
@@ -80,11 +81,12 @@ public class PaletteManagerScript : MonoBehaviour
         ControllerHoverHighlight chh;
         GameObject gp;
 
-        public Line(int order, Vector3 pos, Material mat, float width, Material outline)
+        public Line(int order, Vector3 pos, Material mat, float width, Material outline, Transform parent)
         {
             gameObject = new GameObject();
+            gameObject.transform.parent = parent;
             gameObject.transform.position = pos;
-
+            
             lr = gameObject.AddComponent<LineRenderer>();
             lr.material = mat;
             lr.widthMultiplier = 0.05f * width;
@@ -100,6 +102,7 @@ public class PaletteManagerScript : MonoBehaviour
             mc = gameObject.AddComponent<MeshCollider>();
 
             lrs = gameObject.AddComponent<LineRendererSmoother>();
+            lrs.Line = lr;
             lrs.GenerateMeshCollider();
 
             t = gameObject.AddComponent<Throwable>();
@@ -163,7 +166,7 @@ public class PaletteManagerScript : MonoBehaviour
             {
                 lines.Add(
                     new Line(
-                        lines.Count + 1, brushGO.transform.position, currentMaterial, widthMultiplier, outlineMaterial
+                        lines.Count + 1, brushGO.transform.position, currentMaterial, widthMultiplier, outlineMaterial, lineHolder
                         )
                     );
                 runOnce = true;
@@ -181,7 +184,7 @@ public class PaletteManagerScript : MonoBehaviour
             {
                 lines.Add(
                     new Line(
-                        lines.Count + 1, brushGO.transform.position, currentMaterial, widthMultiplier, outlineMaterial
+                        lines.Count + 1, brushGO.transform.position, currentMaterial, widthMultiplier, outlineMaterial, lineHolder
                         )
                     );
                 runOnce = true;
@@ -267,7 +270,22 @@ public class PaletteManagerScript : MonoBehaviour
         lineSize.text = widthMultiplier.ToString();
     }
 
-    // test brush area
+    /// <summary>
+    /// return or rest tools to their original location
+    /// </summary>
+    /// <param name="objectTouch"> gives the reference to the game object that is touched </param>
+    public Material changePaint(Material mat, Texture2D tex, Color col)
+    {
+        currentMaterial = mat;
+        currentMaterial.SetTexture("_MainTex", tex);
+        currentMaterial.SetColor("_Color", col);
+        return currentMaterial;
+    }
+
+    /// <summary>
+    /// return or rest tools to their original location
+    /// </summary>
+    /// <param name="objectTouch"> gives the reference to the game object that is touched </param>
     private void OnDrawGizmos()
     {
         Gizmos.DrawSphere(deleteGO.transform.position, widthMultiplier);
