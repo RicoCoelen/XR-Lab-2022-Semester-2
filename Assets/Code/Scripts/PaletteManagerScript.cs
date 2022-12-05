@@ -72,6 +72,8 @@ public class PaletteManagerScript : MonoBehaviour
         public List<Vector3> points = new List<Vector3>();
         public GameObject gameObject;
 
+        MeshRenderer mr;
+        MeshFilter mf;
         LineRenderer lr;
         Rigidbody rb;
         MeshCollider mc;
@@ -81,41 +83,62 @@ public class PaletteManagerScript : MonoBehaviour
 
         public Line(int order, Vector3 pos, Material mat, float width, Transform parent)
         {
+            // make the game object
             gameObject = new GameObject("Line: " + order);
-            gameObject.transform.parent = parent;
+            //gameObject.transform.parent = parent;
             gameObject.transform.position = pos;
-            
+
+            // add mesh renderer and filter for highlighting
+            mr = gameObject.AddComponent<MeshRenderer>();
+            mf = gameObject.AddComponent<MeshFilter>();
+
+            // add linerenderer and vars
             lr = gameObject.AddComponent<LineRenderer>();
             lr.material = mat;
             lr.widthMultiplier = 0.05f * width;
             lr.generateLightingData = true;
             lr.useWorldSpace = false;
 
+            // add first position to linerenderer
             points.Add(gameObject.transform.position - pos);
-            lr.SetPosition(0, gameObject.transform.position - pos);
+            lr.positionCount = points.Count;
+            lr.SetPositions(points.ToArray());
 
+            // create rigidbody for collisions
             rb = gameObject.AddComponent<Rigidbody>();
             rb.isKinematic = true;
 
+            // mesh collider for grabbing
             mc = gameObject.AddComponent<MeshCollider>();
 
+            // linerenderer smoother, for bezier curves and meshcollider generation
             lrs = gameObject.AddComponent<LineRendererSmoother>();
             lrs.Line = lr;
-            lrs.GenerateMeshCollider();
 
+            mf.mesh = lrs.GetMesh(mc);
+
+            // add steamVR physics
             t = gameObject.AddComponent<Throwable>();
             
+            // make it interactable and glow on hover
             i = gameObject.GetComponent<Interactable>();
             i.highlightOnHover = true;
         }
 
         public void AddPoint(Vector3 pos, float width)
         {
+            // add point to array
             points.Add(pos - gameObject.transform.position);
+
+            // set width
             lr.startWidth = 0.05f * width;
             lr.endWidth = 0.05f * width;
+
+            // define size and give array to line renderer
             lr.positionCount = points.Count;
             lr.SetPositions(points.ToArray());
+
+            // generate the collider using bezier curves
             lrs.GenerateMeshCollider();
         }
     }
@@ -272,12 +295,21 @@ public class PaletteManagerScript : MonoBehaviour
     /// return or rest tools to their original location
     /// </summary>
     /// <param name="objectTouch"> gives the reference to the game object that is touched </param>
-    public Material changePaint(Material mat, Texture2D tex, Color col)
+    public Material ChangePaint(Material mat, Texture2D tex, Color col)
     {
         currentMaterial = mat;
         currentMaterial.SetTexture("_MainTex", tex);
         currentMaterial.SetColor("_Color", col);
         return currentMaterial;
+    }
+
+    public void UpdateTip(GameObject brush, int multiplier)
+    {
+        var tip = brush.transform.GetChild(0);
+        var go = new GameObject();
+        go.transform.position = tip.position;
+        go.transform.localPosition = new Vector3(go.transform.position.x, widthMultiplier * 0.05f, go.transform.position.z);
+
     }
 
     /// <summary>
@@ -286,11 +318,12 @@ public class PaletteManagerScript : MonoBehaviour
     /// <param name="objectTouch"> gives the reference to the game object that is touched </param>
     private void OnDrawGizmos()
     {
-        Gizmos.DrawSphere(deleteGO.transform.position, widthMultiplier);
-        Gizmos.DrawSphere(brushGO.transform.position, widthMultiplier);
-        Gizmos.DrawSphere(editGO.transform.position, widthMultiplier);
-        Gizmos.DrawSphere(sprayGO.transform.position, widthMultiplier);
-        Gizmos.DrawLine(colorGO.transform.position, colorGO.transform.position + -colorGO.transform.up * 1f);
+        var temp = deleteGO.transform.position;
+        temp += -deleteGO.transform.up * ( widthMultiplier * 0.05f);
+        Gizmos.DrawWireSphere(temp, widthMultiplier * 0.05f);
+        //var newPo = brushSpot.transform.position;
+        //newPo.y = brushSpot.transform.position.y + widthMultiplier * 0.05f;
+        //Gizmos.DrawSphere(brushGO.transform.position), widthMultiplier * 0.05f);
     }
     
     #endregion
