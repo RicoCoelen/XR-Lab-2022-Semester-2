@@ -19,7 +19,6 @@ public class PaletteManagerScript : MonoBehaviour
     [Header("Technical Variables")]
     public List<Line> lines = new List<Line>();
     public int interval = 5;
-    public Material outlineMaterial;
     public Transform lineHolder;
 
     [Header("Prefabs")]
@@ -78,12 +77,11 @@ public class PaletteManagerScript : MonoBehaviour
         MeshCollider mc;
         LineRendererSmoother lrs;
         Throwable t;
-        ControllerHoverHighlight chh;
-        GameObject gp;
+        Interactable i;
 
-        public Line(int order, Vector3 pos, Material mat, float width, Material outline, Transform parent)
+        public Line(int order, Vector3 pos, Material mat, float width, Transform parent)
         {
-            gameObject = new GameObject();
+            gameObject = new GameObject("Line: " + order);
             gameObject.transform.parent = parent;
             gameObject.transform.position = pos;
             
@@ -106,9 +104,9 @@ public class PaletteManagerScript : MonoBehaviour
             lrs.GenerateMeshCollider();
 
             t = gameObject.AddComponent<Throwable>();
-
-            chh = gameObject.AddComponent<ControllerHoverHighlight>();
-            chh.highLightMaterial = outline;
+            
+            i = gameObject.GetComponent<Interactable>();
+            i.highlightOnHover = true;
         }
 
         public void AddPoint(Vector3 pos, float width)
@@ -166,7 +164,7 @@ public class PaletteManagerScript : MonoBehaviour
             {
                 lines.Add(
                     new Line(
-                        lines.Count + 1, brushGO.transform.position, currentMaterial, widthMultiplier, outlineMaterial, lineHolder
+                        lines.Count + 1, brushGO.transform.position, currentMaterial, widthMultiplier, lineHolder
                         )
                     );
                 runOnce = true;
@@ -184,7 +182,7 @@ public class PaletteManagerScript : MonoBehaviour
             {
                 lines.Add(
                     new Line(
-                        lines.Count + 1, brushGO.transform.position, currentMaterial, widthMultiplier, outlineMaterial, lineHolder
+                        lines.Count + 1, brushGO.transform.position, currentMaterial, widthMultiplier, lineHolder
                         )
                     );
                 runOnce = true;
