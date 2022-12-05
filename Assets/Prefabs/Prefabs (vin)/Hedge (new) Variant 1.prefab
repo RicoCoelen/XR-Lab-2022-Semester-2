@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1401803097751797772, guid: b17340b3092e70c4498b4fae1c56a40e, type: 3}
+      propertyPath: m_SelectedEditorRenderState
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5493136354018057450, guid: b17340b3092e70c4498b4fae1c56a40e, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -53,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6609218771182545221, guid: b17340b3092e70c4498b4fae1c56a40e, type: 3}
       propertyPath: m_Name
-      value: Hedge (new)
+      value: Hedge (new) Variant 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b17340b3092e70c4498b4fae1c56a40e, type: 3}
