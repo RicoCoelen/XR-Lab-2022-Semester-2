@@ -58,7 +58,7 @@ public class AppearingPortal : MonoBehaviour
     {
         //after 2 seconds the portal will be enabled. 
         yield return new WaitForSeconds(2);
-        _player.transform.position = new Vector3(-3,1,0);
+        _player.transform.position = new Vector3(48,0,37);
         _portal.SetActive(true);
 
     }
