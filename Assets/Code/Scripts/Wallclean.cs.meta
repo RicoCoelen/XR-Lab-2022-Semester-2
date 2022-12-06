@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 361aab070d6f00b478b0f7e0c7bfb52d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _portalpaint: {fileID: 2100000, guid: 0a6f2c233ed26d743948e10c71fd2888, type: 2}
+  - _wallpaint1: {fileID: 2100000, guid: 1387b1b24508b4e4cb738422465572ee, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
