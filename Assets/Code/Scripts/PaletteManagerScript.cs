@@ -11,7 +11,7 @@ public class PaletteManagerScript : MonoBehaviour
     #region Properties
 
     [Header("Painting Variables")]
-    public Color currenColor;
+    public Color currentColor;
     public Texture2D currentTexture;
     public Material currentMaterial;
     public int widthMultiplier = 1; // average line width setting
@@ -36,9 +36,17 @@ public class PaletteManagerScript : MonoBehaviour
 
     [Header("GameObjects")]
     public GameObject deleteGO;
+    public GameObject deleteIndicator;
+
     public GameObject editGO;
+    public GameObject editIndicator;
+
     public GameObject brushGO;
+    public GameObject brushIndicator;
+
     public GameObject sprayGO;
+    public GameObject sprayIndicator;
+
     public GameObject colorGO;
     public GameObject colorGradient;
     public TMP_Text lineSize;
@@ -115,6 +123,7 @@ public class PaletteManagerScript : MonoBehaviour
             lrs = gameObject.AddComponent<LineRendererSmoother>();
             lrs.Line = lr;
 
+            // give meshcollider mesh to meshfilter 
             mf.mesh = lrs.GetMesh(mc);
 
             // add steamVR physics
@@ -156,8 +165,14 @@ public class PaletteManagerScript : MonoBehaviour
         deleteGO = Instantiate(deletePrefab, deleteSpot.transform); 
         editGO = Instantiate(editPrefab, editSpot.transform); 
         brushGO = Instantiate(brushPrefab, brushSpot.transform); 
-        sprayGO = Instantiate(sprayPrefab, spraySpot.transform); 
-        
+        sprayGO = Instantiate(sprayPrefab, spraySpot.transform);
+
+        brushIndicator = Instantiate(brushIndicator, spraySpot.transform);
+        editIndicator = Instantiate(editIndicator, editSpot.transform);
+        deleteIndicator = Instantiate(deleteIndicator, deleteSpot.transform);
+        sprayIndicator = Instantiate(sprayIndicator, spraySpot.transform);
+
+
         colorGO = Instantiate(colorPrefab, spraySpot.transform);
         colorGO.GetComponent<ColorPicker>().clampObject = colorGradient;
 
@@ -181,38 +196,43 @@ public class PaletteManagerScript : MonoBehaviour
     /// </summary>
     private void Paint(float trigger)
     {
+        // calculate brush paint area
+        var brush = brushGO.transform.position;
+        brush += -brushGO.transform.up * (widthMultiplier * 0.05f);
+
+        // check if brush is held in lefthand
         if (LeftHand.currentAttachedObject == brushGO.gameObject)
         {
             if (!runOnce)
             {
                 lines.Add(
                     new Line(
-                        lines.Count + 1, brushGO.transform.position, currentMaterial, widthMultiplier, lineHolder
+                        lines.Count + 1, brush, currentMaterial, widthMultiplier, lineHolder
                         )
                     );
                 runOnce = true;
             }
             else
             {
-                lines[lines.Count - 1].AddPoint(brushGO.transform.position, widthMultiplier);
+                lines[lines.Count - 1].AddPoint(brush, widthMultiplier);
             }
         }
 
-        // check right hand
+        // check if brush is held in lefthand
         if (RightHand.currentAttachedObject == brushGO.gameObject && trigger > 0)
         {
             if (!runOnce)
             {
                 lines.Add(
                     new Line(
-                        lines.Count + 1, brushGO.transform.position, currentMaterial, widthMultiplier, lineHolder
+                        lines.Count + 1, brush, currentMaterial, widthMultiplier, lineHolder
                         )
                     );
                 runOnce = true;
             }
             else
             {
-                lines[lines.Count - 1].AddPoint(brushGO.transform.position, widthMultiplier);
+                lines[lines.Count - 1].AddPoint(brush, widthMultiplier);
             }
         }
     }
@@ -223,11 +243,38 @@ public class PaletteManagerScript : MonoBehaviour
         grip = GripAction.GetState(AllDevices);
     }
 
+    public Vector3 TipPosition(GameObject brush, int multiplier)
+    {
+        // calculate brush paint area
+        var pos = brush.transform.position;
+        pos += -brush.transform.up * (multiplier * 0.05f);
+        return pos;
+    }
+
     /// <summary>
     /// fixedupdate to update values at fixed rate
     /// </summary>
     public void FixedUpdate()
     {
+        // indicator code
+        brushIndicator.transform.localScale = brushIndicator.transform.localScale * widthMultiplier;
+        brushIndicator.transform.position = TipPosition(brushGO, widthMultiplier);
+        brushIndicator.GetComponent<Renderer>().GetComponent<Material>().SetColor("_WireColor", currentColor); 
+        brushIndicator.GetComponent<Material>().SetColor("_BaseColor", currentColor); 
+  
+
+     
+
+        sprayIndicator.transform.localScale = sprayIndicator.transform.localScale * widthMultiplier;
+        sprayIndicator.transform.position = TipPosition(sprayGO, widthMultiplier);
+        sprayIndicator.GetComponent<Material>().color = currentColor;
+
+        editIndicator.transform.localScale = editIndicator.transform.localScale * widthMultiplier;
+        editIndicator.transform.position = TipPosition(editGO, widthMultiplier);
+
+        deleteIndicator.transform.localScale = deleteIndicator.transform.localScale * widthMultiplier;
+        deleteIndicator.transform.position = TipPosition(deleteGO, widthMultiplier);
+
         // check left hand
         if (trigger > 0)
         {
@@ -240,20 +287,6 @@ public class PaletteManagerScript : MonoBehaviour
         else
         {
             runOnce = false;
-        }
-
-        // check if grip is pressed 
-        if (RightHand.currentAttachedObject == gameObject && grip)
-        {
-            if (LeftHand.currentAttachedObject == gameObject)
-            {
-                LeftHand.AttachObject(gameObject, GrabTypes.Grip);
-            }
-
-            if (RightHand.currentAttachedObject == gameObject)
-            {
-                RightHand.AttachObject(gameObject, GrabTypes.Grip);
-            }
         }
     }
 
@@ -303,27 +336,27 @@ public class PaletteManagerScript : MonoBehaviour
         return currentMaterial;
     }
 
-    public void UpdateTip(GameObject brush, int multiplier)
-    {
-        var tip = brush.transform.GetChild(0);
-        var go = new GameObject();
-        go.transform.position = tip.position;
-        go.transform.localPosition = new Vector3(go.transform.position.x, widthMultiplier * 0.05f, go.transform.position.z);
-
-    }
-
     /// <summary>
     /// return or rest tools to their original location
     /// </summary>
     /// <param name="objectTouch"> gives the reference to the game object that is touched </param>
     private void OnDrawGizmos()
     {
-        var temp = deleteGO.transform.position;
-        temp += -deleteGO.transform.up * ( widthMultiplier * 0.05f);
-        Gizmos.DrawWireSphere(temp, widthMultiplier * 0.05f);
-        //var newPo = brushSpot.transform.position;
-        //newPo.y = brushSpot.transform.position.y + widthMultiplier * 0.05f;
-        //Gizmos.DrawSphere(brushGO.transform.position), widthMultiplier * 0.05f);
+        var delete = deleteGO.transform.position;
+        delete += -deleteGO.transform.up * (widthMultiplier * 0.05f);
+        Gizmos.DrawWireSphere(delete, widthMultiplier * 0.05f);
+
+        var edit = editGO.transform.position;
+        edit += -editGO.transform.up * (widthMultiplier * 0.05f);
+        Gizmos.DrawWireSphere(edit, widthMultiplier * 0.05f);
+
+        var brush = brushGO.transform.position;
+        brush += -brushGO.transform.up * (widthMultiplier * 0.05f);
+        Gizmos.DrawWireSphere(brush, widthMultiplier * 0.05f);
+
+        var spray = brushGO.transform.position;
+        spray += -brushGO.transform.up * (widthMultiplier * 0.05f);
+        Gizmos.DrawWireSphere(spray, widthMultiplier * 0.05f);
     }
     
     #endregion
