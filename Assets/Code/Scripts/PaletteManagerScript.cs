@@ -251,29 +251,26 @@ public class PaletteManagerScript : MonoBehaviour
         return pos;
     }
 
+    public void ChangeIndicator(GameObject indicator, GameObject tipObject, int width, Color color)
+    {
+        indicator.transform.localScale = indicator.transform.localScale * width;
+        indicator.transform.position = TipPosition(tipObject, width);
+        var id = indicator.GetComponent<Renderer>().material;
+        id.SetColor("_WireColor", color);
+        id.SetColor("_BaseColor", color);
+        indicator.GetComponent<Renderer>().material = id;
+    }
+
     /// <summary>
     /// fixedupdate to update values at fixed rate
     /// </summary>
     public void FixedUpdate()
     {
         // indicator code
-        brushIndicator.transform.localScale = brushIndicator.transform.localScale * widthMultiplier;
-        brushIndicator.transform.position = TipPosition(brushGO, widthMultiplier);
-        brushIndicator.GetComponent<Renderer>().GetComponent<Material>().SetColor("_WireColor", currentColor); 
-        brushIndicator.GetComponent<Material>().SetColor("_BaseColor", currentColor); 
-  
-
-     
-
-        sprayIndicator.transform.localScale = sprayIndicator.transform.localScale * widthMultiplier;
-        sprayIndicator.transform.position = TipPosition(sprayGO, widthMultiplier);
-        sprayIndicator.GetComponent<Material>().color = currentColor;
-
-        editIndicator.transform.localScale = editIndicator.transform.localScale * widthMultiplier;
-        editIndicator.transform.position = TipPosition(editGO, widthMultiplier);
-
-        deleteIndicator.transform.localScale = deleteIndicator.transform.localScale * widthMultiplier;
-        deleteIndicator.transform.position = TipPosition(deleteGO, widthMultiplier);
+        ChangeIndicator(brushIndicator, brushGO, widthMultiplier, currentColor);
+        ChangeIndicator(editIndicator, editGO, widthMultiplier, currentColor);
+        ChangeIndicator(deleteIndicator, deleteGO, widthMultiplier, currentColor);
+        ChangeIndicator(sprayIndicator, sprayGO, widthMultiplier, currentColor);
 
         // check left hand
         if (trigger > 0)
