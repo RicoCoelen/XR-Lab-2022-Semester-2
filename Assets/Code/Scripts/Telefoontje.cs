@@ -5,24 +5,21 @@ using UnityEngine;
 public class Telefoontje : MonoBehaviour
 {
     public AudioSource source1;
-    public AudioSource source2;
-    public AudioSource source3;
+    //mooie array gemaakt
+    public AudioClip[] audioClips;
+    private int audioIndex = 0;
 
     void OnTriggerStay(Collider collider)
     {
         if (collider.tag == "Player")
         {
-            source1.enabled = true;
-
-            if (source1.isPlaying == false)
+            if (source1.isPlaying == false && audioIndex < audioClips.Length)
             {
-                source2.enabled = true;
+                source1.clip = audioClips[audioIndex];
+                source1.Play();
+
+                audioIndex++;
             }
-
-            if (source2.isPlaying == false && source2.enabled == true)
-            {
-                source3.enabled = true;
-            } 
         }
     }
 }
