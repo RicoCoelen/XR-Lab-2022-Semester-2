@@ -18,19 +18,20 @@ public class PaletteManagerScript : MonoBehaviour
     
     [Header("Technical Variables")]
     public List<Line> lines = new List<Line>();
+    public List<Line> selectedLines = new List<Line>();
     public int interval = 5;
     public Transform lineHolder;
 
     [Header("Prefabs")]
     public GameObject deletePrefab;
-    public GameObject editPrefab;
+    public GameObject selectorPrefab;
     public GameObject brushPrefab;
     public GameObject colorPrefab;
     public GameObject sprayPrefab;
 
     [Header("Spots")]
     public Transform deleteSpot;
-    public Transform editSpot;
+    public Transform selectorSpot;
     public Transform brushSpot;
     public Transform spraySpot;
 
@@ -38,8 +39,8 @@ public class PaletteManagerScript : MonoBehaviour
     public GameObject deleteGO;
     public GameObject deleteIndicator;
 
-    public GameObject editGO;
-    public GameObject editIndicator;
+    public GameObject selectorGO;
+    public GameObject selectorIndicator;
 
     public GameObject brushGO;
     public GameObject brushIndicator;
@@ -163,12 +164,12 @@ public class PaletteManagerScript : MonoBehaviour
     {
         // spawn brush on palette
         deleteGO = Instantiate(deletePrefab, deleteSpot.transform); 
-        editGO = Instantiate(editPrefab, editSpot.transform); 
+        selectorGO = Instantiate(selectorPrefab, selectorSpot.transform); 
         brushGO = Instantiate(brushPrefab, brushSpot.transform); 
         sprayGO = Instantiate(sprayPrefab, spraySpot.transform);
 
         brushIndicator = Instantiate(brushIndicator, spraySpot.transform);
-        editIndicator = Instantiate(editIndicator, editSpot.transform);
+        selectorIndicator = Instantiate(selectorIndicator, selectorSpot.transform);
         deleteIndicator = Instantiate(deleteIndicator, deleteSpot.transform);
         sprayIndicator = Instantiate(sprayIndicator, spraySpot.transform);
 
@@ -194,46 +195,34 @@ public class PaletteManagerScript : MonoBehaviour
     /// <summary>
     /// change value if event listener changes
     /// </summary>
-    private void Paint(float trigger)
+    private void Paint(Vector3 position, float trigger)
     {
-        // calculate brush paint area
-        var brush = brushGO.transform.position;
-        brush += -brushGO.transform.up * (widthMultiplier * 0.05f);
-
-        // check if brush is held in lefthand
-        if (LeftHand.currentAttachedObject == brushGO.gameObject)
+        if (!runOnce)
         {
-            if (!runOnce)
-            {
-                lines.Add(
-                    new Line(
-                        lines.Count + 1, brush, currentMaterial, widthMultiplier, lineHolder
-                        )
-                    );
-                runOnce = true;
-            }
-            else
-            {
-                lines[lines.Count - 1].AddPoint(brush, widthMultiplier);
-            }
+            lines.Add(
+                new Line(
+                    lines.Count + 1, position, currentMaterial, widthMultiplier, lineHolder
+                    )
+                );
+            runOnce = true;
         }
-
-        // check if brush is held in lefthand
-        if (RightHand.currentAttachedObject == brushGO.gameObject && trigger > 0)
+        else
         {
-            if (!runOnce)
-            {
-                lines.Add(
-                    new Line(
-                        lines.Count + 1, brush, currentMaterial, widthMultiplier, lineHolder
-                        )
-                    );
-                runOnce = true;
-            }
-            else
-            {
-                lines[lines.Count - 1].AddPoint(brush, widthMultiplier);
-            }
+            lines[lines.Count - 1].AddPoint(position, widthMultiplier);
+        }
+        
+        if (!runOnce)
+        {
+            lines.Add(
+                new Line(
+                    lines.Count + 1, position, currentMaterial, widthMultiplier, lineHolder
+                    )
+                );
+            runOnce = true;
+        }
+        else
+        {
+            lines[lines.Count - 1].AddPoint(position, widthMultiplier);
         }
     }
 
@@ -268,22 +257,55 @@ public class PaletteManagerScript : MonoBehaviour
     {
         // indicator code
         ChangeIndicator(brushIndicator, brushGO, widthMultiplier, currentColor);
-        ChangeIndicator(editIndicator, editGO, widthMultiplier, currentColor);
+        ChangeIndicator(selectorIndicator, selectorGO, widthMultiplier, currentColor);
         ChangeIndicator(deleteIndicator, deleteGO, widthMultiplier, currentColor);
         ChangeIndicator(sprayIndicator, sprayGO, widthMultiplier, currentColor);
 
-        // check left hand
-        if (trigger > 0)
-        {
-            // reduce point count and update by delay
-            if (Time.frameCount % interval == 0)
-            {
-                Paint(trigger);
+        // check if held in either hands
+        if (LeftHand.currentAttachedObject == brushGO.gameObject || RightHand.currentAttachedObject == brushGO.gameObject) {
+            // check if trigger is pressed
+            if (trigger > 0) {
+                // reduce point count and update by delay
+                if (Time.frameCount % interval == 0) {
+                    // calculate brush paint area
+                    Paint(TipPosition(brushGO, widthMultiplier), trigger);
+                }
+            }
+            else {
+                runOnce = false;
             }
         }
-        else
+
+        // check if held in either hands
+        if (LeftHand.currentAttachedObject == selectorGO.gameObject || RightHand.currentAttachedObject == selectorGO.gameObject)
         {
-            runOnce = false;
+            // check if trigger is pressed
+            if (trigger > 0)
+            {
+
+            }
+            else
+            {
+                runOnce = false;
+            }
+        }
+
+        // check if held in either hands
+        if (LeftHand.currentAttachedObject == deleteGO.gameObject || RightHand.currentAttachedObject == deleteGO.gameObject)
+        {
+            // check if trigger is pressed
+            if (trigger > 0)
+            {
+                // reduce point count and update by delay
+                if (Time.frameCount % interval == 0)
+                {
+
+                }
+            }
+            else
+            {
+                runOnce = false;
+            }
         }
     }
 
@@ -339,22 +361,37 @@ public class PaletteManagerScript : MonoBehaviour
     /// <param name="objectTouch"> gives the reference to the game object that is touched </param>
     private void OnDrawGizmos()
     {
-        var delete = deleteGO.transform.position;
-        delete += -deleteGO.transform.up * (widthMultiplier * 0.05f);
-        Gizmos.DrawWireSphere(delete, widthMultiplier * 0.05f);
+        //var delete = deleteGO.transform.position;
+        //delete += -deleteGO.transform.up * (widthMultiplier * 0.05f);
+        //Gizmos.DrawWireSphere(delete, widthMultiplier * 0.05f);
 
-        var edit = editGO.transform.position;
-        edit += -editGO.transform.up * (widthMultiplier * 0.05f);
-        Gizmos.DrawWireSphere(edit, widthMultiplier * 0.05f);
+        //var edit = selectorGo.transform.position;
+        //edit += -selectorGo.transform.up * (widthMultiplier * 0.05f);
+        //Gizmos.DrawWireSphere(edit, widthMultiplier * 0.05f);
 
-        var brush = brushGO.transform.position;
-        brush += -brushGO.transform.up * (widthMultiplier * 0.05f);
-        Gizmos.DrawWireSphere(brush, widthMultiplier * 0.05f);
+        //var brush = brushGO.transform.position;
+        //brush += -brushGO.transform.up * (widthMultiplier * 0.05f);
+        //Gizmos.DrawWireSphere(brush, widthMultiplier * 0.05f);
 
-        var spray = brushGO.transform.position;
-        spray += -brushGO.transform.up * (widthMultiplier * 0.05f);
-        Gizmos.DrawWireSphere(spray, widthMultiplier * 0.05f);
+        //var spray = brushGO.transform.position;
+        //spray += -brushGO.transform.up * (widthMultiplier * 0.05f);
+        //Gizmos.DrawWireSphere(spray, widthMultiplier * 0.05f);
     }
-    
+
+    public void DeletePaint()
+    {
+
+    }
+
+    public void ApplyPaint()
+    {
+
+    }
+
+    public void MergePaint()
+    {
+
+    }
+
     #endregion
 }
