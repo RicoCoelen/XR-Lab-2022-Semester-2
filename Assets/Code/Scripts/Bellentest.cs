@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class Bellentest : MonoBehaviour
 {
-    public AudioSource wall11;
-    public AudioSource wall12;
-    public AudioSource wall13;
-    public AudioSource wall21;
-    public AudioSource wall22;
-    public AudioSource wall23;
-    public AudioSource spraycall;
-    public AudioSource brushcall;
-
+    public Collider spraycan;
     public Collider callbutton;
     public Collider area4;
+    public Collider paintbrush;
+
+    public AudioSource source1;
+    //mooie array gemaakt
+    public AudioClip[] audioClips;
+    private int audioIndex = 0;
 
     private void OnTriggerStay(Collider collider)
     {
@@ -22,36 +20,38 @@ public class Bellentest : MonoBehaviour
         {
             if (collider = area4)
             {
-                if (spraycall.enabled == true)
+                if (spraycan.tag = "pickedup")
                 {
-                    wall11.enabled = true;
-
-                    if (wall11.isPlaying == false)
+                    if (source1.isPlaying == false && audioIndex < audioClips.Length)
                     {
-                        wall12.enabled = true;
-                    }
+                        source1.clip = audioClips[audioIndex];
+                        source1.Play();
 
-                    if (wall12.isPlaying == false && wall12.enabled == true)
-                    {
-                        wall13.enabled = true;
+                        audioIndex++;
                     }
-                }
-
-                if (brushcall.enabled == true)
+                if (paintbrush.tag = "pickedup")
                 {
-                    wall21.enabled = true;
-
-                    if (wall21.isPlaying == false)
+                    if (source1.isPlaying == false && audioIndex < audioClips.Length)
                     {
-                        wall22.enabled = true;
-                    }
+                        source1.clip = audioClips[audioIndex];
+                        source1.Play();
 
-                    if (wall22.isPlaying == false && wall22.enabled == true)
-                    {
-                        wall23.enabled = true;
+                        audioIndex++;
                     }
-                }
-            }
+            }   
+        }
+    }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider = spraycan)
+        {
+            spraycan.GetComponent<Renderer>().tag = "pickedup";
+        }
+
+        if (collider = paintbrush)
+        {
+            paintbrush.GetComponent<Renderer>().tag = "pickedup";
         }
     }
 }
