@@ -173,10 +173,6 @@ public class PaletteManagerScript : MonoBehaviour
         deleteIndicator = Instantiate(deleteIndicator, deleteSpot.transform);
         sprayIndicator = Instantiate(sprayIndicator, spraySpot.transform);
 
-
-        colorGO = Instantiate(colorPrefab, spraySpot.transform);
-        colorGO.GetComponent<ColorPicker>().clampObject = colorGradient;
-
         // get right component hand at start
         LeftHand = GameObject.Find("LeftHand").GetComponent<Hand>();
         RightHand = GameObject.Find("RightHand").GetComponent<Hand>();
@@ -318,6 +314,18 @@ public class PaletteManagerScript : MonoBehaviour
         brushGO.transform.parent = transform;
         brushGO.transform.position = brushSpot.transform.position;
         brushGO.transform.rotation = brushSpot.transform.rotation;
+
+        selectorGO.transform.parent = transform;
+        selectorGO.transform.position = selectorSpot.transform.position;
+        selectorGO.transform.rotation = selectorSpot.transform.rotation;
+
+        deleteGO.transform.parent = transform;
+        deleteGO.transform.position = deleteSpot.transform.position;
+        deleteGO.transform.rotation = deleteSpot.transform.rotation;
+
+        sprayGO.transform.parent = transform;
+        sprayGO.transform.position = spraySpot.transform.position;
+        sprayGO.transform.rotation = spraySpot.transform.rotation;
     }
 
     /// <summary>
@@ -353,29 +361,6 @@ public class PaletteManagerScript : MonoBehaviour
         currentMaterial.SetTexture("_MainTex", tex);
         currentMaterial.SetColor("_Color", col);
         return currentMaterial;
-    }
-
-    /// <summary>
-    /// return or rest tools to their original location
-    /// </summary>
-    /// <param name="objectTouch"> gives the reference to the game object that is touched </param>
-    private void OnDrawGizmos()
-    {
-        //var delete = deleteGO.transform.position;
-        //delete += -deleteGO.transform.up * (widthMultiplier * 0.05f);
-        //Gizmos.DrawWireSphere(delete, widthMultiplier * 0.05f);
-
-        //var edit = selectorGo.transform.position;
-        //edit += -selectorGo.transform.up * (widthMultiplier * 0.05f);
-        //Gizmos.DrawWireSphere(edit, widthMultiplier * 0.05f);
-
-        //var brush = brushGO.transform.position;
-        //brush += -brushGO.transform.up * (widthMultiplier * 0.05f);
-        //Gizmos.DrawWireSphere(brush, widthMultiplier * 0.05f);
-
-        //var spray = brushGO.transform.position;
-        //spray += -brushGO.transform.up * (widthMultiplier * 0.05f);
-        //Gizmos.DrawWireSphere(spray, widthMultiplier * 0.05f);
     }
 
     public void DeletePaint()
