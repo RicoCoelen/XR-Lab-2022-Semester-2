@@ -283,6 +283,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8615484879759046511, guid: 279aabedcd7cfe74eade36c1e16880bd, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 279aabedcd7cfe74eade36c1e16880bd, type: 3}
 --- !u!4 &80117368 stripped
@@ -577,7 +581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4772d0d4be5934a84c9c067853e043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source1: {fileID: 0}
+  source1: {fileID: 1420210094}
   audioClips:
   - {fileID: 8300000, guid: c5d750733ba500b498232e705b65eddf, type: 3}
   - {fileID: 8300000, guid: 1ba39e5eac5a6d64e8913e21f7f78071, type: 3}
@@ -620,6 +624,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c5d750733ba500b498232e705b65eddf, type: 3}
   - {fileID: 8300000, guid: 1ba39e5eac5a6d64e8913e21f7f78071, type: 3}
   - {fileID: 8300000, guid: 81af2c631efa2a14cbcf6c25b53d4f7d, type: 3}
+--- !u!136 &1112192702 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 8615484879759046511, guid: 279aabedcd7cfe74eade36c1e16880bd, type: 3}
+  m_PrefabInstance: {fileID: 80117367}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1136117787
 GameObject:
   m_ObjectHideFlags: 0
@@ -1207,7 +1216,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
@@ -1225,3 +1234,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2097504336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097504327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b63d643e13f732146992ef1b85fe58f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spraycan: {fileID: 1112192702}
+  callbutton: {fileID: 1454358373}
+  area4: {fileID: 254708337}
+  paintbrush: {fileID: 0}
+  source1: {fileID: 1420210094}
+  audioClips1: []
+  audioClips2: []
