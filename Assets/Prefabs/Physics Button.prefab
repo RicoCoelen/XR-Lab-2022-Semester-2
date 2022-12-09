@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4382640041145947603}
   - component: {fileID: 1683098533293071208}
   - component: {fileID: 2774962899992081722}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ ConfigurableJoint:
     spring: 0
     damper: 0
   m_LinearLimit:
-    limit: 0.03
+    limit: 0.01
     bounciness: 0
     contactDistance: 0
   m_AngularXLimitSpring:
@@ -175,8 +175,8 @@ ConfigurableJoint:
     maximumForce: 3.4028233e+38
   m_YDrive:
     serializedVersion: 3
-    positionSpring: 50
-    positionDamper: 10
+    positionSpring: 2000
+    positionDamper: 100
     maximumForce: 3.4028233e+38
   m_ZDrive:
     serializedVersion: 3
@@ -241,7 +241,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3126397223839582846}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Physics Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +277,8 @@ GameObject:
   - component: {fileID: 5677089374145709073}
   - component: {fileID: 3615827397059494633}
   - component: {fileID: 4608210635851411758}
-  m_Layer: 0
+  - component: {fileID: 4952393392852128037}
+  m_Layer: 9
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,3 +366,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!65 &4952393392852128037
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8749752519091118588}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 1.0000001}
+  m_Center: {x: 0.00000005960464, y: 0, z: -0.00000008940696}
