@@ -20,7 +20,7 @@ public class Bellentest : MonoBehaviour
         {
             if (collider = area4)
             {
-                if (spraycan.tag = "pickedup")
+                if (spraycan.tag == "pickedup")
                 {
                     if (source1.isPlaying == false && audioIndex < audioClips.Length)
                     {
@@ -29,15 +29,18 @@ public class Bellentest : MonoBehaviour
 
                         audioIndex++;
                     }
-                if (paintbrush.tag = "pickedup")
-                {
-                    if (source1.isPlaying == false && audioIndex < audioClips.Length)
-                    {
-                        source1.clip = audioClips[audioIndex];
-                        source1.Play();
 
-                        audioIndex++;
+                    if (paintbrush.tag == "pickedup")
+                    {
+                        if (source1.isPlaying == false && audioIndex < audioClips.Length)
+                        {
+                            source1.clip = audioClips[audioIndex];
+                            source1.Play();
+
+                            audioIndex++;
+                        }
                     }
+                }
             }   
         }
     }
