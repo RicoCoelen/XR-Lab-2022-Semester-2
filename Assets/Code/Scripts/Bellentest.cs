@@ -15,6 +15,18 @@ public class Bellentest : MonoBehaviour
     public AudioClip[] audioClips2;
     private int audioIndex = 0;
 
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider = spraycan)
+        {
+            spraycan.GetComponent<Renderer>().tag = "Pickedup";
+        }
+
+        if (collider = paintbrush)
+        {
+            paintbrush.GetComponent<Renderer>().tag = "Pickedup";
+        }
+    }
     private void OnTriggerStay(Collider collider)
     {
         if (collider = callbutton)
@@ -41,18 +53,6 @@ public class Bellentest : MonoBehaviour
                     }
                 }
             }
-        }
-    }
-    void OnTriggerEnter(Collider collider)
-    {
-        if (collider = spraycan)
-        {
-            spraycan.GetComponent<Renderer>().tag = "Pickedup";
-        }
-
-        if (collider = paintbrush)
-        {
-            paintbrush.GetComponent<Renderer>().tag = "Pickedup";
         }
     }
 }
