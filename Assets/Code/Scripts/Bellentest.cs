@@ -11,7 +11,8 @@ public class Bellentest : MonoBehaviour
 
     public AudioSource source1;
     //mooie array gemaakt
-    public AudioClip[] audioClips;
+    public AudioClip[] audioClips1;
+    public AudioClip[] audioClips2;
     private int audioIndex = 0;
 
     private void OnTriggerStay(Collider collider)
@@ -20,41 +21,38 @@ public class Bellentest : MonoBehaviour
         {
             if (collider = area4)
             {
-                if (spraycan.tag == "pickedup")
+                if (spraycan.tag == "Pickedup")
                 {
-                    if (source1.isPlaying == false && audioIndex < audioClips.Length)
+                    if (source1.isPlaying == false && audioIndex < audioClips1.Length && paintbrush.tag == "Untagged")
                     {
-                        source1.clip = audioClips[audioIndex];
+                        Debug.Log("hi1");
+                        source1.clip = audioClips1[audioIndex];
                         source1.Play();
 
                         audioIndex++;
                     }
-
-                    if (paintbrush.tag == "pickedup")
+                    if (source1.isPlaying == false && audioIndex < audioClips2.Length && paintbrush.tag == "Pickedup")
                     {
-                        if (source1.isPlaying == false && audioIndex < audioClips.Length)
-                        {
-                            source1.clip = audioClips[audioIndex];
-                            source1.Play();
+                        Debug.Log("hi2");
+                        source1.clip = audioClips2[audioIndex];
+                        source1.Play();
 
-                            audioIndex++;
-                        }
+                        audioIndex++;
                     }
                 }
-            }   
+            }
         }
     }
-
     void OnTriggerEnter(Collider collider)
     {
         if (collider = spraycan)
         {
-            spraycan.GetComponent<Renderer>().tag = "pickedup";
+            spraycan.GetComponent<Renderer>().tag = "Pickedup";
         }
 
         if (collider = paintbrush)
         {
-            paintbrush.GetComponent<Renderer>().tag = "pickedup";
+            paintbrush.GetComponent<Renderer>().tag = "Pickedup";
         }
     }
 }
