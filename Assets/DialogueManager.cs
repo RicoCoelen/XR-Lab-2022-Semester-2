@@ -10,6 +10,7 @@ public class DialogueManager : MonoBehaviour
 
     public Character character;
     public Image characterSprite;
+    public Sprite puberSprite;
     
 
 
@@ -19,7 +20,7 @@ public class DialogueManager : MonoBehaviour
         {
             case Character.Puber:
                 {
-                    
+                    characterSprite.sprite = puberSprite;
                     break;
                 }
             case Character.Kind:
