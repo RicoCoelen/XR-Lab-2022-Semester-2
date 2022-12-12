@@ -30,7 +30,6 @@ public class Line : MonoBehaviour
         // make the game object
         this.name = "Line: " + order;
         this.tag = "Line";
-        transform.parent = GameObject.Find("Lines").transform;
         
         //gameObject.transform.parent = parent;
         //gameObject.transform.position ;
@@ -78,7 +77,7 @@ public class Line : MonoBehaviour
     public void AddPoint(Vector3 pos, float width)
     {
         // add point to array
-        points.Add(pos);
+        points.Add(pos - gameObject.transform.position);
 
         // set width
         lr.startWidth = 0.05f * width;

@@ -36,7 +36,7 @@ public class DrawScript : BrushBaseScript, IBrush
         }
         else
         {
-            parentScript.lines[parents.lines.Count - 1].AddPoint(base.TipPosition(transform.gameObject, width), width);
+            parentScript.lines[parentScript.lines.Count - 1].AddPoint(base.TipPosition(transform.gameObject, width), width);
         }
     }
 }
