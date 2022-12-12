@@ -9,6 +9,7 @@ TagManager:
   - Portal Point
   - Portal
   - Pickedup
+  - Inarea
   layers:
   - Default
   - TransparentFX
