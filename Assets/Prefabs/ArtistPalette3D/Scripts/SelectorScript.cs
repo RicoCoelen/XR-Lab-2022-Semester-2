@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SelectorScript : MonoBehaviour
+public class SelectorScript : BrushBaseScript, IBrush
 {
-    List<GameObject> selectedObjects;
-    List<GameObject> currentObjects;
+    List<GameObject> selectedObjects = new List<GameObject>();
+    List<GameObject> currentObjects = new List<GameObject>(); 
 
-    public void SelectObjects(float trigger, bool runonce)
+    public override void BrushFunctionality()
     {
         if(trigger > 0)
         {
-            if (!runonce)
+            if (!base.runOnce)
             {
                 // clear selection
                 selectedObjects.Clear();
-                runonce = true;
+                base.runOnce = true;
             }
             
             // add every object touched 
@@ -29,13 +29,8 @@ public class SelectorScript : MonoBehaviour
         }
         else
         {
-            runonce = false;
+            base.runOnce = false;
         }
-    }
-
-    private void LateUpdate()
-    {
-        currentObjects.Clear();
     }
 
     private void OnCollisionEnter(Collision collision)

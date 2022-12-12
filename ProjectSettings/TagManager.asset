@@ -8,6 +8,7 @@ TagManager:
   - Brush
   - Portal Point
   - Portal
+  - Line
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,6 @@ TagManager:
   - Button
   - Minimap
   - MInimap+IRL
-  - 
   - 
   - 
   - 
