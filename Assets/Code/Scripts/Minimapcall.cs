@@ -12,6 +12,7 @@ public class Minimapcall : MonoBehaviour
 
     public GameObject spraycan;
     public GameObject paintbrush;
+    public GameObject paintbucket;
     public Collider area4;
 
     void OnTriggerStay(Collider collider)
@@ -36,11 +37,11 @@ public class Minimapcall : MonoBehaviour
                     source1.Play();
 
                     audioIndex2++;
+                    paintbucket.tag = "Respawn";
                 }
             }
         }
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other = area4)
@@ -53,6 +54,13 @@ public class Minimapcall : MonoBehaviour
         if (other = area4)
         {
             gameObject.tag = "Untagged";
+        }
+    }
+    private void Update()
+    {
+        if (paintbucket.tag == "Respawn" && audioIndex2 == audioClips2.Length)
+        {
+            paintbucket.SetActive(true);
         }
     }
 }
