@@ -26,7 +26,6 @@ public class PaletteManagerScript : MonoBehaviour
     public GameObject deletePrefab;
     public GameObject selectorPrefab;
     public GameObject brushPrefab;
-    public GameObject colorPrefab;
     public GameObject sprayPrefab;
 
     [Header("Spots")]
@@ -40,7 +39,6 @@ public class PaletteManagerScript : MonoBehaviour
     public GameObject selectorGO;
     public GameObject brushGO;
     public GameObject sprayGO;
-    public GameObject colorGradient;
     public TMP_Text lineSize;
 
     #endregion

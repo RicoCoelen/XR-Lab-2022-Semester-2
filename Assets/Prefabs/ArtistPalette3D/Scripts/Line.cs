@@ -9,6 +9,7 @@ using Valve.VR.InteractionSystem;
 public class Line : MonoBehaviour
 {
     public int order;
+    public Vector3 objectRoot;
     public List<Vector3> points = new List<Vector3>();
     public PaletteManagerScript parentScript;
 
@@ -25,7 +26,6 @@ public class Line : MonoBehaviour
     {
         if (parentScript == null)
             parentScript = GameObject.Find("Artist Palette 3D").GetComponent<PaletteManagerScript>();
-
 
         // make the game object
         this.name = "Line: " + order;
@@ -45,7 +45,7 @@ public class Line : MonoBehaviour
         lr.useWorldSpace = false;
 
         // add first position to linerenderer
-        points.Add(transform.position);
+        points.Add(objectRoot - transform.position);
         lr.positionCount = points.Count;
         lr.SetPositions(points.ToArray());
 
@@ -77,7 +77,7 @@ public class Line : MonoBehaviour
     public void AddPoint(Vector3 pos, float width)
     {
         // add point to array
-        points.Add(pos - gameObject.transform.position);
+        points.Add(pos - transform.position);
 
         // set width
         lr.startWidth = 0.05f * width;

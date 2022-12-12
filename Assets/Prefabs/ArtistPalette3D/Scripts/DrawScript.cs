@@ -23,12 +23,13 @@ public class DrawScript : BrushBaseScript, IBrush
         if (!base.runOnce)
         {
             
-            var temp = Instantiate(linePrefab, TipPosition(transform.gameObject, width), Quaternion.identity);
+            var temp = Instantiate(linePrefab, TipPosition(gameObject, width), Quaternion.identity);
             temp.name = "Line: " + countLines;
             
             var temp2 = temp.GetComponent<Line>();
             temp2.order = countLines;
-            
+            temp2.objectRoot = TipPosition(transform.gameObject, width);
+
             parentScript.lines.Add(temp2);
             countLines++;
 

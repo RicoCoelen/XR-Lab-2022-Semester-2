@@ -202,7 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicator: {fileID: 2839613140910546127, guid: eee572118ceecce42844326f770ee61a, type: 3}
   widthMultiplier: 1
-  parentScript: {fileID: 0}
+  parentScript: {fileID: 5246045684358529484, guid: 35cb2c741f3e5154fb32f3519635dff7, type: 3}
   GripAction:
     actionPath: /actions/default/in/GrabGrip
     needsReinit: 0
