@@ -106,9 +106,11 @@ public class BrushBaseScript : MonoBehaviour
         RightHand = GameObject.Find("RightHand").GetComponent<Hand>();
 
         parentScript = transform.parent.GetComponent<PaletteManagerScript>();
-
+        
         if (parentScript == null)
             parentScript = GameObject.Find("Artist Palette 3D").GetComponent<PaletteManagerScript>();
+
+        indicator = Instantiate(indicator, TipPosition(gameObject, width), Quaternion.identity);
     }
 
     public virtual void FixedUpdate()
@@ -116,7 +118,7 @@ public class BrushBaseScript : MonoBehaviour
         // check inputs
         CheckBrushInput(); // do check then paint
 
-        indicator.transform.position = TipPosition(this.gameObject, widthMultiplier); // fix indicators
+        indicator.transform.position = TipPosition(gameObject, widthMultiplier); // fix indicators
     }
 
     public virtual void CheckBrushInput()
@@ -152,7 +154,7 @@ public class BrushBaseScript : MonoBehaviour
     {
         // calculate brush paint area;
         var pos = brush.transform.position;
-        pos = -brush.transform.up * (multiplier * 0.05f);
+        pos += -brush.transform.up * (multiplier * 0.05f);
         return pos;
     }
 }

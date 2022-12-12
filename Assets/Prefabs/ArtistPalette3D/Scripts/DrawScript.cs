@@ -13,6 +13,11 @@ public class DrawScript : BrushBaseScript, IBrush
         base.Awake();
     }
 
+    public override void FixedUpdate()
+    {
+        base.FixedUpdate();
+    }
+
     public override void BrushFunctionality()
     {
         if (!base.runOnce)
