@@ -111,6 +111,7 @@ public class BrushBaseScript : MonoBehaviour
             parentScript = GameObject.Find("Artist Palette 3D").GetComponent<PaletteManagerScript>();
 
         indicator = Instantiate(indicator, TipPosition(transform.gameObject, width), Quaternion.identity);
+        indicator.transform.parent = transform;
     }
 
     public virtual void FixedUpdate()

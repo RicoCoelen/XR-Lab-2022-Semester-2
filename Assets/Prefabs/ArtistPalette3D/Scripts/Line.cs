@@ -9,6 +9,7 @@ using Valve.VR.InteractionSystem;
 public class Line : MonoBehaviour
 {
     public int order;
+    public bool isSelected = false;
     public Vector3 objectRoot;
     public List<Vector3> points = new List<Vector3>();
     public PaletteManagerScript parentScript;
@@ -45,7 +46,7 @@ public class Line : MonoBehaviour
         lr.useWorldSpace = false;
 
         // add first position to linerenderer
-        points.Add(objectRoot - transform.position);
+        points.Add(objectRoot);
         lr.positionCount = points.Count;
         lr.SetPositions(points.ToArray());
 
@@ -72,7 +73,6 @@ public class Line : MonoBehaviour
         i = GetComponent<Interactable>();
         i.highlightOnHover = true;
     }
-
 
     public void AddPoint(Vector3 pos, float width)
     {

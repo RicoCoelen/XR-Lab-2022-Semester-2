@@ -216,6 +216,9 @@ MonoBehaviour:
   trigger: 0
   runOnce: 0
   interval: 5
+  selectHighlight: {fileID: 2100000, guid: 7b939e5e799d98a469f594828ebab52e, type: 2}
+  selectedObjects: []
+  currentObjects: []
 --- !u!1 &3034369331218728645
 GameObject:
   m_ObjectHideFlags: 0
