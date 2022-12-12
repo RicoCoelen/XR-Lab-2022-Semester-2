@@ -18,18 +18,20 @@ public class DrawScript : BrushBaseScript, IBrush
         if (!base.runOnce)
         {
             
-            var temp = Instantiate(linePrefab, base.TipPosition(transform.gameObject, width), Quaternion.identity);
+            var temp = Instantiate(linePrefab, TipPosition(transform.gameObject, width), Quaternion.identity);
             temp.name = "Line: " + countLines;
+            
             var temp2 = temp.GetComponent<Line>();
             temp2.order = countLines;
-            drawnLines.Add(temp2);
+            
+            parentScript.lines.Add(temp2);
             countLines++;
 
             base.runOnce = true;
         }
         else
         {
-            drawnLines[drawnLines.Count - 1].AddPoint(base.TipPosition(transform.gameObject, width), width);
+            parentScript.lines[parents.lines.Count - 1].AddPoint(base.TipPosition(transform.gameObject, width), width);
         }
     }
 }

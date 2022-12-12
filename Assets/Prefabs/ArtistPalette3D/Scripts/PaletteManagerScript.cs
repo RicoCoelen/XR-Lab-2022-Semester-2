@@ -37,21 +37,11 @@ public class PaletteManagerScript : MonoBehaviour
 
     [Header("GameObjects")]
     public GameObject deleteGO;
-    public GameObject deleteIndicator;
-
     public GameObject selectorGO;
-    public GameObject selectorIndicator;
-
     public GameObject brushGO;
-    public GameObject brushIndicator;
-
     public GameObject sprayGO;
-    public GameObject sprayIndicator;
-
-    public GameObject colorGO;
     public GameObject colorGradient;
     public TMP_Text lineSize;
-
 
     #endregion
    
@@ -67,11 +57,6 @@ public class PaletteManagerScript : MonoBehaviour
         selectorGO = Instantiate(selectorPrefab, selectorSpot.transform); 
         brushGO = Instantiate(brushPrefab, brushSpot.transform); 
         sprayGO = Instantiate(sprayPrefab, spraySpot.transform);
-
-        brushIndicator = Instantiate(brushIndicator, spraySpot.transform);
-        selectorIndicator = Instantiate(selectorIndicator, selectorSpot.transform);
-        deleteIndicator = Instantiate(deleteIndicator, deleteSpot.transform);
-        sprayIndicator = Instantiate(sprayIndicator, spraySpot.transform);
     }
 
     #endregion
