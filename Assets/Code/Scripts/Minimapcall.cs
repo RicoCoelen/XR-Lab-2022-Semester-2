@@ -73,7 +73,7 @@ public class Minimapcall : MonoBehaviour
     }
     IEnumerator Delay()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
         paintbucket.SetActive(true);
         yield return new WaitForSeconds(1);
         _paintbucket.isKinematic = false;
