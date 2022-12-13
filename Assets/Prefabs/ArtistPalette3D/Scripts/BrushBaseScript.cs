@@ -120,6 +120,9 @@ public class BrushBaseScript : MonoBehaviour
         CheckBrushInput(); // do check then paint
 
         indicator.transform.position = TipPosition(gameObject, width); // fix indicators
+        var temp = indicator.transform.localScale;
+        indicator.transform.localScale = new Vector3(1, 1, 1);
+        indicator.transform.localScale *= (width * 0.1f);
     }
 
     public virtual void CheckBrushInput()
@@ -155,7 +158,7 @@ public class BrushBaseScript : MonoBehaviour
     {
         // calculate brush paint area;
         var pos = brush.transform.position;
-        pos += -brush.transform.up * (multiplier * 0.05f);
+        pos += -brush.transform.up * (multiplier * 0.03f);
         return pos;
     }
 }

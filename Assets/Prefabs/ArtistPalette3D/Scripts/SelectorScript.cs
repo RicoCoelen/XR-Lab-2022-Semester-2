@@ -22,16 +22,13 @@ public class SelectorScript : BrushBaseScript, IBrush
 
                     foreach (Material mat in currentObjects[i].GetComponent<LineRenderer>().sharedMaterials)
                     {
-                        if (mat == selectHighlight)
+                        if (mat.name == selectHighlight.name)
                         {
                             index = temp;
 
                             Debug.Log(index);
                         }
-                        else
-                        {
-                            temp++;
-                        }
+                        temp++;
                     }
 
                     if (index > 0)
