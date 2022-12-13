@@ -119,7 +119,7 @@ public class BrushBaseScript : MonoBehaviour
         // check inputs
         CheckBrushInput(); // do check then paint
 
-        indicator.transform.position = TipPosition(gameObject, widthMultiplier); // fix indicators
+        indicator.transform.position = TipPosition(gameObject, width); // fix indicators
     }
 
     public virtual void CheckBrushInput()
