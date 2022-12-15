@@ -13,8 +13,6 @@ public class DialogueManager : MonoBehaviour
     public Sprite puberSprite;
     public Sprite kindSprite;
     public Sprite KunstenaarSprite;
-    
-
 
     private void Start()
     {
@@ -35,9 +33,6 @@ public class DialogueManager : MonoBehaviour
                     characterSprite.sprite = KunstenaarSprite;
                     break;
                 }
-
         }
     }
-
-    
 }
