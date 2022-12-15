@@ -6,19 +6,21 @@ using Valve.VR.InteractionSystem;
 
 public class MInimapManager : MonoBehaviour
 {
-    public SteamVR_Action_Boolean trigger;
+    public SteamVR_Action_Boolean MinimapTriggerAction;
     public SteamVR_Input_Sources AllDevices = SteamVR_Input_Sources.Any;
     public Canvas minimap;
+    public bool minimapIsOn;
     // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void Update()
     {
-        if (trigger.GetState(AllDevices))
+        //
+        minimapIsOn = MinimapTriggerAction.GetState(AllDevices);
+        if (minimapIsOn == true)
         {
             minimap.transform.gameObject.SetActive(true);
         }
@@ -26,5 +28,16 @@ public class MInimapManager : MonoBehaviour
         {
             minimap.transform.gameObject.SetActive(false);
         }
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        
+    }
+
+    public void MinimapTriggerLogic()
+    {
+
     }
 }
