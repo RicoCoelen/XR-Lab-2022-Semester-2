@@ -11,6 +11,7 @@ public class DialogueManager : MonoBehaviour
     public Character character;
     public Image characterSprite;
     public Sprite puberSprite;
+    public Sprite kindSprite;
     
 
 
