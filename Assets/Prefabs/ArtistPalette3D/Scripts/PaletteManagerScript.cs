@@ -37,6 +37,8 @@ public class PaletteManagerScript : MonoBehaviour
     public GameObject selectorGO;
     public GameObject brushGO;
     public GameObject sprayGO;
+    public GameObject colorGO;
+    public GameObject materialGO;
 
     [Header("UI")]
     public TMP_Text lineSize;
@@ -77,7 +79,7 @@ public class PaletteManagerScript : MonoBehaviour
     /// </summary>
     public void FixedUpdate()
     {
-
+        currentColor = colorGO.GetComponent<ColorPicker>().stolenColor;
     }
 
     /// <summary>
@@ -131,7 +133,7 @@ public class PaletteManagerScript : MonoBehaviour
 
     public void ApplyPaint()
     {
-
+        currentColor = colorGO.GetComponent<ColorPicker>().stolenColor;
     }
 
     #endregion

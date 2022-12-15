@@ -15,6 +15,7 @@ public class Line : MonoBehaviour
     public List<Vector3> points = new List<Vector3>();
     public PaletteManagerScript parentScript;
     public Transform mergeParent;
+    public Material mat;
 
     MeshRenderer mr;
     MeshFilter mf;
@@ -33,6 +34,8 @@ public class Line : MonoBehaviour
         // make the game object
         this.name = "Line: " + order;
         this.tag = "Line";
+
+        mat = parentScript.currentMaterial;
         
         //gameObject.transform.parent = parent;
         //gameObject.transform.position ;
