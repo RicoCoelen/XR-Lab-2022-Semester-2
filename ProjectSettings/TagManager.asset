@@ -8,8 +8,13 @@ TagManager:
   - Brush
   - Portal Point
   - Portal
+<<<<<<< HEAD
   - Line
   - Merge
+=======
+  - Pickedup
+  - Inarea
+>>>>>>> f32f6cc2046ae38a695fcfd2f522361787d59ca6
   layers:
   - Default
   - TransparentFX
