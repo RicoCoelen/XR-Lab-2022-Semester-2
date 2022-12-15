@@ -10,6 +10,8 @@ TagManager:
   - Portal
   - Pickedup
   - Inarea
+  - Line
+  - Merge
   layers:
   - Default
   - TransparentFX
