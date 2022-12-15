@@ -12,6 +12,8 @@ TagManager:
   - Inarea
   - Line
   - Merge
+  - Pickedup
+  - Inarea
   layers:
   - Default
   - TransparentFX

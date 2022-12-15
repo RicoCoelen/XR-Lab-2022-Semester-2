@@ -9,25 +9,11 @@ public class LineRendererSmoother : MonoBehaviour
     public Vector3[] InitialState = new Vector3[1];
     public float SmoothingLength = 2f;
     public int SmoothingSections = 10;
-
-    private void OnGUI()
-    {
-        if (GUI.Button(new Rect(10, 10, 300, 40), "Smooth Line"))
-        {
-            Smooth();
-        }
-        if (GUI.Button(new Rect(10, 60, 300, 40), "Generate Collider"))
-        {
-            GenerateMeshCollider();
-        }
-        if (GUI.Button(new Rect(10, 110, 300, 40), "Simplify Mesh"))
-        {
-            Line.Simplify(0.1f);
-        }
-    }
+    public Camera steamvrCamera;
 
     public void GenerateMeshCollider()
     {
+        steamvrCamera = GameObject.Find("VRCamera").GetComponent<Camera>();
         MeshCollider collider = GetComponent<MeshCollider>();
 
         if (collider == null)
@@ -37,7 +23,7 @@ public class LineRendererSmoother : MonoBehaviour
 
 
         Mesh mesh = new Mesh();
-        Line.BakeMesh(mesh, true);
+        Line.BakeMesh(mesh, steamvrCamera, true);
 
         // if you need collisions on both sides of the line, simply duplicate & flip facing the other direction!
         // This can be optimized to improve performance ;)
@@ -57,6 +43,7 @@ public class LineRendererSmoother : MonoBehaviour
 
     public Mesh GetMesh(MeshCollider collider)
     {
+        steamvrCamera = GameObject.Find("VRCamera").GetComponent<Camera>();
         collider = GetComponent<MeshCollider>();
 
         if (collider == null)
@@ -66,7 +53,7 @@ public class LineRendererSmoother : MonoBehaviour
 
 
         Mesh mesh = new Mesh();
-        Line.BakeMesh(mesh, true);
+        Line.BakeMesh(mesh, steamvrCamera, true);
 
         // if you need collisions on both sides of the line, simply duplicate & flip facing the other direction!
         // This can be optimized to improve performance ;)

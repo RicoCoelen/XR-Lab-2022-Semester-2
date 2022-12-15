@@ -31,7 +31,6 @@ public class DialogueManager : MonoBehaviour
             case Character.Kunstenaar:
                 {
                     characterSprite.sprite = KunstenaarSprite;
-
                     break;
                 }
         }

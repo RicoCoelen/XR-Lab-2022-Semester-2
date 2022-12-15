@@ -32,8 +32,14 @@ public class ColorPicker : MonoBehaviour
         {
             if (hit.collider && hit.collider.TryGetComponent<Renderer>(out Renderer renderer))
             {
-                stolenColor = renderer.material.color;
-                changeObject.GetComponent<Renderer>().material.color = stolenColor;
+                try {
+                    stolenColor = renderer.material.color;
+                    changeObject.GetComponent<Renderer>().material.color = stolenColor;
+                }
+                catch
+                {
+
+                }
             }
 
             Vector2 hitPos;

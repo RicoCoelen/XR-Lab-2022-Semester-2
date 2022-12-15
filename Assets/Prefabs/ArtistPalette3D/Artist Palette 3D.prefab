@@ -393,6 +393,8 @@ MonoBehaviour:
   selectorGO: {fileID: 0}
   brushGO: {fileID: 0}
   sprayGO: {fileID: 0}
+  colorGO: {fileID: 4485481775206876810}
+  materialGO: {fileID: 8403611436256174640}
   lineSize: {fileID: 4384932609687912739}
 --- !u!114 &5738726193325770983
 MonoBehaviour:
@@ -2012,6 +2014,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee3a106a38d2aaf44a085b6d5abe383f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thumbnails: []
+  materials: []
+  viewport: {fileID: 7201474898097772998}
+  content: {fileID: 1390996388585876364}
 --- !u!1 &8501450492769248195
 GameObject:
   m_ObjectHideFlags: 0
@@ -2994,5 +3000,10 @@ PrefabInstance:
 --- !u!4 &2901893977358409885 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8966354837498266976, guid: 25812c81a0b033048ba88c1ffc7705a6, type: 3}
+  m_PrefabInstance: {fileID: 6065078807696221693}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4485481775206876810 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7643977332030071671, guid: 25812c81a0b033048ba88c1ffc7705a6, type: 3}
   m_PrefabInstance: {fileID: 6065078807696221693}
   m_PrefabAsset: {fileID: 0}
