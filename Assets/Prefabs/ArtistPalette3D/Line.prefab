@@ -297,7 +297,19 @@ MonoBehaviour:
       m_Calls: []
   onHeldUpdate:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5906705856887447930}
+        m_TargetAssemblyTypeName: Line, Assembly-CSharp
+        m_MethodName: UpdateLinePositions
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   interactable: {fileID: 0}
 --- !u!114 &5906705856887447930
 MonoBehaviour:
@@ -312,6 +324,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   order: 0
+  isSelected: 0
   objectRoot: {x: 0, y: 0, z: 0}
   points: []
   parentScript: {fileID: 0}
+  mergeParent: {fileID: 0}

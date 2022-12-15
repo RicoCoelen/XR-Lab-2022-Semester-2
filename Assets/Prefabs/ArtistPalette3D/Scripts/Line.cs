@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -98,5 +99,13 @@ public class Line : MonoBehaviour
 
         // generate the collider using bezier curves
         lrs.GenerateMeshCollider();
+    }
+
+    public void UpdateLinePositions()
+    {
+        if (mergeParent)
+        {
+            transform.parent.position = mergeParent.position - transform.position;
+        }
     }
 }

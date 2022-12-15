@@ -1823,7 +1823,6 @@ GameObject:
   - component: {fileID: 4934615897115582595}
   - component: {fileID: 2598366437608719525}
   - component: {fileID: 228024725286315609}
-  - component: {fileID: 2080447529353895009}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -1890,18 +1889,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 307.74
---- !u!114 &2080447529353895009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8087005173849565623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fb794cc25e98bf4593e04bf93df22bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8403611436256174640
 GameObject:
   m_ObjectHideFlags: 0
@@ -1914,6 +1901,7 @@ GameObject:
   - component: {fileID: 2597784454835240353}
   - component: {fileID: 7962836689045851120}
   - component: {fileID: 5962576365444971806}
+  - component: {fileID: 1038004772415071767}
   m_Layer: 5
   m_Name: Scroll View Material
   m_TagString: Untagged
@@ -2012,6 +2000,18 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1038004772415071767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8403611436256174640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee3a106a38d2aaf44a085b6d5abe383f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8501450492769248195
 GameObject:
   m_ObjectHideFlags: 0
