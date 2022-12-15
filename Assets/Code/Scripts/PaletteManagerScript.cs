@@ -230,20 +230,10 @@ public class PaletteManagerScript : MonoBehaviour
 
     public Vector3 TipPosition(GameObject brush, int multiplier)
     {
-        // calculate brush paint area
+        // calculate brush paint area;
         var pos = brush.transform.position;
         pos += -brush.transform.up * (multiplier * 0.05f);
         return pos;
-    }
-
-    public void ChangeIndicator(GameObject indicator, GameObject tipObject, int width, Color color)
-    {
-        indicator.transform.localScale = indicator.transform.localScale * width;
-        indicator.transform.position = TipPosition(tipObject, width);
-        var id = indicator.GetComponent<Renderer>().material;
-        id.SetColor("_WireColor", color);
-        id.SetColor("_BaseColor", color);
-        indicator.GetComponent<Renderer>().material = id;
     }
 
     /// <summary>
@@ -251,11 +241,10 @@ public class PaletteManagerScript : MonoBehaviour
     /// </summary>
     public void FixedUpdate()
     {
-        // indicator code
-        ChangeIndicator(brushIndicator, brushGO, widthMultiplier, currentColor);
-        ChangeIndicator(selectorIndicator, selectorGO, widthMultiplier, currentColor);
-        ChangeIndicator(deleteIndicator, deleteGO, widthMultiplier, currentColor);
-        ChangeIndicator(sprayIndicator, sprayGO, widthMultiplier, currentColor);
+        brushIndicator.transform.position = TipPosition(brushGO, widthMultiplier);
+        selectorIndicator.transform.position = TipPosition(selectorGO, widthMultiplier);
+        sprayIndicator.transform.position = TipPosition(sprayGO, widthMultiplier);
+        deleteIndicator.transform.position = TipPosition(deleteGO, widthMultiplier);
 
         // check if held in either hands
         if (LeftHand.currentAttachedObject == brushGO.gameObject || RightHand.currentAttachedObject == brushGO.gameObject) {
