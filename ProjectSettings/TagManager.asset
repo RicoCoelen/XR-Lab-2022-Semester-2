@@ -9,6 +9,7 @@ TagManager:
   - Portal Point
   - Portal
   - Line
+  - Merge
   layers:
   - Default
   - TransparentFX

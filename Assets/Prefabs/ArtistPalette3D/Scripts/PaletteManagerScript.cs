@@ -18,9 +18,7 @@ public class PaletteManagerScript : MonoBehaviour
     
     [Header("Technical Variables")]
     public List<Line> lines = new List<Line>();
-    public List<Line> selectedLines = new List<Line>();
     public int interval = 5;
-    public Transform lineHolder;
 
     [Header("Prefabs")]
     public GameObject deletePrefab;
@@ -39,6 +37,8 @@ public class PaletteManagerScript : MonoBehaviour
     public GameObject selectorGO;
     public GameObject brushGO;
     public GameObject sprayGO;
+
+    [Header("UI")]
     public TMP_Text lineSize;
 
     #endregion
@@ -55,6 +55,16 @@ public class PaletteManagerScript : MonoBehaviour
         selectorGO = Instantiate(selectorPrefab, selectorSpot.transform); 
         brushGO = Instantiate(brushPrefab, brushSpot.transform); 
         sprayGO = Instantiate(sprayPrefab, spraySpot.transform);
+    }
+
+    public void LoadMaterials()
+    {
+        //DirectoryInfo dir = new DirectoryInfo("Assets/Resources/Vehicles");
+        //FileInfo[] info = dir.GetFiles("*.prefab");
+        //foreach (FileInfo f in info)
+        //{
+        //    GUI.Label(new Rect(300, 500, 50, 20), f.FullName);
+        //}
     }
 
     #endregion
@@ -94,9 +104,8 @@ public class PaletteManagerScript : MonoBehaviour
     }
 
     /// <summary>
-    /// return or rest tools to their original location
+    /// function for sizeup brushsize button to increase width multiplier
     /// </summary>
-    /// <param name="objectTouch"> gives the reference to the game object that is touched </param>
     public void SizeUp()
     {
         widthMultiplier++;
@@ -104,9 +113,8 @@ public class PaletteManagerScript : MonoBehaviour
     }
 
     /// <summary>
-    /// return or rest tools to their original location
+    /// function for sizedown brushsize button to decrease width multiplier
     /// </summary>
-    /// <param name="objectTouch"> gives the reference to the game object that is touched </param>
     public void SizeDown()
     {
         if(widthMultiplier > 1)
@@ -116,24 +124,12 @@ public class PaletteManagerScript : MonoBehaviour
         lineSize.text = widthMultiplier.ToString();
     }
 
-    /// <summary>
-    /// return or rest tools to their original location
-    /// </summary>
-    /// <param name="objectTouch"> gives the reference to the game object that is touched </param>
-    public Material ChangePaint(Material mat, Texture2D tex, Color col)
+    public void MergePaint()
     {
-        currentMaterial = mat;
-        currentMaterial.SetTexture("_MainTex", tex);
-        currentMaterial.SetColor("_Color", col);
-        return currentMaterial;
+        selectorGO.GetComponent<SelectorScript>().MergePaint();
     }
 
     public void ApplyPaint()
-    {
-
-    }
-
-    public void MergePaint()
     {
 
     }

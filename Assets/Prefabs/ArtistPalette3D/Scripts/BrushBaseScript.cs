@@ -63,18 +63,6 @@ public class BrushBaseScript : MonoBehaviour
         }
     }
 
-    public Transform lineHolder
-    {
-        get
-        {
-            return parentScript.lineHolder;
-        }
-        set
-        {
-            parentScript.lineHolder = value;
-        }
-    }
-
     public List<Line> drawnLines
     {
         get

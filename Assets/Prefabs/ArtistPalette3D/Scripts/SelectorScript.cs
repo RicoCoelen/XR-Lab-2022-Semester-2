@@ -5,59 +5,20 @@ using UnityEngine;
 public class SelectorScript : BrushBaseScript, IBrush
 {
     [SerializeField] private Material selectHighlight;
+    [SerializeField] private List<GameObject> selectedObjects;
+    [SerializeField] private int layers;
 
-    public List<GameObject> selectedObjects = new List<GameObject>();
-    public List<GameObject> currentObjects = new List<GameObject>(); 
-
+    /// <summary>
+    /// Remove materials from selected objects
+    /// </summary>
     public override void BrushFunctionality()
     {
         if(trigger > 0)
         {
             if (!runOnce)
             {
-                for(int i=0;i<currentObjects.Count;i++)
-                {
-                    var temp = 0;
-                    var index = 0;
-
-                    foreach (Material mat in currentObjects[i].GetComponent<LineRenderer>().sharedMaterials)
-                    {
-                        if (mat.name == selectHighlight.name)
-                        {
-                            index = temp;
-
-                            Debug.Log(index);
-                        }
-                        temp++;
-                    }
-
-                    if (index > 0)
-                    {
-                        currentObjects[i].GetComponent<LineRenderer>().sharedMaterials = new Material[]
-                        {
-                            currentObjects[i].GetComponent<LineRenderer>().sharedMaterials[0],
-                        };
-                    }
-
-                    // clear selection
-                    currentObjects.RemoveAt(i);
-                }
+                RemoveMaterials();
                 runOnce = true;
-            }
-            
-            // add every object touched and trigger held
-            foreach (GameObject go in currentObjects)
-            {
-                if (!selectedObjects.Contains(go))
-                {
-                    LineRenderer temp = go.GetComponent<LineRenderer>();
-                    temp.sharedMaterials = new Material[] 
-                    {
-                        temp.sharedMaterial,
-                        new Material(selectHighlight)
-                    };
-                    selectedObjects.Add(go);
-                }
             }
         }
         else
@@ -66,13 +27,77 @@ public class SelectorScript : BrushBaseScript, IBrush
         }
     }
 
+    /// <summary>
+    /// Remove materials from selected objects
+    /// </summary>
+    public void RemoveMaterials()
+    {
+        foreach (GameObject go in selectedObjects)
+        {
+            LineRenderer lr = go.GetComponent<LineRenderer>();
+            Material[] mat = lr.sharedMaterials;
+
+            for (int j = 0; j < mat.Length; j++)
+            {
+                if (mat[j].name == selectHighlight.name)
+                {
+                    lr.sharedMaterials = new Material[]
+                    {
+                        lr.sharedMaterials[0],
+                    };
+                }
+            }
+        }
+        // clear selection
+        selectedObjects.Clear();
+    }
+
+    /// <summary>
+    /// add all the lines to a empty transform to merge them (maybe future linerenderer? or under 1 parent instead of layers)
+    /// </summary>
+    public void MergePaint()
+    {   
+        // bug delete already merged lines if not taken with selection
+        if(selectedObjects.Count > 1)
+        {
+            GameObject layer = new GameObject();
+            layer.name = "Merge Layer: " + layers;
+            layer.tag = "Merge";
+
+            foreach (GameObject go in selectedObjects)
+            {
+                Transform temp = go.transform.parent;
+                go.transform.parent = layer.transform;
+                if (temp) { 
+                    go.GetComponent<Line>().mergeParent = layer.transform;
+                    if (temp.tag.Equals("Merge") && temp.childCount < 1)
+                        Destroy(temp.gameObject);
+                }
+            }
+
+            RemoveMaterials();
+            layers++;
+        }
+    }
+
+    /// <summary>
+    /// on trigger function to add lines (while trigger pull) and give them a new material
+    /// </summary>
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.tag == "Line" && trigger > 0)
         {
-            if (!currentObjects.Contains(collider.gameObject))
+            if (!selectedObjects.Contains(collider.gameObject))
             {
-                currentObjects.Add(collider.gameObject);
+                LineRenderer temp = collider.GetComponent<LineRenderer>();
+
+                temp.sharedMaterials = new Material[]
+                {
+                        temp.sharedMaterial,
+                        new Material(selectHighlight)
+                };
+
+                selectedObjects.Add(collider.gameObject);
             }
         }
     }

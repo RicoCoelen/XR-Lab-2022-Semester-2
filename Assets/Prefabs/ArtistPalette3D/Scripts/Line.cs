@@ -13,6 +13,7 @@ public class Line : MonoBehaviour
     public Vector3 objectRoot;
     public List<Vector3> points = new List<Vector3>();
     public PaletteManagerScript parentScript;
+    public Transform mergeParent;
 
     MeshRenderer mr;
     MeshFilter mf;
@@ -72,6 +73,14 @@ public class Line : MonoBehaviour
         // make it interactable and glow on hover
         i = GetComponent<Interactable>();
         i.highlightOnHover = true;
+    }
+
+    private void FixedUpdate()
+    {
+        if(mergeParent)
+        {
+            transform.parent.position = mergeParent.position - transform.position;
+        }
     }
 
     public void AddPoint(Vector3 pos, float width)
