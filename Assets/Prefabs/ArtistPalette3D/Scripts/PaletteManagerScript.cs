@@ -57,6 +57,8 @@ public class PaletteManagerScript : MonoBehaviour
         selectorGO = Instantiate(selectorPrefab, selectorSpot.transform); 
         brushGO = Instantiate(brushPrefab, brushSpot.transform); 
         sprayGO = Instantiate(sprayPrefab, spraySpot.transform);
+
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public void LoadMaterials()

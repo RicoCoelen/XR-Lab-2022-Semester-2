@@ -22,9 +22,10 @@ public class InputManager : MonoBehaviour
     public GameObject playerHead;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
        palette = GameObject.Find("Artist Palette 3D");
+       DontDestroyOnLoad(this.gameObject);
     }
 
     private void FixedUpdate()
