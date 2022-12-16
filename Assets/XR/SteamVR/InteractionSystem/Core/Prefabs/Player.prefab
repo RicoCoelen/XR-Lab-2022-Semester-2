@@ -226,6 +226,7 @@ GameObject:
   m_Component:
   - component: {fileID: 447954}
   - component: {fileID: 11465950}
+  - component: {fileID: 8835302089968930777}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -284,6 +285,30 @@ MonoBehaviour:
     actionPath: /actions/default/in/HeadsetOnHead
     needsReinit: 0
   allowToggleTo2D: 1
+--- !u!114 &8835302089968930777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5e0769293697e34f91f5fa5d2836143, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MenuAction:
+    actionPath: /actions/default/in/MenuAction
+    needsReinit: 0
+  AllDevices: 0
+  minimapIsOn: 0
+  minimap: {fileID: 5047543899249378920}
+  palette: {fileID: 0}
+  leftMenuButton: 0
+  rightMenuButton: 0
+  runonceLeft: 0
+  runonceRight: 0
+  playerHead: {fileID: 125964}
 --- !u!1 &109154
 GameObject:
   m_ObjectHideFlags: 0
@@ -2819,6 +2844,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
+--- !u!223 &5047543899249378920 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 2295031644372132906, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
+  m_PrefabInstance: {fileID: 6473341105141703234}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &5047543899249378923 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2295031644372132905, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
