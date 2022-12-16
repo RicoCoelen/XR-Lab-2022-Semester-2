@@ -52,8 +52,7 @@ public class InputManager : MonoBehaviour
             if (!runonceRight)
             {
                 palette.transform.parent = playerHead.transform;
-                palette.transform.position = playerHead.transform.position + (playerHead.transform.forward * 1f);
-                palette.transform.position = playerHead.transform.position + (-playerHead.transform.up * 0.1f);
+                palette.transform.position = playerHead.transform.position + (-playerHead.transform.up * 0.5f) + (playerHead.transform.forward * 0.5f);
                 palette.transform.rotation = playerHead.transform.rotation;
                 palette.transform.parent = null;
                 runonceRight = true;

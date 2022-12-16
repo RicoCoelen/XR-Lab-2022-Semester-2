@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4222691664906836125}
   m_Layer: 0
   m_Name: Telephone manager
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,6 +47,8 @@ MonoBehaviour:
   character: 0
   characterSprite: {fileID: 7004649071026312646}
   puberSprite: {fileID: 0}
+  kindSprite: {fileID: 0}
+  KunstenaarSprite: {fileID: 0}
 --- !u!1 &2295031642616520953
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,7 +62,7 @@ GameObject:
   - component: {fileID: 2295031642616520955}
   m_Layer: 5
   m_Name: Minimap RenderTexture
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,7 +135,7 @@ GameObject:
   - component: {fileID: 2295031643760069831}
   m_Layer: 5
   m_Name: Border
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -210,7 +212,7 @@ GameObject:
   - component: {fileID: 2295031644372132904}
   m_Layer: 5
   m_Name: WristCanvas
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -222,9 +224,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2295031644372132910}
-  m_LocalRotation: {x: -0, y: 0.97716266, z: 0.2124926, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.24999999}
+  m_LocalRotation: {x: -0.48702326, y: -0.47215417, z: 0.7347509, w: 0.004466847}
+  m_LocalPosition: {x: 0, y: 0, z: -0.0604}
+  m_LocalScale: {x: 0.005, y: 0.005, z: 0.024999997}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2295031642616520952}
@@ -233,10 +235,10 @@ RectTransform:
   - {fileID: 2295031643760069828}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -24.537, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 43.589, y: -83.678, z: 139.908}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.0522, y: -0.0184}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2295031644372132906
@@ -313,7 +315,7 @@ GameObject:
   - component: {fileID: 6002322906380448595}
   m_Layer: 5
   m_Name: Calling
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -448,7 +450,7 @@ GameObject:
   - component: {fileID: 7004649071026312646}
   m_Layer: 5
   m_Name: Image (1)
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -524,7 +526,7 @@ GameObject:
   - component: {fileID: 2644852961913403541}
   m_Layer: 5
   m_Name: telephone background
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

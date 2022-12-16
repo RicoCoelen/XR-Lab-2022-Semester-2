@@ -2754,18 +2754,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 476540}
     m_Modifications:
-    - target: {fileID: 1132533007905927813, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2295031642616520953, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2295031643760069829, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 2295031644372132905, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2812,63 +2800,47 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2295031644372132905, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.0604
       objectReference: {fileID: 0}
     - target: {fileID: 2295031644372132905, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 0.0044643497
       objectReference: {fileID: 0}
     - target: {fileID: 2295031644372132905, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.48702073
       objectReference: {fileID: 0}
     - target: {fileID: 2295031644372132905, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.97716266
+      value: -0.47215652
       objectReference: {fileID: 0}
     - target: {fileID: 2295031644372132905, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.2124926
+      value: 0.73475105
       objectReference: {fileID: 0}
     - target: {fileID: 2295031644372132905, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 0.0522
       objectReference: {fileID: 0}
     - target: {fileID: 2295031644372132905, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -0.0184
       objectReference: {fileID: 0}
     - target: {fileID: 2295031644372132905, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -24.537
+      value: 43.589
       objectReference: {fileID: 0}
     - target: {fileID: 2295031644372132905, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: -83.678
       objectReference: {fileID: 0}
     - target: {fileID: 2295031644372132905, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 139.908
       objectReference: {fileID: 0}
     - target: {fileID: 2295031644372132910, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
       propertyPath: m_Name
       value: WristCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 2295031644372132910, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2799486634129848781, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7852521804228647432, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 9003467650627833389, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
-      propertyPath: m_TagString
-      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
