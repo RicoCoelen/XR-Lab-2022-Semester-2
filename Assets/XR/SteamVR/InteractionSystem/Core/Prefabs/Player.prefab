@@ -2754,6 +2754,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 476540}
     m_Modifications:
+    - target: {fileID: 1132533007905927813, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2295031642616520953, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2295031643760069829, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 2295031644372132905, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2841,6 +2853,22 @@ PrefabInstance:
     - target: {fileID: 2295031644372132910, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
       propertyPath: m_Name
       value: WristCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2295031644372132910, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2799486634129848781, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7852521804228647432, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003467650627833389, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2508ad60c6b293840b5193b9bc42ac77, type: 3}
