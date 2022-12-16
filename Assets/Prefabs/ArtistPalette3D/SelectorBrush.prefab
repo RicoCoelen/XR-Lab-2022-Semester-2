@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3034369330767840608}
   - component: {fileID: 967092551894239095}
   - component: {fileID: 7041834426426919965}
+  - component: {fileID: 5240031720965898908}
   m_Layer: 0
   m_Name: SelectorBrush
   m_TagString: Untagged
@@ -101,7 +102,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
@@ -187,6 +188,37 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.03, y: 0.22, z: 0.03}
   m_Center: {x: 0, y: 0.09, z: 0}
+--- !u!114 &5240031720965898908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3034369330767840613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a06b0c84985d45c4f8f248e2c5b6107c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indicator: {fileID: 2839613140910546127, guid: eee572118ceecce42844326f770ee61a, type: 3}
+  widthMultiplier: 1
+  parentScript: {fileID: 5246045684358529484, guid: 35cb2c741f3e5154fb32f3519635dff7, type: 3}
+  GripAction:
+    actionPath: /actions/default/in/GrabGrip
+    needsReinit: 0
+  DrawTriggerAction:
+    actionPath: /actions/default/in/Squeeze
+    needsReinit: 0
+  AllDevices: 0
+  LeftHand: {fileID: 0}
+  RightHand: {fileID: 0}
+  grip: 0
+  trigger: 0
+  runOnce: 0
+  interval: 5
+  selectHighlight: {fileID: 2100000, guid: 7b939e5e799d98a469f594828ebab52e, type: 2}
+  selectedObjects: []
+  currentObjects: []
 --- !u!1 &3034369331218728645
 GameObject:
   m_ObjectHideFlags: 0

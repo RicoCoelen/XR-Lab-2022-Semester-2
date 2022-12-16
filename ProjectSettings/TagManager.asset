@@ -8,6 +8,12 @@ TagManager:
   - Brush
   - Portal Point
   - Portal
+  - Pickedup
+  - Inarea
+  - Line
+  - Merge
+  - Pickedup
+  - Inarea
   layers:
   - Default
   - TransparentFX
@@ -19,7 +25,6 @@ TagManager:
   - Button
   - Minimap
   - MInimap+IRL
-  - 
   - 
   - 
   - 
