@@ -7,6 +7,9 @@ using Valve.VR.InteractionSystem;
 /// <summary>
 ///   Class to hold the line variables
 /// </summary>
+/// 
+
+[Serializable]
 public class Line : MonoBehaviour
 {
     public int order;
@@ -79,13 +82,21 @@ public class Line : MonoBehaviour
         i.highlightOnHover = true;
     }
 
-    private void FixedUpdate()
-    {
-        if(mergeParent)
-        {
-            transform.parent.position = mergeParent.position - transform.position;
-        }
-    }
+    //private void FixedUpdate()
+    //{
+    //    if(mergeParent)
+    //    {
+    //        transform.parent.position = mergeParent.position - transform.position;
+    //    }
+    //}
+
+    //public void UpdateLinePositions()
+    //{
+    //    if (mergeParent)
+    //    {
+    //        transform.parent.position = mergeParent.position - transform.position;
+    //    }
+    //}
 
     public void AddPoint(Vector3 pos, float width)
     {
@@ -102,13 +113,5 @@ public class Line : MonoBehaviour
 
         // generate the collider using bezier curves
         lrs.GenerateMeshCollider();
-    }
-
-    public void UpdateLinePositions()
-    {
-        if (mergeParent)
-        {
-            transform.parent.position = mergeParent.position - transform.position;
-        }
     }
 }

@@ -138,5 +138,27 @@ public class PaletteManagerScript : MonoBehaviour
         currentColor = colorGO.GetComponent<ColorPicker>().stolenColor;
     }
 
+    public void SaveSelectedLines(string json, GameObject go, string folder)
+    {
+        var tempJson = JsonUtility.ToJson(go);
+        System.IO.File.WriteAllText(Application.persistentDataPath + "/" + folder + "/LineData.json", tempJson);
+    }
+
+    public void SaveAllLines(string json, GameObject go, string folder)
+    {
+        var tempJson = JsonUtility.ToJson(go);
+        System.IO.File.WriteAllText(Application.persistentDataPath + "/" + folder + "/LineData.json", tempJson);
+    }
+
+    public void LoadLine(string folder, int id, string name)
+    {
+        Debug.Log(System.IO.File.Exists(folder));
+    }
+
+    public void LoadAllLines(string folder, int id, string name)
+    {
+        Debug.Log(System.IO.File.Exists(folder));
+    }
+
     #endregion
 }
