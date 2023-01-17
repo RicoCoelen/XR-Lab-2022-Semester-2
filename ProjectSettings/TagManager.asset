@@ -10,6 +10,8 @@ TagManager:
   - Portal
   - Pickedup
   - Inarea
+  - projectile
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -21,7 +23,7 @@ TagManager:
   - Button
   - Minimap
   - MInimap+IRL
-  - 
+  - DialogueTrigger
   - 
   - 
   - 
