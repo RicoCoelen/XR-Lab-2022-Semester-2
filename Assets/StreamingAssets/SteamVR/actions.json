@@ -65,6 +65,10 @@
       "requirement": "suggested"
     },
     {
+      "name": "/actions/default/in/PaletteAction",
+      "type": "boolean"
+    },
+    {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
     },
@@ -101,7 +105,7 @@
   "action_sets": [
     {
       "name": "/actions/default",
-      "usage": "single"
+      "usage": "leftright"
     },
     {
       "name": "/actions/platformer",
@@ -186,7 +190,8 @@
       "/actions/default/in/SnapTurnLeft": "Snap Turn (Left)",
       "/actions/default/in/SnapTurnRight": "Snap Turn (Right)",
       "/actions/default/in/DrawTrigger": "Trigger for drawing",
-      "/actions/default/in/MenuAction": "MenuAction"
+      "/actions/default/in/MenuAction": "MenuAction",
+      "/actions/default/in/PaletteAction": "PaletteAction"
     }
   ]
 }

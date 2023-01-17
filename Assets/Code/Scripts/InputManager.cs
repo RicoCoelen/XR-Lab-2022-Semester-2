@@ -7,14 +7,14 @@ using Valve.VR.InteractionSystem;
 public class InputManager : MonoBehaviour
 {
     public SteamVR_Action_Boolean MenuAction;
-    public SteamVR_Input_Sources AllDevices = SteamVR_Input_Sources.Any;
+    public SteamVR_Action_Boolean PaletteAction;
     public bool minimapIsOn;
 
     public Canvas minimap;
     public GameObject palette;
 
-    public bool leftMenuButton;
-    public bool rightMenuButton;
+    public bool menuButton;
+    public bool paletteButton;
 
     public bool runonceLeft = false;
     public bool runonceRight = false;
@@ -30,8 +30,8 @@ public class InputManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        leftMenuButton = MenuAction.GetState(SteamVR_Input_Sources.LeftHand);
-        rightMenuButton = MenuAction.GetState(SteamVR_Input_Sources.RightHand);
+        menuButton = MenuAction.GetState(SteamVR_Input_Sources.Any);
+        paletteButton = PaletteAction.GetState(SteamVR_Input_Sources.Any);
 
         UpdateMenus();
     }
@@ -48,7 +48,7 @@ public class InputManager : MonoBehaviour
         //    runonceLeft = false;
         //}
 
-        if(rightMenuButton)
+        if(paletteButton)
         {
             if (!runonceRight)
             {
@@ -68,8 +68,8 @@ public class InputManager : MonoBehaviour
             runonceRight = false;
         }
 
-        minimap.transform.gameObject.SetActive(leftMenuButton);
-        palette.transform.gameObject.SetActive(rightMenuButton);
+        minimap.transform.gameObject.SetActive(menuButton);
+        palette.transform.gameObject.SetActive(paletteButton);
    }
 
 

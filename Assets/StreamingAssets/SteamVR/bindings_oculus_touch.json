@@ -4,6 +4,10 @@
    "app_key" : "application.generated.unity.digitallife.exe",
    "bindings" : {
       "/actions/buggy" : {
+         "chords" : [],
+         "haptics" : [],
+         "poses" : [],
+         "skeleton" : [],
          "sources" : [
             {
                "inputs" : {
@@ -282,13 +286,21 @@
                "path" : "/user/hand/left/input/x"
             },
             {
-               "inputs" : {},
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/paletteaction"
+                  }
+               },
                "mode" : "toggle_button",
-               "path" : "/user/hand/right/input/x"
+               "path" : "/user/hand/right/input/a"
             }
          ]
       },
       "/actions/platformer" : {
+         "chords" : [],
+         "haptics" : [],
+         "poses" : [],
+         "skeleton" : [],
          "sources" : [
             {
                "inputs" : {
@@ -320,8 +332,7 @@
    "category" : "steamvr_input",
    "controller_type" : "oculus_touch",
    "description" : "DWQEQW",
-   "interaction_profile" : "",
-   "name" : "oculus_touch",
+   "name" : "Saved [Testing] Digital-Life configuration for Oculus Touch",
    "options" : {},
    "simulated_actions" : []
 }
