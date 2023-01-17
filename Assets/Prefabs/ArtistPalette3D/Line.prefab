@@ -193,6 +193,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   SmoothingLength: 2
   SmoothingSections: 10
+  steamvrCamera: {fileID: 0}
 --- !u!114 &8622726273306494666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,7 +301,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5906705856887447930}
         m_TargetAssemblyTypeName: Line, Assembly-CSharp
-        m_MethodName: UpdateLinePositions
+        m_MethodName: OnGrab
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -329,3 +330,4 @@ MonoBehaviour:
   points: []
   parentScript: {fileID: 0}
   mergeParent: {fileID: 0}
+  mat: {fileID: 0}

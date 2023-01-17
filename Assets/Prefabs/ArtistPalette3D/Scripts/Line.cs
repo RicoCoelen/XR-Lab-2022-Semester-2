@@ -114,4 +114,9 @@ public class Line : MonoBehaviour
         // generate the collider using bezier curves
         lrs.GenerateMeshCollider();
     }
+
+    public void OnGrab()
+    {
+        transform.parent.position = transform.parent.position - transform.localPosition;
+    }
 }

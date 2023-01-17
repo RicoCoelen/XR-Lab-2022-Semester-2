@@ -81,6 +81,35 @@ public class SelectorScript : BrushBaseScript, IBrush
     }
 
     /// <summary>
+    /// add all the lines to a empty transform to merge them (maybe future linerenderer? or under 1 parent instead of layers)
+    /// </summary>
+    public void MergeDrawnLines()
+    {
+        // bug delete already merged lines if not taken with selection
+        if (selectedObjects.Count > 1)
+        {
+            GameObject layer = new GameObject();
+            layer.name = "Merge Layer: " + layers;
+            layer.tag = "Merge";
+
+            foreach (GameObject go in selectedObjects)
+            {
+                Transform temp = go.transform.parent;
+                go.transform.parent = layer.transform;
+                if (temp)
+                {
+                    go.GetComponent<Line>().mergeParent = layer.transform;
+                    if (temp.tag.Equals("Merge") && temp.childCount < 1)
+                        Destroy(temp.gameObject);
+                }
+            }
+
+            RemoveMaterials();
+            layers++;
+        }
+    }
+
+    /// <summary>
     /// on trigger function to add lines (while trigger pull) and give them a new material
     /// </summary>
     private void OnTriggerEnter(Collider collider)

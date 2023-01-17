@@ -11,6 +11,10 @@ public class MaterialPickerScript : MonoBehaviour
     public Material[] materials;
     private int currentMaterial = 0;
 
+    // custom materials
+    [SerializeField]
+    public Material[] customMaterials;
+
     // ui
     public GameObject viewport;
     public GameObject content;
@@ -66,12 +70,19 @@ public class MaterialPickerScript : MonoBehaviour
 
     public void SelectNext()
     {
-        manager.currentMaterial = materials[currentMaterial =+ 1];
+        if (materials[currentMaterial] != null && currentMaterial + 1 < materials.Length)
+        {
+            manager.currentMaterial = materials[currentMaterial = +1];
+        }
 
     }
 
     public void SelectPrevious()
     {
-        manager.currentMaterial = materials[currentMaterial =- 1];
+        if (materials[currentMaterial] != null && currentMaterial - 1 > 0)
+        {
+           manager.currentMaterial = materials[currentMaterial =- 1];
+        }
+       
     }
 }
