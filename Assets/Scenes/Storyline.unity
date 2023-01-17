@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 112535827}
   - component: {fileID: 112535826}
   - component: {fileID: 112535825}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Area6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -520,7 +520,7 @@ GameObject:
   - component: {fileID: 254708338}
   - component: {fileID: 254708337}
   - component: {fileID: 254708336}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Area4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -937,7 +937,7 @@ GameObject:
   - component: {fileID: 775648755}
   - component: {fileID: 775648760}
   - component: {fileID: 775648759}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Area1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1217,6 +1217,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11445746, guid: 7a135b1a2cb9c8f488d4dd00c55ab283, type: 3}
+      propertyPath: traceLayerMask.m_Bits
+      value: 1015
+      objectReference: {fileID: 0}
     - target: {fileID: 11445956, guid: 7a135b1a2cb9c8f488d4dd00c55ab283, type: 3}
       propertyPath: segmentCount
       value: 60
@@ -1437,7 +1441,7 @@ GameObject:
   - component: {fileID: 1430143770}
   - component: {fileID: 1430143769}
   - component: {fileID: 1430143765}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Area2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1797,7 +1801,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1680632132}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Area5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1840,7 +1844,7 @@ GameObject:
   - component: {fileID: 1943928762}
   - component: {fileID: 1943928761}
   - component: {fileID: 1943928760}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Area3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
