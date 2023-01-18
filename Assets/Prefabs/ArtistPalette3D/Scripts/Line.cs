@@ -87,16 +87,30 @@ public class Line : MonoBehaviour
     {
         if (mergeParent)
         {
-             mergeOffset = mergeParent.position - transform.position;
+            Transform[] children = new Transform[mergeParent.childCount];
+
+            for (int i=0;i<mergeParent.childCount;i++)
+            {
+                children[i] = mergeParent.GetChild(i);
+            }
+            mergeParent.DetachChildren();
+
+            mergeParent.position = transform.position;
+            mergeOffset = mergeParent.position - transform.position;
+            
+            foreach (Transform c in children)
+            {
+                c.parent = mergeParent;
+            }
         }
     }
 
     public void OnHold()
     {
         if (mergeParent)
-        { 
+        {
             mergeParent.position = transform.position + mergeOffset;
-            mergeParent.transform.RotateAround(mergeParent.transform.position, transform.rotation.eulerAngles, Time.deltaTime);
+            mergeParent.rotation = transform.rotation;
         }
     }
 
