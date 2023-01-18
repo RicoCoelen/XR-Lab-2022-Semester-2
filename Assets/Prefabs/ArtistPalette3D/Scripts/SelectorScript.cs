@@ -60,48 +60,35 @@ public class SelectorScript : BrushBaseScript, IBrush
         // bug delete already merged lines if not taken with selection
         if(selectedObjects.Count > 1)
         {
+            // make new gameobject to put in empty parent transfrom
             GameObject layer = new GameObject();
             layer.name = "Merge Layer: " + layers;
             layer.tag = "Merge";
 
+            bool r = false;
+            // go through the hieracrchy of highlighted objects
             foreach (GameObject go in selectedObjects)
             {
-                Transform temp = go.transform.parent;
-                go.transform.parent = layer.transform;
-                if (temp) { 
-                    go.GetComponent<Line>().mergeParent = layer.transform;
-                    if (temp.tag.Equals("Merge") && temp.childCount < 1)
-                        Destroy(temp.gameObject);
-                }
-            }
-
-            RemoveMaterials();
-            layers++;
-        }
-    }
-
-    /// <summary>
-    /// add all the lines to a empty transform to merge them (maybe future linerenderer? or under 1 parent instead of layers)
-    /// </summary>
-    public void MergeDrawnLines()
-    {
-        // bug delete already merged lines if not taken with selection
-        if (selectedObjects.Count > 1)
-        {
-            GameObject layer = new GameObject();
-            layer.name = "Merge Layer: " + layers;
-            layer.tag = "Merge";
-
-            foreach (GameObject go in selectedObjects)
-            {
-                Transform temp = go.transform.parent;
-                go.transform.parent = layer.transform;
-                if (temp)
+                if (r!=true)
                 {
-                    go.GetComponent<Line>().mergeParent = layer.transform;
+                    layer.transform.position = go.transform.position;
+                    r = true;
+                }
+
+                // assign merge parents
+                go.GetComponent<Line>().mergeParent = layer.transform;
+
+                // check if already has parents
+                Transform temp = go.transform.parent;    
+                if (temp != null)
+                {
+                    // if merge and empty delete
                     if (temp.tag.Equals("Merge") && temp.childCount < 1)
                         Destroy(temp.gameObject);
                 }
+
+                // assign the selected object parent to new merge parent
+                go.transform.parent = layer.transform; 
             }
 
             RemoveMaterials();

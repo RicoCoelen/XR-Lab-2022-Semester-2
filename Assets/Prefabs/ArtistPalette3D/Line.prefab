@@ -289,19 +289,43 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  restoreOriginalParent: 0
+  restoreOriginalParent: 1
   onPickUp:
-    m_PersistentCalls:
-      m_Calls: []
-  onDetachFromHand:
-    m_PersistentCalls:
-      m_Calls: []
-  onHeldUpdate:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5906705856887447930}
         m_TargetAssemblyTypeName: Line, Assembly-CSharp
         m_MethodName: OnGrab
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDetachFromHand:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5906705856887447930}
+        m_TargetAssemblyTypeName: Line, Assembly-CSharp
+        m_MethodName: OnDetach
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onHeldUpdate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5906705856887447930}
+        m_TargetAssemblyTypeName: Line, Assembly-CSharp
+        m_MethodName: OnHold
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -330,4 +354,5 @@ MonoBehaviour:
   points: []
   parentScript: {fileID: 0}
   mergeParent: {fileID: 0}
+  mergeOffset: {x: 0, y: 0, z: 0}
   mat: {fileID: 0}

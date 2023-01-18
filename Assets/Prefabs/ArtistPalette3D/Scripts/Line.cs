@@ -18,6 +18,7 @@ public class Line : MonoBehaviour
     public List<Vector3> points = new List<Vector3>();
     public PaletteManagerScript parentScript;
     public Transform mergeParent;
+    public Vector3 mergeOffset;
     public Material mat;
 
     MeshRenderer mr;
@@ -82,13 +83,27 @@ public class Line : MonoBehaviour
         i.highlightOnHover = true;
     }
 
-    //private void FixedUpdate()
-    //{
-    //    if(mergeParent)
-    //    {
-    //        transform.parent.position = mergeParent.position - transform.position;
-    //    }
-    //}
+    public void OnGrab()
+    {
+        if (mergeParent)
+        {
+             mergeOffset = mergeParent.position - transform.position;
+        }
+    }
+
+    public void OnHold()
+    {
+        if (mergeParent)
+        { 
+            mergeParent.position = transform.position + mergeOffset;
+            mergeParent.transform.RotateAround(mergeParent.transform.position, transform.rotation.eulerAngles, Time.deltaTime);
+        }
+    }
+
+    public void OnDetach()
+    {
+
+    }
 
     //public void UpdateLinePositions()
     //{
@@ -113,10 +128,5 @@ public class Line : MonoBehaviour
 
         // generate the collider using bezier curves
         lrs.GenerateMeshCollider();
-    }
-
-    public void OnGrab()
-    {
-        transform.parent.position = transform.parent.position - transform.localPosition;
     }
 }
