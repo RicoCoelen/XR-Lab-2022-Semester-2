@@ -10,12 +10,13 @@ public class Telefoontje : MonoBehaviour
     private int audioIndex = 0;
 
     //if the player enters the dialogue area a series of dialogue fragments are played depending on the certain area.
-    void OnTriggerStay(Collider collider)
+    void OnTriggerEnter(Collider collider)
     {
         if (collider.tag == "Player")
         {
             if (source1.isPlaying == false && audioIndex < audioClips.Length)
             {
+                Debug.Log("Hi");
                 source1.clip = audioClips[audioIndex];
                 source1.Play();
 
