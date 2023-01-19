@@ -245,12 +245,21 @@
             },
             {
                "inputs" : {
-                  "click" : {
-                     "output" : "/actions/default/in/paletteaction"
+                  "position" : {
+                     "output" : "/actions/default/in/touchpadposition"
                   }
                },
-               "mode" : "toggle_button",
-               "path" : "/user/hand/right/input/application_menu"
+               "mode" : "trackpad",
+               "path" : "/user/hand/left/input/trackpad"
+            },
+            {
+               "inputs" : {
+                  "position" : {
+                     "output" : "/actions/default/in/touchpadposition"
+                  }
+               },
+               "mode" : "trackpad",
+               "path" : "/user/hand/right/input/trackpad"
             },
             {
                "inputs" : {
@@ -260,6 +269,15 @@
                },
                "mode" : "toggle_button",
                "path" : "/user/hand/left/input/application_menu"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/paletteaction"
+                  }
+               },
+               "mode" : "toggle_button",
+               "path" : "/user/hand/right/input/application_menu"
             }
          ]
       },
@@ -308,7 +326,7 @@
    "controller_type" : "vive_controller",
    "description" : "",
    "interaction_profile" : "",
-   "name" : "vive_controller",
+   "name" : "Saved [Testing] Digital-Life configuration for Vive Controller",
    "options" : {},
    "simulated_actions" : []
 }

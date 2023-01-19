@@ -38,8 +38,6 @@ public class Line : MonoBehaviour
         // make the game object
         this.name = "Line: " + order;
         this.tag = "Line";
-
-        mat = parentScript.currentMaterial;
         
         //gameObject.transform.parent = parent;
         //gameObject.transform.position ;
@@ -53,6 +51,9 @@ public class Line : MonoBehaviour
         //lr.widthMultiplier = 0.05f * parentScript.widthMultiplier; //// brooo
         lr.generateLightingData = true;
         lr.useWorldSpace = false;
+
+        mat = parentScript.currentMaterial;
+        lr.material = new Material(mat);
 
         // add first position to linerenderer
         points.Add(objectRoot);

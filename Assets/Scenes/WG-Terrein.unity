@@ -6155,6 +6155,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b75030f64c690a948bf5d30f65cab529, type: 3}
   m_PrefabInstance: {fileID: 1666096764}
   m_PrefabAsset: {fileID: 0}
+--- !u!223 &448571807 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 2886090897668450566, guid: 19a66811647a1d04dbc3b95cbe53555f, type: 3}
+  m_PrefabInstance: {fileID: 2886090897358146767}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &449308964 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1253365200111565818, guid: 8109e9e16ba4cc04b8e0928aea897927, type: 3}
@@ -15259,7 +15264,7 @@ PrefabInstance:
     - target: {fileID: 7315242303242216549, guid: b478eb40438d38843a9229d1097f889d, type: 3}
       propertyPath: minimap
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 448571807}
     - target: {fileID: 7315242303242216549, guid: b478eb40438d38843a9229d1097f889d, type: 3}
       propertyPath: palette
       value: 

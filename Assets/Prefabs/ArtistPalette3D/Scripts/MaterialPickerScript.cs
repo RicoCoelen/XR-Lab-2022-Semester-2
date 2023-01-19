@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class MaterialPickerScript : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class MaterialPickerScript : MonoBehaviour
     public Material[] materials;
     public List<GameObject> go;
     private int currentMaterial = 0;
+    public TextMeshProUGUI indexText;
 
     // custom materials
     [SerializeField]
@@ -26,6 +28,8 @@ public class MaterialPickerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        manager = transform.parent.parent.parent.GetComponent<PaletteManagerScript>();
+
         // get sub men hierarchy
         viewport = transform.GetChild(0).gameObject;
         content = viewport.transform.GetChild(0).gameObject;
@@ -61,23 +65,42 @@ public class MaterialPickerScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        // add highlight to selected image
+        if (manager.currentMaterial)
+        {
+            if (materials[currentMaterial].name != manager.currentMaterial.name)
+            {
+                manager.currentMaterial = new Material(materials[currentMaterial]);
+                indexText.text = currentMaterial.ToString();
+            }
+        }
+        else
+        {
+            manager.currentMaterial = new Material(materials[currentMaterial]);
+            indexText.text = currentMaterial.ToString();
+            Debug.Log(indexText);
+            Debug.Log(currentMaterial.ToString());
+            Debug.Log(indexText.text);
+
+        }
     }
 
     public void SelectNext()
     {
+        Debug.Log("Next");
         if (materials[currentMaterial] != null && currentMaterial + 1 < materials.Length)
         {
-            manager.currentMaterial = materials[currentMaterial = +1];
+            currentMaterial++;
+            manager.currentMaterial = new Material(materials[currentMaterial]);
+           
         }
     }
 
     public void SelectPrevious()
     {
-        if (materials[currentMaterial] != null && currentMaterial - 1 > 0)
+        if (materials[currentMaterial] != null && currentMaterial - 1 >= 0)
         {
-           manager.currentMaterial = materials[currentMaterial =- 1];
+            currentMaterial--;
+            manager.currentMaterial = new Material(materials[currentMaterial]);
         }
-
     }
 }

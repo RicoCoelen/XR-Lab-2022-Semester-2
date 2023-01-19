@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.digitallife.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "C:\\Users\\callr\\Documents\\XR-Lab-2022-Semester-2\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "action_manifest_path": "C:\\Users\\VRStudent\\Documents\\XR-Lab-2022-Semester-2\\Assets\\StreamingAssets\\SteamVR\\actions.json",
       "strings": {
         "en_us": {
           "name": "Digital-Life [Testing]"
