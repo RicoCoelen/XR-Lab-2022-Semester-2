@@ -37,11 +37,31 @@ public class Bucketfall : MonoBehaviour
             paintbucket.SetActive(true);
             yield return new WaitForSeconds(1);
             _paintbucket.isKinematic = false;
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(2);
+            _paintbucket.isKinematic = true;
+            paintbucket.tag = "Untagged";
             source1.clip = audioClips2[audioIndex2];
             source1.Play();
 
             audioIndex2++;
         }
     }
+
+   /* void FixedUpdate()
+    {
+            if (_paintbucket.isKinematic == false)
+            {
+                StartCoroutine(Hi());
+            }
+            IEnumerator Hi()
+            {
+                paintbucket.tag = "Untagged";
+                yield return new WaitForSeconds(3);
+                _paintbucket.isKinematic = true;
+                source1.clip = audioClips2[audioIndex2];
+                source1.Play();
+
+                audioIndex2++;
+            }
+    }*/
 }
