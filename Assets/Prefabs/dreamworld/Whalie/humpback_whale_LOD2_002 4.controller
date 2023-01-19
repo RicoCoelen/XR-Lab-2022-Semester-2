@@ -39,7 +39,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Blend Tree
-  m_Speed: 1
+  m_Speed: 1.8
   m_CycleOffset: 1
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -63,7 +63,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: humpback_whale_LOD2_002
+  m_Name: humpback_whale_LOD2_002 4
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: is flying
@@ -80,8 +80,14 @@ AnimatorController:
     m_Controller: {fileID: 0}
   - m_Name: Cycle offset
     m_Type: 1
-    m_DefaultFloat: 0
+    m_DefaultFloat: 14.146
     m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: Offset 2
+    m_Type: 3
+    m_DefaultFloat: 0
+    m_DefaultInt: 4
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   m_AnimatorLayers:
@@ -108,7 +114,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -1846729345889651714}
-    m_Position: {x: 450, y: 20, z: 0}
+    m_Position: {x: 440, y: 30, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
