@@ -16,7 +16,7 @@ public class Bucketfall : MonoBehaviour
     //if the player enters the dialogue area a series of dialogue fragments are played depending on the certain area.
     void OnTriggerStay(Collider collider)
     {
-        if (collider.tag == "Player")
+        /*if (collider.tag == "Player")*/
         {
             if (paintbucket.tag == "Respawn" && source1.isPlaying == false && audioIndex1 < audioClips1.Length)
             {
@@ -26,7 +26,7 @@ public class Bucketfall : MonoBehaviour
                 audioIndex1++;
             }
             //the paintbucket is spawned with a sound after two seconds after the previous dialogue.
-            if (paintbucket.tag == "Respawn" && audioIndex1 == audioClips1.Length)
+            if (paintbucket.tag == "Respawn" /*&& audioIndex1 == audioClips1.Length*/)
             {
                 StartCoroutine(Delay());
             }

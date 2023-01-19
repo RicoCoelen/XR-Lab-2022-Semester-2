@@ -13,7 +13,6 @@ public class Minimapcall : MonoBehaviour
     public GameObject spraycan;
     public GameObject paintbrush;
     public GameObject paintbucket;
-    public Rigidbody _paintbucket;
     public Collider area4;
 
     //if the minimap is inside area4, the call button will get the tag to activate the next code, if it leaves area4 the tag will be removed.
