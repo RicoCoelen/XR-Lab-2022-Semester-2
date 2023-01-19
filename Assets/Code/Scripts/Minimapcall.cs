@@ -62,20 +62,4 @@ public class Minimapcall : MonoBehaviour
             }
         }
     }
-
-    //the paintbucket is spawned with a sound after two seconds after the previous dialogue.
-    private void Update()
-    {
-        if (paintbucket.tag == "Respawn" && audioIndex2 == audioClips2.Length)
-        {
-            StartCoroutine(Delay());
-        }
-    }
-    IEnumerator Delay()
-    {
-        yield return new WaitForSeconds(3);
-        paintbucket.SetActive(true);
-        yield return new WaitForSeconds(1);
-        _paintbucket.isKinematic = false;
-    }
 }
