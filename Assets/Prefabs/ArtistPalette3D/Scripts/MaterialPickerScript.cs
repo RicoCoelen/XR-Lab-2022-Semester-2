@@ -9,6 +9,7 @@ public class MaterialPickerScript : MonoBehaviour
     // picker variables
     public Texture2D[] thumbnails;
     public Material[] materials;
+    public List<GameObject> go;
     private int currentMaterial = 0;
 
     // custom materials
@@ -40,32 +41,27 @@ public class MaterialPickerScript : MonoBehaviour
 
             GameObject imgObject = new GameObject("Thumbnail: " + m.name);
             imgObject.transform.parent = content.transform;
-            Image img = imgObject.AddComponent<Image>();
-            img.sprite = Sprite.Create(thumbnails[index], new Rect(0,0, thumbnails[index].width, thumbnails[index].height), new Vector2(1f, 1f));
 
+            Image img = imgObject.AddComponent<Image>();
+            imgObject.transform.rotation = Quaternion.RotateTowards(imgObject.transform.rotation, viewport.transform.rotation, 90);
+            imgObject.transform.localScale = new Vector3(1, 1, 1);
+
+            img.sprite = Sprite.Create(thumbnails[index], new Rect(0,0, thumbnails[index].width, thumbnails[index].height), new Vector2(1f, 1f));
+            
+            Rigidbody rb = imgObject.AddComponent<Rigidbody>();
+            rb.isKinematic = true;
+
+            BoxCollider col = imgObject.AddComponent<BoxCollider>();
+            col.isTrigger = true;
+
+            go.Add(imgObject);
             index++;
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // add highlight to selected image
-    }
-
-    void CheckIfNull()
-    {
-        //if (UnityEditor.AssetPreview.IsLoadingAssetPreview(instance))
-        //{
-
-        //    Debug.Log("still fetching");
-        //}
-        //else
-        //{
-        //    var getAssetPreview = UnityEditor.AssetPreview.GetAssetPreview(texture);
-        //    gameObjTex = getAssetPreview;
-        //}
-
     }
 
     public void SelectNext()
@@ -74,7 +70,6 @@ public class MaterialPickerScript : MonoBehaviour
         {
             manager.currentMaterial = materials[currentMaterial = +1];
         }
-
     }
 
     public void SelectPrevious()
@@ -83,6 +78,6 @@ public class MaterialPickerScript : MonoBehaviour
         {
            manager.currentMaterial = materials[currentMaterial =- 1];
         }
-       
+
     }
 }
