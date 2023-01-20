@@ -56,7 +56,7 @@ public class PaletteManagerScript : MonoBehaviour
         deleteGO = Instantiate(deletePrefab, deleteSpot.transform); 
         selectorGO = Instantiate(selectorPrefab, selectorSpot.transform); 
         brushGO = Instantiate(brushPrefab, brushSpot.transform); 
-        sprayGO = Instantiate(sprayPrefab, spraySpot.transform);
+        //sprayGO = Instantiate(sprayPrefab, spraySpot.transform);
 
         DontDestroyOnLoad(this.gameObject);
     }
@@ -102,9 +102,9 @@ public class PaletteManagerScript : MonoBehaviour
         deleteGO.transform.position = deleteSpot.transform.position;
         deleteGO.transform.rotation = deleteSpot.transform.rotation;
 
-        sprayGO.transform.parent = transform;
-        sprayGO.transform.position = spraySpot.transform.position;
-        sprayGO.transform.rotation = spraySpot.transform.rotation;
+        //sprayGO.transform.parent = transform;
+        //sprayGO.transform.position = spraySpot.transform.position;
+        //sprayGO.transform.rotation = spraySpot.transform.rotation;
     }
 
     /// <summary>
