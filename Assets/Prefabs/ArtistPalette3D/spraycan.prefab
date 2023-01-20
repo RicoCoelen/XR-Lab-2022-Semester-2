@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -6567925447439330961}
   - component: {fileID: 8615484879759046511}
   - component: {fileID: -1040371387988052044}
+  - component: {fileID: -1521616396373246312}
   m_Layer: 0
   m_Name: spraycan
   m_TagString: Untagged
@@ -219,9 +220,9 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1494412792042275437}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 1.13
+  m_Radius: 6
   m_Height: 4.51
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0.74}
@@ -239,6 +240,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleportAllowed: 1
   overrideHoverLock: 0
+--- !u!114 &-1521616396373246312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494412792042275437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b69eea04f60d874eaefbbdb864d0b96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tip: {fileID: 219494927155578631}
+  _brushSize: 10
+  _colors: {r: 0, g: 0, b: 0, a: 0}
+  _tipHeight: 15
 --- !u!1 &8128807002639858630
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,7 +349,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8128807002639858630}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5000001

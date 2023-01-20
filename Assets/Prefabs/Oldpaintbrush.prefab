@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 7714145595401645216}
   - component: {fileID: 7714145595401645219}
   - component: {fileID: 7714145595401645218}
+  - component: {fileID: 1926845910951814335}
   m_Layer: 0
   m_Name: Oldpaintbrush
   m_TagString: Untagged
@@ -273,6 +274,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   interactable: {fileID: 0}
+--- !u!114 &1926845910951814335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7714145595401645223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 961c389c5d1fde343bd79bf5b953fb70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7714145596163920251
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,6 +403,7 @@ MonoBehaviour:
   paint: {fileID: 7714145595401645223}
   paintred: {fileID: 2100000, guid: 6d7f8afc8e1df4741871a1eb0e01592c, type: 2}
   paintgreen: {fileID: 2100000, guid: 24aa5adbfc91f954f9e63e6480b51700, type: 2}
+  paintblue: {fileID: 2100000, guid: 5b6bb2a6b53f8254e833d40938217191, type: 2}
 --- !u!65 &7714145596163920242
 BoxCollider:
   m_ObjectHideFlags: 0

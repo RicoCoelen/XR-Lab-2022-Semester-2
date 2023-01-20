@@ -8,6 +8,12 @@ TagManager:
   - Brush
   - Portal Point
   - Portal
+  - Pickedup
+  - Inarea
+  - Line
+  - Merge
+  - Pickedup
+  - Inarea
   layers:
   - Default
   - TransparentFX
@@ -15,16 +21,11 @@ TagManager:
   - 
   - Water
   - UI
-<<<<<<< HEAD
   - Player
+  - Button
   - Minimap
-=======
-  - Minimap
-  - 
->>>>>>> dev_Minimap
-  - 
-  - 
-  - 
+  - MInimap+IRL
+  - DialogueTrigger
   - 
   - 
   - 
@@ -49,4 +50,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Canvas
+    uniqueID: 2676234675
+    locked: 0
+  - name: Portal
+    uniqueID: 1258809023
     locked: 0
