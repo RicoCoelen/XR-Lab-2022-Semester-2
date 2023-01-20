@@ -14650,7 +14650,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2880600754207549385, guid: 35cb2c741f3e5154fb32f3519635dff7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.0008876362
+      value: -0.0023568592
       objectReference: {fileID: 0}
     - target: {fileID: 4880704707068949891, guid: 35cb2c741f3e5154fb32f3519635dff7, type: 3}
       propertyPath: m_AnchorMax.x
@@ -20926,6 +20926,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8673293438239362412, guid: de35f320063f32149af0cec98c1c6825, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8673293438239362412, guid: de35f320063f32149af0cec98c1c6825, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8673293438239362412, guid: de35f320063f32149af0cec98c1c6825, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 40d0b5bedb2c561469976a16a47b4c06, type: 2}
@@ -22326,7 +22334,7 @@ PrefabInstance:
       objectReference: {fileID: 1547655284}
     - target: {fileID: 2886090896880314211, guid: 19a66811647a1d04dbc3b95cbe53555f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2886090896880314236, guid: 19a66811647a1d04dbc3b95cbe53555f, type: 3}
       propertyPath: _weg
@@ -22409,6 +22417,14 @@ PrefabInstance:
       propertyPath: source1
       value: 
       objectReference: {fileID: 1470851755}
+    - target: {fileID: 3222237572257397012, guid: bca89e5fb4caa20448626811a9f61b73, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685022601876426528, guid: bca89e5fb4caa20448626811a9f61b73, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4690107559470321548, guid: bca89e5fb4caa20448626811a9f61b73, type: 3}
       propertyPath: m_IsActive
       value: 0
