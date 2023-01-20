@@ -403,6 +403,7 @@ MonoBehaviour:
   paint: {fileID: 7714145595401645223}
   paintred: {fileID: 2100000, guid: 6d7f8afc8e1df4741871a1eb0e01592c, type: 2}
   paintgreen: {fileID: 2100000, guid: 24aa5adbfc91f954f9e63e6480b51700, type: 2}
+  paintblue: {fileID: 2100000, guid: 5b6bb2a6b53f8254e833d40938217191, type: 2}
 --- !u!65 &7714145596163920242
 BoxCollider:
   m_ObjectHideFlags: 0

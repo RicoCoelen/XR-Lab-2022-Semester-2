@@ -8,6 +8,7 @@ public class Paintbrush : MonoBehaviour
     public GameObject paint;
     public Material paintred;
     public Material paintgreen;
+    public Material paintblue;
 
     void OnTriggerEnter(Collider collider)
     {
@@ -22,6 +23,12 @@ public class Paintbrush : MonoBehaviour
         {
             transform.GetComponent<Renderer>().material = paintgreen;
             p.GetComponent<Paint>()._colors = Enumerable.Repeat(paintgreen.color, p._brushSize * p._brushSize).ToArray();
+        }
+
+        if (collider.gameObject.name == "Paintbucket blue")
+        {
+            transform.GetComponent<Renderer>().material = paintblue;
+            p.GetComponent<Paint>()._colors = Enumerable.Repeat(paintblue.color, p._brushSize * p._brushSize).ToArray();
         }
     }
 }
