@@ -1925,15 +1925,15 @@ MonoBehaviour:
   selectorPrefab: {fileID: 3034369330767840613, guid: 3b7a5fb2a71ec4842bbd0d51c469d812, type: 3}
   brushPrefab: {fileID: 3034369330767840613, guid: 83a9831f26ff1d6478c944177204b50e, type: 3}
   sprayPrefab: {fileID: 1494412792042275437, guid: 279aabedcd7cfe74eade36c1e16880bd, type: 3}
-  deleteSpot: {fileID: 0}
-  selectorSpot: {fileID: 0}
-  brushSpot: {fileID: 0}
-  spraySpot: {fileID: 0}
+  deleteSpot: {fileID: 1960458876828464973}
+  selectorSpot: {fileID: 2831973535957801952}
+  brushSpot: {fileID: 2356158710771435831}
+  spraySpot: {fileID: 6003195293474138269}
   deleteGO: {fileID: 0}
   selectorGO: {fileID: 0}
   brushGO: {fileID: 0}
   sprayGO: {fileID: 0}
-  colorGO: {fileID: 0}
+  colorGO: {fileID: 6855011678447520123}
   materialGO: {fileID: 8403611436256174640}
   lineSize: {fileID: 4384932609687912739}
 --- !u!114 &5738726193325770983
@@ -2857,7 +2857,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 766613271010739657}
   m_HandleRect: {fileID: 8218899153021213675}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
