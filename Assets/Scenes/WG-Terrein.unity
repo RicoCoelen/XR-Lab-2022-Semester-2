@@ -14650,7 +14650,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2880600754207549385, guid: 35cb2c741f3e5154fb32f3519635dff7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.001279837
+      value: -0.0006619485
       objectReference: {fileID: 0}
     - target: {fileID: 4880704707068949891, guid: 35cb2c741f3e5154fb32f3519635dff7, type: 3}
       propertyPath: m_AnchorMax.x
@@ -22552,11 +22552,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4685022601876426528, guid: bca89e5fb4caa20448626811a9f61b73, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4690107559470321548, guid: bca89e5fb4caa20448626811a9f61b73, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4772624956048928408, guid: bca89e5fb4caa20448626811a9f61b73, type: 3}
       propertyPath: _brushSize
