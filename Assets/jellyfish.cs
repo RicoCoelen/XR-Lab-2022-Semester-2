@@ -18,28 +18,5 @@ public class jellyfish : MonoBehaviour
     private void FixedUpdate()
     {
         transform.position = Vector3.Lerp(bottem, top, Mathf.PingPong(Time.time*speed, 1.0f));
-        
-        /*if (transform.position.y <= top.y && reachtop == false)
-        {
-            for (int i = 0; i <= bobbingRange; i++)
-            {
-                transform.position += new Vector3(0, speed, 0) * Time.deltaTime;
-
-            }
-            reachtop = true;
-            reachbottem = false;
-        }
-        else if(transform.position.y >= bottem.y && reachbottem == false){
-            for (int i = 0; i <= bobbingRange; i++)
-            {
-                transform.position -= new Vector3(0, speed, 0) * Time.deltaTime;
-
-            }
-            reachtop = false;
-            reachtop = true;
-        }*/
-        
-
-        
     }
 }
