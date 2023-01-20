@@ -10,9 +10,8 @@ public class MaterialPickerScript : MonoBehaviour
     // picker variables
     public Texture2D[] thumbnails;
     public Material[] materials;
-    public List<GameObject> go;
+    public GameObject[] go; // ui
     private int currentMaterial = 0;
-    public TextMeshProUGUI indexText;
 
     // custom materials
     [SerializeField]
@@ -21,9 +20,10 @@ public class MaterialPickerScript : MonoBehaviour
     // ui
     public GameObject viewport;
     public GameObject content;
+    public GameObject currentMatPanel;
 
-    // manager
-    PaletteManagerScript manager;
+// manager
+PaletteManagerScript manager;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +37,8 @@ public class MaterialPickerScript : MonoBehaviour
         // initiate arrays
         materials = Resources.LoadAll<Material>("Materials");
         thumbnails = new Texture2D[materials.Count()];
-        
+        go = new GameObject[materials.Count()];
+
         int index = 0;
         foreach (Material m in materials)
         {
@@ -58,30 +59,18 @@ public class MaterialPickerScript : MonoBehaviour
             BoxCollider col = imgObject.AddComponent<BoxCollider>();
             col.isTrigger = true;
 
-            go.Add(imgObject);
+            go[index] = imgObject;
             index++;
         }
-    }
 
-    void FixedUpdate()
-    {
-        if (manager.currentMaterial)
-        {
-            if (materials[currentMaterial].name != manager.currentMaterial.name)
-            {
-                manager.currentMaterial = new Material(materials[currentMaterial]);
-                indexText.text = currentMaterial.ToString();
-            }
-        }
-        else
+        if (!manager.currentMaterial)
         {
             manager.currentMaterial = new Material(materials[currentMaterial]);
-            indexText.text = currentMaterial.ToString();
-            Debug.Log(indexText);
-            Debug.Log(currentMaterial.ToString());
-            Debug.Log(indexText.text);
-
         }
+
+        currentMatPanel.transform.SetParent(go[currentMaterial].transform);
+        currentMatPanel.transform.localPosition = new Vector3(0, 0, 0f);
+        currentMatPanel.transform.localScale = new Vector3(1, 1, 1);
     }
 
     public void SelectNext()
@@ -91,7 +80,8 @@ public class MaterialPickerScript : MonoBehaviour
         {
             currentMaterial++;
             manager.currentMaterial = new Material(materials[currentMaterial]);
-           
+            currentMatPanel.transform.SetParent(go[currentMaterial].transform);
+            currentMatPanel.transform.localPosition = new Vector3(0, 0, 0f);
         }
     }
 
@@ -101,6 +91,8 @@ public class MaterialPickerScript : MonoBehaviour
         {
             currentMaterial--;
             manager.currentMaterial = new Material(materials[currentMaterial]);
+            currentMatPanel.transform.SetParent(go[currentMaterial].transform);
+            currentMatPanel.transform.localPosition = new Vector3(0, 0, 0f);
         }
     }
 }

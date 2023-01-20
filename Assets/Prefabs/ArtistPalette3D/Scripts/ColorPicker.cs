@@ -23,9 +23,6 @@ public class ColorPicker : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        transform.position = clampObject.transform.position;
-        transform.rotation = clampObject.transform.rotation;
-
         RaycastHit hit;
         
         if (Physics.Raycast(raycastPosition.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity))
