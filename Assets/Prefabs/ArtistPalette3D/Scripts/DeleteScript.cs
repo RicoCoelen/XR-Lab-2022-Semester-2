@@ -17,8 +17,11 @@ public class DeleteScript : BrushBaseScript, IBrush
     {
         if (collider.gameObject.tag == "Line" && trigger > 0)
         {
-            if (drawnLines.Remove(collider.GetComponent<Line>()))
-                Destroy(collider.gameObject);
+            if(!parentScript.selectorGO.GetComponent<SelectorScript>().selectedObjects.Contains(collider.gameObject))
+            {
+                if (drawnLines.Remove(collider.GetComponent<Line>()))
+                    Destroy(collider.gameObject);
+            }
         }
     }
 }

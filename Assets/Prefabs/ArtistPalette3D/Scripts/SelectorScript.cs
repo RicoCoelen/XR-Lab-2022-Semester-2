@@ -5,7 +5,7 @@ using UnityEngine;
 public class SelectorScript : BrushBaseScript, IBrush
 {
     [SerializeField] private Material selectHighlight;
-    [SerializeField] private List<GameObject> selectedObjects;
+    [SerializeField] public List<GameObject> selectedObjects;
     [SerializeField] private int layers;
 
     /// <summary>

@@ -47,12 +47,14 @@ MonoBehaviour:
   MenuAction:
     actionPath: /actions/default/in/MenuAction
     needsReinit: 0
-  AllDevices: 0
+  PaletteAction:
+    actionPath: /actions/default/in/PaletteAction
+    needsReinit: 0
   minimapIsOn: 0
   minimap: {fileID: 0}
   palette: {fileID: 0}
-  leftMenuButton: 1
-  rightMenuButton: 0
+  menuButton: 0
+  paletteButton: 0
   runonceLeft: 0
   runonceRight: 0
   playerHead: {fileID: 0}

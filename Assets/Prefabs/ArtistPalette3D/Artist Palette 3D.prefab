@@ -1147,7 +1147,7 @@ MonoBehaviour:
   selectorGO: {fileID: 0}
   brushGO: {fileID: 0}
   sprayGO: {fileID: 0}
-  colorGO: {fileID: 6855011678447520123}
+  colorGO: {fileID: 290480486255072481}
   materialGO: {fileID: 8403611436256174640}
   lineSize: {fileID: 4384932609687912739}
 --- !u!114 &5738726193325770983
@@ -1891,7 +1891,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 766613271010739657}
   m_HandleRect: {fileID: 8218899153021213675}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2750,7 +2750,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1054428373556173739
 Transform:
   m_ObjectHideFlags: 0
@@ -2759,7 +2759,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6855011678447520123}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.1497, y: 0.0265, z: 0.1998}
+  m_LocalPosition: {x: 1000, y: 1000, z: 1000}
   m_LocalScale: {x: 0.02, y: 1, z: 0.02}
   m_ConstrainProportionsScale: 0
   m_Children:
