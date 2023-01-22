@@ -393,10 +393,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   raycastPosition: {fileID: 8434573530654534310}
   changeObject: {fileID: 3661600306953706486}
-  stolenColor: {r: 0, g: 0, b: 0, a: 0}
-  clampObject: {fileID: 6855011678447520123}
-  clampMesh: {fileID: 3944885232344188042}
-  clamp: 1
 --- !u!114 &694553931671223556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3620,7 +3616,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2774962899992081722, guid: 18beee2acc14f3f459ab997433fabcac, type: 3}
       propertyPath: onPressed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ApplyPaint
+      value: SaveSelectedDrawing
       objectReference: {fileID: 0}
     - target: {fileID: 2774962899992081722, guid: 18beee2acc14f3f459ab997433fabcac, type: 3}
       propertyPath: onPressed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
