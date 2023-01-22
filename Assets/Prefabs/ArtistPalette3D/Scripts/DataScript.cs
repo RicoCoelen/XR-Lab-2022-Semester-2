@@ -118,9 +118,11 @@ public class DataScript
             // set up line positions and rotations
             ld.PosX = line.transform.position.x;
             ld.PosY = line.transform.position.y;
+
+            // assign all to parent object
+            dd.lines[i] = ld;
         }
 
-        Debug.Log(dd.ToString());
         return dd;
     }
 
