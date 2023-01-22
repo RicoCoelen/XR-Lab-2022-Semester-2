@@ -1,61 +1,47 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Valve.VR.InteractionSystem;
-using Valve.VR;
 
 public class ColorPicker : MonoBehaviour
 {
-    public Transform raycastPosition;
-    public GameObject changeObject;
-    public Color stolenColor;
+    [SerializeField] private Transform raycastPosition;
+    [SerializeField] private GameObject changeObject;
+    private Color _stolenColor;
+    private RaycastHit _hit;
 
-    public GameObject clampObject;
-    public MeshFilter clampMesh;
-    Bounds bounds;
-
-    public bool clamp = false;
-
-    public void Awake()
+    public Color stolenColor
     {
+        get { return _stolenColor; }
+        set { _stolenColor = value; }
     }
 
-    // Update is called once per frame
     private void FixedUpdate()
     {
         RaycastHit hit;
 
         if (Physics.Raycast(raycastPosition.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity))
         {
-            if (hit.collider && hit.collider.TryGetComponent<Renderer>(out Renderer renderer))
+            try
             {
-                try
+                if (hit.collider)
                 {
-                    stolenColor = renderer.material.color;
+                    Renderer renderer = hit.collider.GetComponent<Renderer>();
+                    Texture2D tex = renderer.material.mainTexture as Texture2D;
+                    Vector2 pixelUV = hit.textureCoord;
+                    pixelUV.x *= tex.width;
+                    pixelUV.y *= tex.height;
+                    stolenColor = tex.GetPixel((int)pixelUV.x, (int)pixelUV.y);
                 }
-                catch
-                {
-
-                }
+                changeColor(stolenColor);
             }
-
-            Texture2D tex = hit.collider.GetComponent<Renderer>().material.mainTexture as Texture2D;
-            Vector2 pixelUV = hit.textureCoord;
-            pixelUV.x *= tex.width;
-            pixelUV.y *= tex.height;
-            stolenColor = tex.GetPixel((int)pixelUV.x, (int)pixelUV.y);
+            catch (System.Exception e)
+            {
+                // Handle the error here
+                Debug.LogError("Error Occured while trying to get color: " + e.Message);
+            }
         }
-        changeColor(stolenColor);
     }
 
     public void changeColor(Color color)
     {
         changeObject.GetComponent<Renderer>().material.color = color;
-    }
-
-    public void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(raycastPosition.position, transform.TransformDirection(Vector3.down) * 1000);
     }
 }

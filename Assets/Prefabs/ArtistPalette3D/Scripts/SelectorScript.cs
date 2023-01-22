@@ -69,7 +69,7 @@ public class SelectorScript : BrushBaseScript, IBrush
             // go through the hieracrchy of highlighted objects
             foreach (GameObject go in selectedObjects)
             {
-                if (r!=true)
+                if (!r)
                 {
                     layer.transform.position = go.transform.position;
                     r = true;
