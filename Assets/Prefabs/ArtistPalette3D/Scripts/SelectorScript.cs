@@ -9,7 +9,7 @@ public class SelectorScript : BrushBaseScript, IBrush
     [SerializeField] private int layers;
 
     /// <summary>
-    /// Remove materials from selected objects
+    /// brush function
     /// </summary>
     public override void BrushFunctionality()
     {
@@ -53,7 +53,7 @@ public class SelectorScript : BrushBaseScript, IBrush
     }
 
     /// <summary>
-    /// add all the lines to a empty transform to merge them (maybe future linerenderer? or under 1 parent instead of layers)
+    /// add all the lines to a empty transform to merge them
     /// </summary>
     public void MergePaint()
     {   
@@ -94,6 +94,21 @@ public class SelectorScript : BrushBaseScript, IBrush
             RemoveMaterials();
             layers++;
         }
+    }
+
+    /// <summary>
+    /// when button pressed change new materials to old lines
+    /// </summary>
+    public void ApplyMaterials(Material mat, Color col)
+    {
+        foreach (GameObject go in selectedObjects)
+        {
+            var temp = go.GetComponent<LineRenderer>();
+            temp.sharedMaterials = new Material[] { mat };
+            temp.startColor = col;
+            temp.endColor = col;
+        }
+        selectedObjects.Clear();
     }
 
     /// <summary>

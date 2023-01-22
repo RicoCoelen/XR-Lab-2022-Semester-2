@@ -136,6 +136,8 @@ public class PaletteManagerScript : MonoBehaviour
     public void ApplyPaint()
     {
         currentColor = colorGO.GetComponent<ColorPicker>().stolenColor;
+        currentMaterial.SetColor("color", currentColor);
+        selectorGO.GetComponent<SelectorScript>().ApplyMaterials(currentMaterial, currentColor);
     }
 
     public void SaveSelectedLines(string json, GameObject go, string folder)

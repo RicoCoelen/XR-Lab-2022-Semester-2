@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 457110046195931557}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 10, y: 0.23, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2829148114447090958}
@@ -56,7 +56,7 @@ MonoBehaviour:
   stolenColor: {r: 0, g: 0, b: 0, a: 0}
   clampObject: {fileID: 0}
   clampMesh: {fileID: 0}
-  clamp: 0
+  clamp: 1
 --- !u!114 &9013362480466588564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,7 +168,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  restoreOriginalParent: 0
+  restoreOriginalParent: 1
   onPickUp:
     m_PersistentCalls:
       m_Calls: []

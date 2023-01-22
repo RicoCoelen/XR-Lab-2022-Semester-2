@@ -20,6 +20,7 @@ public class Line : MonoBehaviour
     public Transform mergeParent;
     public Vector3 mergeOffset;
     public Material mat;
+    public Color col;
 
     MeshRenderer mr;
     MeshFilter mf;
@@ -54,6 +55,10 @@ public class Line : MonoBehaviour
 
         mat = parentScript.currentMaterial;
         lr.material = new Material(mat);
+
+        col = parentScript.currentColor;
+        lr.startColor = col; ;
+        lr.endColor = col; ;
 
         // add first position to linerenderer
         points.Add(objectRoot);
