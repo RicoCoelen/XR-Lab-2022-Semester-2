@@ -138,8 +138,11 @@ public class PaletteManagerScript : MonoBehaviour
     {
         DataScript temp = new DataScript();
         var objects = selectorGO.GetComponent<SelectorScript>().selectedObjects;
-        var draw = temp.SerializeData(objects);
-        temp.SaveDrawing("Test",draw);
+        if (objects.Count > 0)
+        {
+            var draw = temp.SerializeData(objects);
+            temp.SaveDrawing("Test", draw);
+        }
     }
 
 

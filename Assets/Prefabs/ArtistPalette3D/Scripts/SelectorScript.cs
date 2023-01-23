@@ -107,6 +107,8 @@ public class SelectorScript : BrushBaseScript, IBrush
             temp.sharedMaterials = new Material[] { mat };
             temp.startColor = col;
             temp.endColor = col;
+
+            go.GetComponent<Line>().col = col;
         }
         selectedObjects.Clear();
     }
@@ -120,16 +122,30 @@ public class SelectorScript : BrushBaseScript, IBrush
         {
             if (!selectedObjects.Contains(collider.gameObject))
             {
-                LineRenderer temp = collider.GetComponent<LineRenderer>();
 
-                temp.sharedMaterials = new Material[]
+                foreach (Line l in collider.transform.parent.GetComponentsInChildren<Line>())
                 {
-                        temp.sharedMaterial,
-                        new Material(selectHighlight)
-                };
+                    if (!selectedObjects.Contains(l.gameObject))
+                    {
+                        AddSelection(l.gameObject);
+                    }
+                }
 
-                selectedObjects.Add(collider.gameObject);
+                AddSelection(collider.gameObject);
             }
         }
+    }
+
+    private void AddSelection(GameObject go)
+    {
+        LineRenderer temp = go.GetComponent<LineRenderer>();
+
+        temp.sharedMaterials = new Material[]
+        {
+                        temp.sharedMaterial,
+                        new Material(selectHighlight)
+        };
+
+        selectedObjects.Add(go.gameObject);
     }
 }
