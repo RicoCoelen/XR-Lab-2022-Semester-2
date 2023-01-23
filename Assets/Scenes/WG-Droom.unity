@@ -3455,6 +3455,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4167d27e5a47a2e46bdc64786fec3cd3, type: 3}
   m_PrefabInstance: {fileID: 428162037}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &260303310 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4167d27e5a47a2e46bdc64786fec3cd3, type: 3}
+  m_PrefabInstance: {fileID: 428162037}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &262489640
 PrefabInstance:
   m_ObjectHideFlags: 0
