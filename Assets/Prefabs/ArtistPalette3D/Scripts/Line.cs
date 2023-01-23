@@ -20,15 +20,16 @@ public class Line : MonoBehaviour
     public Transform mergeParent;
     public Vector3 mergeOffset;
     public Material mat;
+    public Color col;
 
-    MeshRenderer mr;
-    MeshFilter mf;
-    LineRenderer lr;
-    Rigidbody rb;
-    MeshCollider mc;
-    LineRendererSmoother lrs;
-    Throwable t;
-    Interactable i;
+    public MeshRenderer mr;
+    public MeshFilter mf;
+    public LineRenderer lr;
+    public Rigidbody rb;
+    public MeshCollider mc;
+    public LineRendererSmoother lrs;
+    public Throwable t;
+    public Interactable i;
     
     public void Awake()
     {
@@ -54,6 +55,10 @@ public class Line : MonoBehaviour
 
         mat = parentScript.currentMaterial;
         lr.material = new Material(mat);
+
+        col = parentScript.currentColor;
+        lr.startColor = col; ;
+        lr.endColor = col; ;
 
         // add first position to linerenderer
         points.Add(objectRoot);
@@ -119,14 +124,6 @@ public class Line : MonoBehaviour
     {
 
     }
-
-    //public void UpdateLinePositions()
-    //{
-    //    if (mergeParent)
-    //    {
-    //        transform.parent.position = mergeParent.position - transform.position;
-    //    }
-    //}
 
     public void AddPoint(Vector3 pos, float width)
     {

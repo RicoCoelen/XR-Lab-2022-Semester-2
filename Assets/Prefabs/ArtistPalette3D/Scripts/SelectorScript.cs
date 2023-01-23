@@ -9,7 +9,7 @@ public class SelectorScript : BrushBaseScript, IBrush
     [SerializeField] private int layers;
 
     /// <summary>
-    /// Remove materials from selected objects
+    /// brush function
     /// </summary>
     public override void BrushFunctionality()
     {
@@ -53,7 +53,7 @@ public class SelectorScript : BrushBaseScript, IBrush
     }
 
     /// <summary>
-    /// add all the lines to a empty transform to merge them (maybe future linerenderer? or under 1 parent instead of layers)
+    /// add all the lines to a empty transform to merge them
     /// </summary>
     public void MergePaint()
     {   
@@ -69,7 +69,7 @@ public class SelectorScript : BrushBaseScript, IBrush
             // go through the hieracrchy of highlighted objects
             foreach (GameObject go in selectedObjects)
             {
-                if (r!=true)
+                if (!r)
                 {
                     layer.transform.position = go.transform.position;
                     r = true;
@@ -97,6 +97,23 @@ public class SelectorScript : BrushBaseScript, IBrush
     }
 
     /// <summary>
+    /// when button pressed change new materials to old lines
+    /// </summary>
+    public void ApplyMaterials(Material mat, Color col)
+    {
+        foreach (GameObject go in selectedObjects)
+        {
+            var temp = go.GetComponent<LineRenderer>();
+            temp.sharedMaterials = new Material[] { mat };
+            temp.startColor = col;
+            temp.endColor = col;
+
+            go.GetComponent<Line>().col = col;
+        }
+        selectedObjects.Clear();
+    }
+
+    /// <summary>
     /// on trigger function to add lines (while trigger pull) and give them a new material
     /// </summary>
     private void OnTriggerEnter(Collider collider)
@@ -105,16 +122,30 @@ public class SelectorScript : BrushBaseScript, IBrush
         {
             if (!selectedObjects.Contains(collider.gameObject))
             {
-                LineRenderer temp = collider.GetComponent<LineRenderer>();
 
-                temp.sharedMaterials = new Material[]
+                foreach (Line l in collider.transform.parent.GetComponentsInChildren<Line>())
                 {
-                        temp.sharedMaterial,
-                        new Material(selectHighlight)
-                };
+                    if (!selectedObjects.Contains(l.gameObject))
+                    {
+                        AddSelection(l.gameObject);
+                    }
+                }
 
-                selectedObjects.Add(collider.gameObject);
+                AddSelection(collider.gameObject);
             }
         }
+    }
+
+    private void AddSelection(GameObject go)
+    {
+        LineRenderer temp = go.GetComponent<LineRenderer>();
+
+        temp.sharedMaterials = new Material[]
+        {
+                        temp.sharedMaterial,
+                        new Material(selectHighlight)
+        };
+
+        selectedObjects.Add(go.gameObject);
     }
 }

@@ -39,6 +39,7 @@ public class PaletteManagerScript : MonoBehaviour
     public GameObject sprayGO;
     public GameObject colorGO;
     public GameObject materialGO;
+    public GameObject previewGO;
 
     [Header("UI")]
     public TMP_Text lineSize;
@@ -61,16 +62,6 @@ public class PaletteManagerScript : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    public void LoadMaterials()
-    {
-        //DirectoryInfo dir = new DirectoryInfo("Assets/Resources/Vehicles");
-        //FileInfo[] info = dir.GetFiles("*.prefab");
-        //foreach (FileInfo f in info)
-        //{
-        //    GUI.Label(new Rect(300, 500, 50, 20), f.FullName);
-        //}
-    }
-
     #endregion
 
     #region Methods
@@ -82,6 +73,7 @@ public class PaletteManagerScript : MonoBehaviour
     public void FixedUpdate()
     {
         currentColor = colorGO.GetComponent<ColorPicker>().stolenColor;
+        previewGO.GetComponent<Renderer>().sharedMaterial.color = currentColor;
     }
 
     /// <summary>
@@ -102,9 +94,11 @@ public class PaletteManagerScript : MonoBehaviour
         deleteGO.transform.position = deleteSpot.transform.position;
         deleteGO.transform.rotation = deleteSpot.transform.rotation;
 
-        //sprayGO.transform.parent = transform;
-        //sprayGO.transform.position = spraySpot.transform.position;
-        //sprayGO.transform.rotation = spraySpot.transform.rotation;
+        colorGO.transform.parent = deleteGO.transform.parent.GetChild(0).GetChild(0);
+
+        colorGO.transform.localPosition = Vector3.zero;
+        colorGO.transform.localRotation = Quaternion.identity;
+        colorGO.transform.localScale = new Vector3(10, 0.23f, 10);
     }
 
     /// <summary>
@@ -136,29 +130,21 @@ public class PaletteManagerScript : MonoBehaviour
     public void ApplyPaint()
     {
         currentColor = colorGO.GetComponent<ColorPicker>().stolenColor;
+        currentMaterial.SetColor("color", currentColor);
+        selectorGO.GetComponent<SelectorScript>().ApplyMaterials(currentMaterial, currentColor);
     }
 
-    public void SaveSelectedLines(string json, GameObject go, string folder)
+    public void SaveSelectedDrawing()
     {
-        var tempJson = JsonUtility.ToJson(go);
-        System.IO.File.WriteAllText(Application.persistentDataPath + "/" + folder + "/LineData.json", tempJson);
+        DataScript temp = new DataScript();
+        var objects = selectorGO.GetComponent<SelectorScript>().selectedObjects;
+        if (objects.Count > 0)
+        {
+            var draw = temp.SerializeData(objects);
+            temp.SaveDrawing("Test", draw);
+        }
     }
 
-    public void SaveAllLines(string json, GameObject go, string folder)
-    {
-        var tempJson = JsonUtility.ToJson(go);
-        System.IO.File.WriteAllText(Application.persistentDataPath + "/" + folder + "/LineData.json", tempJson);
-    }
-
-    public void LoadLine(string folder, int id, string name)
-    {
-        Debug.Log(System.IO.File.Exists(folder));
-    }
-
-    public void LoadAllLines(string folder, int id, string name)
-    {
-        Debug.Log(System.IO.File.Exists(folder));
-    }
 
     #endregion
 }

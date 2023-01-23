@@ -1,65 +1,47 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Valve.VR.InteractionSystem;
-using Valve.VR;
 
 public class ColorPicker : MonoBehaviour
 {
-    public Transform raycastPosition;
-    public GameObject changeObject;
-    public Color stolenColor;
-    
-    public GameObject clampObject;
-    public MeshFilter clampMesh;
-    Bounds bounds;
+    [SerializeField] private Transform raycastPosition;
+    [SerializeField] private GameObject changeObject;
+    private Color _stolenColor;
+    private RaycastHit _hit;
 
-    public bool clamp = false;
-
-    public void Awake()
+    public Color stolenColor
     {
+        get { return _stolenColor; }
+        set { _stolenColor = value; }
     }
 
-    // Update is called once per frame
     private void FixedUpdate()
     {
         RaycastHit hit;
-        
+
         if (Physics.Raycast(raycastPosition.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity))
         {
-            if (hit.collider && hit.collider.TryGetComponent<Renderer>(out Renderer renderer))
+            try
             {
-                try {
-                    stolenColor = renderer.material.color;
-                    changeObject.GetComponent<Renderer>().material.color = stolenColor;
-                }
-                catch
+                if (hit.collider)
                 {
-
+                    Renderer renderer = hit.collider.GetComponent<Renderer>();
+                    Texture2D tex = renderer.material.mainTexture as Texture2D;
+                    Vector2 pixelUV = hit.textureCoord;
+                    pixelUV.x *= tex.width;
+                    pixelUV.y *= tex.height;
+                    stolenColor = tex.GetPixel((int)pixelUV.x, (int)pixelUV.y);
                 }
+                changeColor(stolenColor);
             }
-
-            Vector2 hitPos;
-            hitPos = new Vector2(hit.textureCoord.x, hit.textureCoord.y);
-
-            Wall wall;
-            if (wall = hit.transform.GetComponent<Wall>())
+            catch (System.Exception e)
             {
-                var x = (int)(hitPos.x * wall.textureSize.x);
-                var y = (int)(hitPos.y * wall.textureSize.y);
-
-                if (y < 0 || y > wall.textureSize.y || x < 0 || x > wall.textureSize.x) return;
-
-                stolenColor = wall.texture.GetPixel(x, y);
-
-                changeObject.GetComponent<Renderer>().material.color = stolenColor;
+                // Handle the error here
+                Debug.LogError("Error Occured while trying to get color: " + e.Message);
             }
         }
     }
 
-    public void OnDrawGizmos()
+    public void changeColor(Color color)
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(raycastPosition.position, transform.TransformDirection(Vector3.down) * 1000);
+        changeObject.GetComponent<Renderer>().material.color = color;
     }
 }

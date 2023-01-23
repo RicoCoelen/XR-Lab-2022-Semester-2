@@ -186,7 +186,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.03, y: 0.22, z: 0.03}
+  m_Size: {x: 0.05, y: 0.22, z: 0.05}
   m_Center: {x: 0, y: 0.09, z: 0}
 --- !u!114 &5240031720965898908
 MonoBehaviour:
@@ -218,7 +218,7 @@ MonoBehaviour:
   interval: 5
   selectHighlight: {fileID: 2100000, guid: 7b939e5e799d98a469f594828ebab52e, type: 2}
   selectedObjects: []
-  currentObjects: []
+  layers: 0
 --- !u!1 &3034369331218728645
 GameObject:
   m_ObjectHideFlags: 0

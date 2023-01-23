@@ -71,6 +71,8 @@ PaletteManagerScript manager;
         currentMatPanel.transform.SetParent(go[currentMaterial].transform);
         currentMatPanel.transform.localPosition = new Vector3(0, 0, 0f);
         currentMatPanel.transform.localScale = new Vector3(1, 1, 1);
+
+        manager.previewGO.GetComponent<Renderer>().material = new Material(materials[currentMaterial]);
     }
 
     public void SelectNext()
@@ -80,6 +82,7 @@ PaletteManagerScript manager;
         {
             currentMaterial++;
             manager.currentMaterial = new Material(materials[currentMaterial]);
+            manager.previewGO.GetComponent<Renderer>().material = new Material(materials[currentMaterial]);
             currentMatPanel.transform.SetParent(go[currentMaterial].transform);
             currentMatPanel.transform.localPosition = new Vector3(0, 0, 0f);
         }
@@ -91,6 +94,7 @@ PaletteManagerScript manager;
         {
             currentMaterial--;
             manager.currentMaterial = new Material(materials[currentMaterial]);
+            manager.previewGO.GetComponent<Renderer>().material = new Material(materials[currentMaterial]);
             currentMatPanel.transform.SetParent(go[currentMaterial].transform);
             currentMatPanel.transform.localPosition = new Vector3(0, 0, 0f);
         }

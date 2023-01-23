@@ -110,33 +110,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: ColorPicker
       objectReference: {fileID: 0}
-    - target: {fileID: 1593717373969090950, guid: 24ee794a5704b5d4b864bbd089410640, type: 3}
-      propertyPath: clamp
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1593717373969090950, guid: 24ee794a5704b5d4b864bbd089410640, type: 3}
-      propertyPath: clampMesh
-      value: 
-      objectReference: {fileID: 2495214729958291360}
-    - target: {fileID: 1593717373969090950, guid: 24ee794a5704b5d4b864bbd089410640, type: 3}
-      propertyPath: clampObject
-      value: 
-      objectReference: {fileID: 4076576969871969039}
     - target: {fileID: 1886195080847966371, guid: 24ee794a5704b5d4b864bbd089410640, type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1886195080847966371, guid: 24ee794a5704b5d4b864bbd089410640, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1886195080847966371, guid: 24ee794a5704b5d4b864bbd089410640, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.23
-      objectReference: {fileID: 0}
-    - target: {fileID: 1886195080847966371, guid: 24ee794a5704b5d4b864bbd089410640, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1886195080847966371, guid: 24ee794a5704b5d4b864bbd089410640, type: 3}
       propertyPath: m_LocalPosition.x
