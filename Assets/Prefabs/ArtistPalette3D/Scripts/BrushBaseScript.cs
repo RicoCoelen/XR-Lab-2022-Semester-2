@@ -39,18 +39,6 @@ public class BrushBaseScript : MonoBehaviour
         }
     }
 
-    public Texture2D tex
-    {
-        get
-        {
-            return parentScript.currentTexture;
-        }
-        set
-        {
-            parentScript.currentTexture = value;
-        }
-    }
-
     public int width
     {
         get
@@ -111,6 +99,8 @@ public class BrushBaseScript : MonoBehaviour
         var temp = indicator.transform.localScale;
         indicator.transform.localScale = new Vector3(1, 1, 1);
         indicator.transform.localScale *= (width * 0.1f);
+        //indicator.GetComponent<Renderer>().sharedMaterial = new Material(mat);
+        //indicator.GetComponent<Renderer>().sharedMaterial.color = col;
     }
 
     public virtual void CheckBrushInput()

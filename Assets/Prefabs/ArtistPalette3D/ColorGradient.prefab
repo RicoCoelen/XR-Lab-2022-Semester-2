@@ -106,18 +106,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8966354837498266976}
     m_Modifications:
+    - target: {fileID: -7541824206610052918, guid: 24ee794a5704b5d4b864bbd089410640, type: 3}
+      propertyPath: m_Size.x
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: -7541824206610052918, guid: 24ee794a5704b5d4b864bbd089410640, type: 3}
+      propertyPath: m_Size.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7541824206610052918, guid: 24ee794a5704b5d4b864bbd089410640, type: 3}
+      propertyPath: m_Size.z
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 457110046195931557, guid: 24ee794a5704b5d4b864bbd089410640, type: 3}
       propertyPath: m_Name
       value: ColorPicker
       objectReference: {fileID: 0}
-    - target: {fileID: 1593717373969090950, guid: 24ee794a5704b5d4b864bbd089410640, type: 3}
-      propertyPath: clampMesh
-      value: 
-      objectReference: {fileID: 2495214729958291360}
-    - target: {fileID: 1593717373969090950, guid: 24ee794a5704b5d4b864bbd089410640, type: 3}
-      propertyPath: clampObject
-      value: 
-      objectReference: {fileID: 4076576969871969039}
     - target: {fileID: 1886195080847966371, guid: 24ee794a5704b5d4b864bbd089410640, type: 3}
       propertyPath: m_RootOrder
       value: 0

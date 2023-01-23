@@ -53,10 +53,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   raycastPosition: {fileID: 6000904103216013770}
   changeObject: {fileID: 1176489808604585545}
-  stolenColor: {r: 0, g: 0, b: 0, a: 0}
-  clampObject: {fileID: 0}
-  clampMesh: {fileID: 0}
-  clamp: 1
 --- !u!114 &9013362480466588564
 MonoBehaviour:
   m_ObjectHideFlags: 0

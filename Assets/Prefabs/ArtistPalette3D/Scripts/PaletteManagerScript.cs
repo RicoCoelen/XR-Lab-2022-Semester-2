@@ -39,6 +39,7 @@ public class PaletteManagerScript : MonoBehaviour
     public GameObject sprayGO;
     public GameObject colorGO;
     public GameObject materialGO;
+    public GameObject previewGO;
 
     [Header("UI")]
     public TMP_Text lineSize;
@@ -72,6 +73,7 @@ public class PaletteManagerScript : MonoBehaviour
     public void FixedUpdate()
     {
         currentColor = colorGO.GetComponent<ColorPicker>().stolenColor;
+        previewGO.GetComponent<Renderer>().sharedMaterial.color = currentColor;
     }
 
     /// <summary>
@@ -91,6 +93,12 @@ public class PaletteManagerScript : MonoBehaviour
         deleteGO.transform.parent = transform;
         deleteGO.transform.position = deleteSpot.transform.position;
         deleteGO.transform.rotation = deleteSpot.transform.rotation;
+
+        colorGO.transform.parent = deleteGO.transform.parent.GetChild(0).GetChild(0);
+
+        colorGO.transform.localPosition = Vector3.zero;
+        colorGO.transform.localRotation = Quaternion.identity;
+        colorGO.transform.localScale = new Vector3(10, 0.23f, 10);
     }
 
     /// <summary>
