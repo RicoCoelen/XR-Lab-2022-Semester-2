@@ -21,7 +21,7 @@ public class Telefoontje : MonoBehaviour
 
                 audioIndex++;
             }
-            Debug.Log("Player in dialoguetrigger");
+            //Debug.Log("Player in dialoguetrigger");
         }
     }
 }

@@ -122,16 +122,20 @@ public class SelectorScript : BrushBaseScript, IBrush
         {
             if (!selectedObjects.Contains(collider.gameObject))
             {
+                AddSelection(collider.gameObject);
+            }
 
-                foreach (Line l in collider.transform.parent.GetComponentsInChildren<Line>())
+            var parent = collider.gameObject.GetComponent<Line>().mergeParent;
+
+            if (parent)
+            {
+                foreach (Line l in parent.GetComponentsInChildren<Line>())
                 {
                     if (!selectedObjects.Contains(l.gameObject))
                     {
                         AddSelection(l.gameObject);
                     }
                 }
-
-                AddSelection(collider.gameObject);
             }
         }
     }

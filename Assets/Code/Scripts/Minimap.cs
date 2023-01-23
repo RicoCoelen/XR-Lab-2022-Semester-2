@@ -6,12 +6,19 @@ public class Minimap : MonoBehaviour
 {
     public Transform player;
 
+    public Transform vrcamera;
+
     //If the this object is enabled follow the players position and y rotation.
     public void LateUpdate()
     {
         Vector3 newPosition = player.position;
         newPosition.y = transform.position.y;
         transform.position = newPosition;
-        transform.rotation = Quaternion.LookRotation(Vector3.down);
+
+        Quaternion temp = Quaternion.identity;
+        temp.x = 90;
+        temp.y = vrcamera.rotation.y;
+
+        transform.rotation = temp;
     }
 }
