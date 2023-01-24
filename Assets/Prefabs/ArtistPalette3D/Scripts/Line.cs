@@ -57,8 +57,8 @@ public class Line : MonoBehaviour
         lr.material = new Material(mat);
 
         col = parentScript.currentColor;
-        lr.startColor = col; ;
-        lr.endColor = col; ;
+        lr.startColor = col; 
+        lr.endColor = col; 
 
         // add first position to linerenderer
         points.Add(objectRoot);

@@ -20,6 +20,7 @@ public class PaletteManagerScript : MonoBehaviour
     public List<Line> lines = new List<Line>();
     public int interval = 5;
     public DataScript saveSystem;
+    public DataScript.DrawingData drawings;
 
     [Header("Prefabs")]
     public GameObject deletePrefab;
@@ -55,11 +56,12 @@ public class PaletteManagerScript : MonoBehaviour
     void Awake()
     {
         saveSystem = new DataScript();
+        saveSystem.CreateObjectFromJSON(saveSystem.LoadJson("Test"));
 
         // spawn brush on palette
         deleteGO = Instantiate(deletePrefab, deleteSpot.transform); 
         selectorGO = Instantiate(selectorPrefab, selectorSpot.transform); 
-        brushGO = Instantiate(brushPrefab, brushSpot.transform); 
+        brushGO = Instantiate(brushPrefab, brushSpot.transform);
         //sprayGO = Instantiate(sprayPrefab, spraySpot.transform);
 
         DontDestroyOnLoad(this.gameObject);
