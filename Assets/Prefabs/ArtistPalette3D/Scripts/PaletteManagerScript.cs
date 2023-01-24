@@ -54,6 +54,8 @@ public class PaletteManagerScript : MonoBehaviour
     /// </summary>
     void Awake()
     {
+        saveSystem = new DataScript();
+
         // spawn brush on palette
         deleteGO = Instantiate(deletePrefab, deleteSpot.transform); 
         selectorGO = Instantiate(selectorPrefab, selectorSpot.transform); 
@@ -137,15 +139,11 @@ public class PaletteManagerScript : MonoBehaviour
 
     public void SaveSelectedDrawing()
     {
-        if(saveSystem.drawings.Count > 0)
+        var objects = selectorGO.GetComponent<SelectorScript>();
+        if (objects.selectedObjects.Count > 0)
         {
-            saveSystem = new DataScript();
-        }
-
-        var objects = selectorGO.GetComponent<SelectorScript>().selectedObjects;
-        if (objects.Count > 0)
-        {
-            saveSystem.SaveDrawing(saveSystem.SerializeData(objects));
+            saveSystem.SaveDrawing(saveSystem.SerializeData(objects.selectedObjects));
+            objects.RemoveMaterials();
         }
     }
 

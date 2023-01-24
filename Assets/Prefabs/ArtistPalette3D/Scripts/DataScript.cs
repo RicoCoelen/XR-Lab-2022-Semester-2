@@ -6,12 +6,12 @@ using System.IO;
 
 public class DataScript
 {
-    public List<DrawingData> drawings;
+    public List<DrawingData> drawings = new List<DrawingData>();
 
     public void Awake()
     {
         drawings = LoadAllDrawings();
-        if (drawings.Count !> 0)
+        if (drawings == null)
         {
             drawings = new List<DrawingData>();
         }
@@ -130,7 +130,7 @@ public class DataScript
     public void SaveDrawing(DrawingData data)
     {
         string json = JsonUtility.ToJson(data);
-        string fileName = drawings.Count.ToString() + 1;
+        string fileName = (drawings.Count + 1).ToString();
 
         drawings = LoadAllDrawings();
 
