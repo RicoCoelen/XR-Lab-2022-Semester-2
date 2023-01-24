@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class SprayScript : MonoBehaviour
 {
     [SerializeField] private Transform _tip;
-    [SerializeField] public int _brushSize = 8;
+    [SerializeField] public int _brushSize = 20
 
     private Renderer _renderer;
     public Color _colors;
@@ -21,7 +22,7 @@ public class SprayScript : MonoBehaviour
     {
         _renderer = _tip.GetComponent<Renderer>();
         _colors = _renderer.material.color;
-        _tipHeight = _tip.localScale.y;
+        _tipHeight = 3;
     }
 
     void Update()

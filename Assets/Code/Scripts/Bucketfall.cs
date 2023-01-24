@@ -13,6 +13,8 @@ public class Bucketfall : MonoBehaviour
     public GameObject paintbucket;
     public Rigidbody _paintbucket;
     public GameObject brushfall;
+    public Rigidbody _brushfall;
+    public GameObject teleportwall;
 
     //if the player enters the dialogue area a series of dialogue fragments are played depending on the certain area.
     void OnTriggerStay(Collider collider)
@@ -27,7 +29,7 @@ public class Bucketfall : MonoBehaviour
                 audioIndex1++;
             }
             //the paintbucket is spawned with a sound after two seconds after the previous dialogue.
-            if (paintbucket.tag == "Respawn" && audioIndex1 == audioClips1.Length)
+            if (paintbucket.tag == "Respawn" /*&& audioIndex1 == audioClips1.Length*/)
             {
                 StartCoroutine(Delay());
             }
@@ -40,10 +42,13 @@ public class Bucketfall : MonoBehaviour
             _paintbucket.isKinematic = false;
             yield return new WaitForSeconds(4);
             brushfall.SetActive(true);
+            teleportwall.SetActive(true);
             source1.clip = audioClips2[audioIndex2];
             source1.Play();
 
             audioIndex2++;
+            yield return new WaitForSeconds(3);
+            _brushfall.isKinematic = true;
         }
     }
 }
