@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class SprayScript : MonoBehaviour
 {
     [SerializeField] private Transform _tip;
-    [SerializeField] public int _brushSize = 20
+    [SerializeField] public int _brushSize = 20;
 
     private Renderer _renderer;
     public Color _colors;
