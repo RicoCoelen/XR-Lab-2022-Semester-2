@@ -18,5 +18,6 @@ public class jellyfish : MonoBehaviour
     private void FixedUpdate()
     {
         transform.position = Vector3.Lerp(bottem, top, Mathf.PingPong(Time.time*speed, 1.0f));
+        
     }
 }
