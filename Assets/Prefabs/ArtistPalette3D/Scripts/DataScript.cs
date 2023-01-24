@@ -127,9 +127,13 @@ public class DataScript
     }
 
     // Saving method
-    public void SaveDrawing(string fileName, DrawingData data)
+    public void SaveDrawing(DrawingData data)
     {
         string json = JsonUtility.ToJson(data);
+        string fileName = drawings.Count.ToString() + 1;
+
+        drawings = LoadAllDrawings();
+
         File.WriteAllText(Application.dataPath + "/Drawings/" + fileName + ".json", json);
     }
 

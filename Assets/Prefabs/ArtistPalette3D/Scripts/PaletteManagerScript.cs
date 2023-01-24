@@ -19,6 +19,7 @@ public class PaletteManagerScript : MonoBehaviour
     [Header("Technical Variables")]
     public List<Line> lines = new List<Line>();
     public int interval = 5;
+    public DataScript saveSystem;
 
     [Header("Prefabs")]
     public GameObject deletePrefab;
@@ -136,15 +137,17 @@ public class PaletteManagerScript : MonoBehaviour
 
     public void SaveSelectedDrawing()
     {
-        DataScript temp = new DataScript();
+        if(saveSystem.drawings.Count > 0)
+        {
+            saveSystem = new DataScript();
+        }
+
         var objects = selectorGO.GetComponent<SelectorScript>().selectedObjects;
         if (objects.Count > 0)
         {
-            var draw = temp.SerializeData(objects);
-            temp.SaveDrawing("Test", draw);
+            saveSystem.SaveDrawing(saveSystem.SerializeData(objects));
         }
     }
-
 
     #endregion
 }
