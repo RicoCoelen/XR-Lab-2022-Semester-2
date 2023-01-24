@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 7714145595401645219}
   - component: {fileID: 7714145595401645218}
   - component: {fileID: 1926845910951814335}
+  - component: {fileID: 2571596040899943391}
   m_Layer: 0
   m_Name: Oldpaintbrush
   m_TagString: Untagged
@@ -286,6 +287,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 961c389c5d1fde343bd79bf5b953fb70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2571596040899943391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7714145595401645223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8d4cc6cf300b3e4bb1411c4e041030c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportAllowed: 1
+  overrideHoverLock: 0
 --- !u!1 &7714145596163920251
 GameObject:
   m_ObjectHideFlags: 0
