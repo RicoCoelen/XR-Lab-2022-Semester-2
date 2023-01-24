@@ -38,7 +38,7 @@ public class Bucketfall : MonoBehaviour
             paintbucket.SetActive(true);
             yield return new WaitForSeconds(1);
             _paintbucket.isKinematic = false;
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(4);
             brushfall.SetActive(true);
             source1.clip = audioClips2[audioIndex2];
             source1.Play();
