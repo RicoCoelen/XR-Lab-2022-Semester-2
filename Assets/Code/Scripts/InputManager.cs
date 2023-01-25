@@ -24,7 +24,11 @@ public class InputManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-       palette = GameObject.Find("Artist Palette 3D");
+        if(!palette)
+        {
+            palette = GameObject.Find("Artist Palette 3D");
+        }
+
        DontDestroyOnLoad(this.gameObject);
     }
 

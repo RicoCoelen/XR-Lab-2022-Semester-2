@@ -54,7 +54,7 @@ public class PaletteManagerScript : MonoBehaviour
     /// </summary>
     void Awake()
     {
-        saveSystem.CreateObjectFromJSON(saveSystem.LoadJson("Test"));
+        //saveSystem.CreateObjectFromJSON(saveSystem.LoadJson("Test"));
 
         // spawn brush on palette
         deleteGO = Instantiate(deletePrefab, deleteSpot.transform); 
