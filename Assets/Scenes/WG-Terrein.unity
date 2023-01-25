@@ -14071,6 +14071,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1470851753}
+    - target: {fileID: 8171889221683958298, guid: 6d09d70296417a349b5d4d187931b347, type: 3}
+      propertyPath: vrcamera
+      value: 
+      objectReference: {fileID: 1959315416}
     - target: {fileID: 8171889221683958303, guid: 6d09d70296417a349b5d4d187931b347, type: 3}
       propertyPath: m_Name
       value: MinimapCamera
@@ -14795,6 +14799,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7789517438567525880, guid: 35cb2c741f3e5154fb32f3519635dff7, type: 3}
+      propertyPath: linePrefab
+      value: 
+      objectReference: {fileID: 5461794171736557617, guid: a7c114460c5b6444e834d0619b146199, type: 3}
     - target: {fileID: 8218899153021213675, guid: 35cb2c741f3e5154fb32f3519635dff7, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

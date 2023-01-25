@@ -4,14 +4,15 @@ using UnityEngine;
 using System;
 using System.IO;
 
-public class DataScript
+public class DataScript : MonoBehaviour
 {
     public List<DrawingData> drawings;
+    public GameObject linePrefab; 
 
-    public void Awake()
+    public void Start()
     {
         drawings = LoadAllDrawings();
-        if (drawings.Count !> 0)
+        if (drawings == null)
         {
             drawings = new List<DrawingData>();
         }
@@ -126,10 +127,75 @@ public class DataScript
         return dd;
     }
 
+    public void CreateObjectFromJSON(string json)
+    {
+        Debug.Log(json);
+        DrawingData data = JsonUtility.FromJson<DrawingData>(json);
+
+        // create parent object
+        GameObject parent = new GameObject("Drawing_" + data.id);
+        if (data.hasParent)
+        {
+            parent.transform.position = new Vector3(data.parentPosX, data.parentPosY, data.parentPosZ);
+            parent.transform.rotation = new Quaternion(data.parentRotX, data.parentRotY, data.parentRotZ, data.parentRotW);
+        }
+
+        // create lines
+        for (int i = 0; i < data.lines.Length; i++)
+        {
+            LineData lineData = data.lines[i];
+
+            GameObject line = Instantiate(linePrefab); // fixx
+            line.name = "Loaded_Line_" + i;
+
+            line.transform.parent = parent.transform;
+            line.transform.position = new Vector3(lineData.PosX, lineData.PosY, lineData.PosZ);
+            line.transform.rotation = new Quaternion(lineData.RotX, lineData.RotY, lineData.RotZ, lineData.RotW);
+
+            // add Line component
+            Line lc = line.GetComponent<Line>();
+            LineRenderer lr = line.GetComponent<LineRenderer>();
+
+            lr.positionCount = lineData.points.Length;
+
+            // set up points
+            for (int j = 0; j < lineData.points.Length; j++)
+            {
+                Vector3 point = new Vector3(lineData.points[j].PosX, lineData.points[j].PosY, lineData.points[j].PosZ);
+                lc.points.Add(point);
+                lr.SetPosition(j, point);
+            }
+
+            // set up material, color and width
+            lc.mat = Resources.Load<Material>(lineData.material);
+            lc.col = lineData.color;
+
+            lr.startWidth = lineData.width;
+            lr.endWidth = lineData.width;
+            lr.material = Resources.Load<Material>(lineData.material);
+            lr.material = (Material)Resources.Load(lineData.material, typeof(Material));
+            lr.startColor = lineData.color;
+            lr.endColor = lineData.color;
+        }
+    }
+
+    public string LoadJson(string fileName)
+    {
+        if (File.Exists(Application.dataPath + "/Drawings/" + fileName + ".json"))
+        {
+            return File.ReadAllText(Application.dataPath + "/Drawings/" + fileName + ".json");
+        }
+        return null;
+    }
+
     // Saving method
-    public void SaveDrawing(string fileName, DrawingData data)
+    public void SaveDrawing(DrawingData data)
     {
         string json = JsonUtility.ToJson(data);
+        string fileName = (drawings.Count + 1).ToString();
+
+        drawings = LoadAllDrawings();
+
         File.WriteAllText(Application.dataPath + "/Drawings/" + fileName + ".json", json);
     }
 

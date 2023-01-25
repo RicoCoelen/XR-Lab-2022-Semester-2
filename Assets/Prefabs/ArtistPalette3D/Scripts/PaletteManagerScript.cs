@@ -17,9 +17,10 @@ public class PaletteManagerScript : MonoBehaviour
     public int widthMultiplier = 1; // average line width setting
     
     [Header("Technical Variables")]
+    public DataScript saveSystem;
     public List<Line> lines = new List<Line>();
     public int interval = 5;
-
+    
     [Header("Prefabs")]
     public GameObject deletePrefab;
     public GameObject selectorPrefab;
@@ -53,10 +54,12 @@ public class PaletteManagerScript : MonoBehaviour
     /// </summary>
     void Awake()
     {
+        saveSystem.CreateObjectFromJSON(saveSystem.LoadJson("Test"));
+
         // spawn brush on palette
         deleteGO = Instantiate(deletePrefab, deleteSpot.transform); 
         selectorGO = Instantiate(selectorPrefab, selectorSpot.transform); 
-        brushGO = Instantiate(brushPrefab, brushSpot.transform); 
+        brushGO = Instantiate(brushPrefab, brushSpot.transform);
         //sprayGO = Instantiate(sprayPrefab, spraySpot.transform);
 
         DontDestroyOnLoad(this.gameObject);
@@ -136,15 +139,13 @@ public class PaletteManagerScript : MonoBehaviour
 
     public void SaveSelectedDrawing()
     {
-        DataScript temp = new DataScript();
-        var objects = selectorGO.GetComponent<SelectorScript>().selectedObjects;
-        if (objects.Count > 0)
+        var objects = selectorGO.GetComponent<SelectorScript>();
+        if (objects.selectedObjects.Count > 0)
         {
-            var draw = temp.SerializeData(objects);
-            temp.SaveDrawing("Test", draw);
+            saveSystem.SaveDrawing(saveSystem.SerializeData(objects.selectedObjects));
+            objects.RemoveMaterials();
         }
     }
-
 
     #endregion
 }

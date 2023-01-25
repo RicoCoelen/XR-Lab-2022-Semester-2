@@ -118,7 +118,7 @@ public class SelectorScript : BrushBaseScript, IBrush
     /// </summary>
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.tag == "Line" && trigger > 0)
+        if (collider.gameObject.tag == "Line" && trigger > 0 && transform.parent.tag.Equals("Player"))
         {
             if (!selectedObjects.Contains(collider.gameObject))
             {
