@@ -9,19 +9,13 @@ public class DataScript : MonoBehaviour
     public List<DrawingData> drawings;
     public GameObject linePrefab; 
 
-    public void Awake()
+    public void Start()
     {
         drawings = LoadAllDrawings();
         if (drawings == null)
         {
             drawings = new List<DrawingData>();
         }
-
-        if (linePrefab == null)
-        {
-            linePrefab = GameObject.Find("LinePrefab");
-        }
-        
     }
 
     [Serializable]
@@ -151,7 +145,7 @@ public class DataScript : MonoBehaviour
         {
             LineData lineData = data.lines[i];
 
-            GameObject line = GameObject.Instantiate(linePrefab); // fixx
+            GameObject line = Instantiate(linePrefab); // fixx
             line.name = "Loaded_Line_" + i;
 
             line.transform.parent = parent.transform;
@@ -179,6 +173,7 @@ public class DataScript : MonoBehaviour
             lr.startWidth = lineData.width;
             lr.endWidth = lineData.width;
             lr.material = Resources.Load<Material>(lineData.material);
+            lr.material = (Material)Resources.Load(lineData.material, typeof(Material));
             lr.startColor = lineData.color;
             lr.endColor = lineData.color;
         }

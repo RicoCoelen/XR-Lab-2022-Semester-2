@@ -17,11 +17,10 @@ public class PaletteManagerScript : MonoBehaviour
     public int widthMultiplier = 1; // average line width setting
     
     [Header("Technical Variables")]
+    public DataScript saveSystem;
     public List<Line> lines = new List<Line>();
     public int interval = 5;
-    public DataScript saveSystem;
-    public DataScript.DrawingData drawings;
-
+    
     [Header("Prefabs")]
     public GameObject deletePrefab;
     public GameObject selectorPrefab;
@@ -55,7 +54,6 @@ public class PaletteManagerScript : MonoBehaviour
     /// </summary>
     void Awake()
     {
-        saveSystem = new DataScript();
         saveSystem.CreateObjectFromJSON(saveSystem.LoadJson("Test"));
 
         // spawn brush on palette

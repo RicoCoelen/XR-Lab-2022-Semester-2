@@ -1208,6 +1208,7 @@ Transform:
   - {fileID: 4578174106933261364}
   - {fileID: 6976329337573363117}
   - {fileID: 3393893550534715826}
+  - {fileID: 1379188449672210320}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1227,6 +1228,7 @@ MonoBehaviour:
   currentTexture: {fileID: 0}
   currentMaterial: {fileID: 0}
   widthMultiplier: 1
+  saveSystem: {fileID: 7789517438567525880}
   lines: []
   interval: 5
   deletePrefab: {fileID: 3034369330767840613, guid: a452c0a8c7de1114aa494afc2166e20a, type: 3}
@@ -1650,6 +1652,52 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &3888686252881704905
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1379188449672210320}
+  - component: {fileID: 7789517438567525880}
+  m_Layer: 0
+  m_Name: SaveSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1379188449672210320
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3888686252881704905}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2302415497548776398}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7789517438567525880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3888686252881704905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae5a169da162ca949855770dbfa8c1d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawings: []
+  linePrefab: {fileID: 919132149155446097, guid: 21ababcf63ce95c49bc43c15f27bd5ce, type: 3}
 --- !u!1 &4192564181310431365
 GameObject:
   m_ObjectHideFlags: 0
@@ -1986,7 +2034,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 766613271010739657}
   m_HandleRect: {fileID: 8218899153021213675}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
