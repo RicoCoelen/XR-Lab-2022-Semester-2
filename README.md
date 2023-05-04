@@ -1,2 +1,4 @@
 # XR-Lab-2022-Semester-2
-place to keep all the code for the project
+Portfolio website for this project:
+
+https://sandy-jobaria-7df.notion.site/Rico-Coelen-a9302a711660465a8710826e72ca051f
